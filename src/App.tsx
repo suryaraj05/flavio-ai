@@ -206,53 +206,55 @@ export default function App() {
         />
 
         <div className="relative z-10 mx-auto flex min-h-[94svh] max-h-[900px] max-w-7xl flex-col items-start justify-start px-6 pb-[min(38vh,340px)] pt-36 text-left md:px-12 md:pt-40">
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-6 inline-flex items-center gap-1.5 rounded-full border border-outline-soft bg-white/85 px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-on-surface-secondary shadow-sm backdrop-blur-sm md:text-xs"
-          >
-            <Sparkles className="h-3.5 w-3.5 text-secondary-sage" />
-            New: AI-Powered Guest Insights for UK Restaurants
-          </motion.span>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="mb-6 max-w-4xl font-serif text-4xl leading-tight text-on-surface-dark md:mb-8 md:text-6xl"
-          >
-            Your restaurant is losing revenue between the scan and the menu.
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mb-10 max-w-2xl font-sans text-base leading-relaxed text-on-surface-secondary md:text-lg"
-          >
-            Track guest preferences, scale table flow, and implement data-driven decisions with the singular intelligence hub designed for the modern hospitality era.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="flex flex-col justify-start gap-4 sm:flex-row sm:gap-6"
-          >
-            <button
-              onClick={() => setIsDemoModalOpen(true)}
-              className="flex cursor-pointer items-center justify-center gap-2 rounded-full bg-primary-forest px-10 py-4 font-bold text-white shadow-lg transition-all hover:bg-secondary-sage"
+          <div className="w-full max-w-full md:max-w-[50vw] lg:max-w-[min(50vw,36rem)]">
+            <motion.span
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mb-6 inline-flex items-center gap-1.5 rounded-full border border-outline-soft bg-white/85 px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-on-surface-secondary shadow-sm backdrop-blur-sm md:text-xs"
             >
-              <span>Book a Demo</span>
-              <ArrowUpRight className="h-4.5 w-4.5" />
-            </button>
-            <a
-              href="#how-it-works"
-              className="rounded-full border border-outline-soft bg-white/90 px-10 py-4 text-center font-bold text-on-surface-dark backdrop-blur-sm transition-all hover:border-outline-neutral"
+              <Sparkles className="h-3.5 w-3.5 text-secondary-sage" />
+              New: AI-Powered Guest Insights for UK Restaurants
+            </motion.span>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="mb-6 font-serif text-4xl leading-tight text-on-surface-dark md:mb-8 md:text-6xl"
             >
-              How it works
-            </a>
-          </motion.div>
+              Your restaurant is losing revenue between the scan and the menu.
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="mb-10 font-sans text-base leading-relaxed text-on-surface-secondary md:text-lg"
+            >
+              Track guest preferences, scale table flow, and implement data-driven decisions with the singular intelligence hub designed for the modern hospitality era.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="flex flex-col justify-start gap-4 sm:flex-row sm:flex-wrap sm:gap-6"
+            >
+              <button
+                onClick={() => setIsDemoModalOpen(true)}
+                className="flex cursor-pointer items-center justify-center gap-2 rounded-full bg-primary-forest px-10 py-4 font-bold text-white shadow-lg transition-all hover:bg-secondary-sage"
+              >
+                <span>Book a Demo</span>
+                <ArrowUpRight className="h-4.5 w-4.5" />
+              </button>
+              <a
+                href="#how-it-works"
+                className="rounded-full border border-outline-soft bg-white/90 px-10 py-4 text-center font-bold text-on-surface-dark backdrop-blur-sm transition-all hover:border-outline-neutral"
+              >
+                How it works
+              </a>
+            </motion.div>
+          </div>
         </div>
       </header>
 

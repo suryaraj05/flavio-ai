@@ -28,7 +28,7 @@ import { PRICING_PLANS, STEP_GUIDES, TAB_INSIGHTS } from './data';
 import BookDemoModal from './components/BookDemoModal';
 import FeaturesBento from './components/FeaturesBento';
 import Logo from './components/Logo';
-import heroBg from '@/assets/landing-page-image.png';
+import heroBg from '@/assets/homepage-landing-image.png';
 
 export default function App() {
   // Navigation & interaction states
@@ -189,12 +189,12 @@ export default function App() {
       </AnimatePresence>
 
       {/* Hero Section */}
-      <header className="relative min-h-[130svh] overflow-hidden">
+      <header className="relative min-h-[94svh] max-h-[900px] overflow-hidden">
         <div
           className="absolute inset-0 bg-no-repeat"
           style={{
             backgroundImage: `url(${heroBg})`,
-            backgroundPosition: 'center bottom',
+            backgroundPosition: 'right bottom',
             backgroundSize: 'cover',
           }}
           aria-hidden
@@ -205,7 +205,7 @@ export default function App() {
           aria-hidden
         />
 
-        <div className="relative z-10 mx-auto flex min-h-[130svh] max-w-7xl flex-col items-center justify-start px-6 pb-[min(55vh,494px)] pt-36 text-center md:px-12 md:pt-44">
+        <div className="relative z-10 mx-auto flex min-h-[94svh] max-h-[900px] max-w-7xl flex-col items-start justify-start px-6 pb-[min(38vh,340px)] pt-36 text-left md:px-12 md:pt-40">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -219,7 +219,7 @@ export default function App() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="mx-auto mb-6 max-w-4xl font-serif text-4xl leading-tight text-on-surface-dark md:mb-8 md:text-6xl"
+            className="mb-6 max-w-4xl font-serif text-4xl leading-tight text-on-surface-dark md:mb-8 md:text-6xl"
           >
             Your restaurant is losing revenue between the scan and the menu.
           </motion.h1>
@@ -228,7 +228,7 @@ export default function App() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mx-auto mb-10 max-w-2xl font-sans text-base leading-relaxed text-on-surface-secondary md:text-lg"
+            className="mb-10 max-w-2xl font-sans text-base leading-relaxed text-on-surface-secondary md:text-lg"
           >
             Track guest preferences, scale table flow, and implement data-driven decisions with the singular intelligence hub designed for the modern hospitality era.
           </motion.p>
@@ -237,7 +237,7 @@ export default function App() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="flex flex-col justify-center gap-4 sm:flex-row sm:gap-6"
+            className="flex flex-col justify-start gap-4 sm:flex-row sm:gap-6"
           >
             <button
               onClick={() => setIsDemoModalOpen(true)}
@@ -262,11 +262,11 @@ export default function App() {
       <section className="py-24 bg-background-ivory" id="how-it-works">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           {/* Header */}
-          <div className="text-center mb-16 md:mb-20">
+          <div className="mb-16 text-left md:mb-20">
             <span className="text-secondary-sage font-mono text-[11px] md:text-xs uppercase tracking-widest font-bold">
               Simple Setup
             </span>
-            <h2 className="font-serif text-3xl md:text-5xl text-primary-forest mt-3 max-w-2xl mx-auto leading-tight">
+            <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight text-primary-forest md:text-5xl">
               Get started in minutes
             </h2>
           </div>
@@ -312,17 +312,17 @@ export default function App() {
       <section className="py-24 bg-white" id="results">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           {/* Section banner */}
-          <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="mb-16 max-w-3xl text-left">
             <span className="text-secondary-sage font-mono text-[11px] md:text-xs uppercase tracking-widest font-bold">
               Superpowered by AI
             </span>
-            <h2 className="font-serif text-3xl md:text-5xl text-primary-forest mt-3 italic leading-tight">
+            <h2 className="mt-3 font-serif text-3xl italic leading-tight text-primary-forest md:text-5xl">
               How Flavio helps you manage hospitality better
             </h2>
           </div>
 
           {/* Nav Custom Tabs selectors */}
-          <div className="flex justify-center border-b border-outline-soft mb-12">
+          <div className="mb-12 flex justify-start border-b border-outline-soft">
             <div className="flex gap-4 sm:gap-8 overflow-x-auto pb-0.5 no-scrollbar scroll-smooth">
               {TAB_INSIGHTS.map((tab) => (
                 <button
@@ -413,16 +413,16 @@ export default function App() {
       <section className="py-24 bg-background-ivory" id="pricing">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           {/* Header */}
-          <div className="text-center mb-16">
-            <h2 className="font-serif text-3xl md:text-5xl text-primary-forest mb-4 leading-tight">
+          <div className="mb-16 text-left">
+            <h2 className="mb-4 font-serif text-3xl leading-tight text-primary-forest md:text-5xl">
               Simple, transparent pricing
             </h2>
-            <p className="text-on-surface-secondary text-sm font-sans max-w-xl mx-auto">
+            <p className="max-w-xl font-sans text-sm text-on-surface-secondary">
               Start with no credit card required, scale organically as your Covers expand. Clear pricing, no integration setup overhead.
             </p>
 
             {/* Custom pricing Switch toggle */}
-            <div className="mt-8 flex items-center justify-center gap-3">
+            <div className="mt-8 flex items-center justify-start gap-3">
               <span className={`text-xs font-semibold ${!isAnnualPricing ? 'text-primary-forest' : 'text-on-surface-secondary'}`}>
                 Monthly Billing
               </span>
@@ -519,7 +519,7 @@ export default function App() {
       </section>
 
       {/* Massive CTA Section */}
-      <section className="relative py-28 md:py-36 overflow-hidden text-center text-white" id="contact">
+      <section className="relative overflow-hidden py-28 text-left text-white md:py-36" id="contact">
         {/* Visual asset background layer */}
         <div className="absolute inset-0 z-0">
           <img
@@ -532,13 +532,13 @@ export default function App() {
           <div className="absolute inset-0 bg-primary-dark/40 mix-blend-multiply" />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-12 space-y-10">
-          <h2 className="font-serif text-3xl md:text-5xl font-bold tracking-tight max-w-3xl mx-auto leading-tight">
+        <div className="relative z-10 mx-auto max-w-7xl space-y-10 px-6 md:px-12">
+          <h2 className="max-w-3xl font-serif text-3xl font-bold leading-tight tracking-tight md:text-5xl">
             Build wealth faster. Plan your financial future with us.
           </h2>
 
           {/* Social connections block */}
-          <div className="flex flex-wrap justify-center gap-6 sm:gap-10 text-xs font-bold uppercase tracking-widest">
+          <div className="flex flex-wrap justify-start gap-6 text-xs font-bold uppercase tracking-widest sm:gap-10">
             <button
               onClick={() => setIsDemoModalOpen(true)}
               className="text-white hover:text-secondary-container-lime border-b border-white pb-1.5 transition-colors flex items-center gap-2 cursor-pointer text-xs uppercase"

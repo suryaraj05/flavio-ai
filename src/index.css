@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "EB Garamond", serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-mono: "Space Mono", monospace;
+
+  --color-background-ivory: #FAF7F0;
+  --color-primary-forest: #1E3D1E;
+  --color-primary-dark: #07270a;
+  --color-secondary-sage: #3e6841;
+  --color-secondary-container-lime: #bfefbd;
+  --color-on-surface-dark: #101f12;
+  --color-on-surface-secondary: #424840;
+  --color-outline-neutral: #737970;
+  --color-outline-soft: #c2c8be;
+}
+
+/* Custom styles for high-fidelity interactive details */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+.wavy-bottom {
+  mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23000" d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,165.3C672,139,768,117,864,133.3C960,149,1056,203,1152,213.3C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+  mask-repeat: no-repeat;
+  mask-position: bottom;
+  mask-size: 100% 120px;
+}
+
+.bento-card {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 8px 30px rgba(30, 61, 30, 0.06);
+}
+

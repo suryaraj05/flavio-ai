@@ -10,15 +10,15 @@ html {
   --font-sans: "DM Sans", sans-serif;
   --font-mono: "Space Mono", monospace;
 
-  --color-background-ivory: #FAF7F0;
-  --color-primary-forest: #1E3D1E;
-  --color-primary-dark: #07270a;
-  --color-secondary-sage: #3e6841;
-  --color-secondary-container-lime: #bfefbd;
-  --color-on-surface-dark: #101f12;
-  --color-on-surface-secondary: #424840;
-  --color-outline-neutral: #737970;
-  --color-outline-soft: #c2c8be;
+  --color-background-ivory: #F7EDE0;
+  --color-primary-forest: #6B2215;
+  --color-primary-dark: #180A08;
+  --color-secondary-sage: #A85235;
+  --color-secondary-container-lime: #C4955A;
+  --color-on-surface-dark: #180A08;
+  --color-on-surface-secondary: #5C2E18;
+  --color-outline-neutral: #9A6040;
+  --color-outline-soft: #D4B898;
 }
 
 /* Custom styles for high-fidelity interactive details */
@@ -39,6 +39,6 @@ html {
 
 .bento-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0px 8px 30px rgba(30, 61, 30, 0.06);
+  box-shadow: 0px 8px 30px rgba(107, 34, 21, 0.08);
 }
 

@@ -188,7 +188,7 @@ export default function FeaturesBento() {
               <div className="rounded-2xl border border-outline-soft bg-white p-4 shadow-sm">
                 <p className="text-xs text-outline-neutral">Est. monthly uplift</p>
                 <p className="mt-1 font-serif text-2xl font-bold text-primary-forest">£6,800</p>
-                <p className="mt-1 text-[10px] text-emerald-700">20 tables · £65 avg cover</p>
+                <p className="mt-1 text-[10px] text-secondary-sage">20 tables · £65 avg cover</p>
               </div>
             </div>
           </motion.article>

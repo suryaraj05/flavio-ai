@@ -463,7 +463,7 @@ export default function App() {
               >
                 <div
                   className={`w-5 h-5 rounded-full bg-primary-forest shadow-sm transition-transform ${
-                    isAnnualPricing ? 'translate-x-6 bg-emerald-700' : 'translate-x-0'
+                    isAnnualPricing ? 'translate-x-6 bg-secondary-sage' : 'translate-x-0'
                   }`}
                 />
               </button>
@@ -624,7 +624,7 @@ export default function App() {
       </section>
 
       {/* Footer block */}
-      <footer className="bg-[#e1f3de] py-20 border-t border-outline-soft">
+      <footer className="bg-[#EDD5BA] py-20 border-t border-outline-soft">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 mb-16">
             {/* Left subscription brand description */}
@@ -665,9 +665,9 @@ export default function App() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="text-[11px] text-emerald-800 bg-emerald-50 border border-emerald-100 p-2.5 rounded-lg flex items-center gap-2 max-w-md"
+                      className="text-[11px] text-primary-forest bg-[#FBF3EA] border border-outline-soft p-2.5 rounded-lg flex items-center gap-2 max-w-md"
                     >
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-secondary-sage shrink-0" />
                       <span>Thank you! You are subscribed to our monthly intelligence reports.</span>
                     </motion.div>
                   )}

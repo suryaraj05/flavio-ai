@@ -87,8 +87,8 @@ export const STEP_GUIDES: StepGuide[] = [
 export const TAB_INSIGHTS: TabInsight[] = [
   {
     id: 'revenue',
-    label: 'Revenue',
-    title: 'Turn every QR scan into measurable cover uplift',
+    label: 'AI Guest Analysis',
+    title: 'The first AI that reads your guest before they order',
     description: "Flavio's AI reads each guest's mood and cravings at the exact moment they browse your digital menu. Your floor team receives a precision upsell briefing before taking the order — driving incremental revenue per cover without pressure, scripts, or guesswork.",
     metric1Value: '+18%',
     metric1Label: 'Average Uplift Per Cover',

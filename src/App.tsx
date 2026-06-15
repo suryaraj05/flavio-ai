@@ -274,7 +274,7 @@ export default function App() {
             </h2>
           </motion.div>
 
-          {/* Three-column step grid */}
+          {/* Few-column step grid */}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 md:gap-8">
             {STEP_GUIDES.map((step, idx) => (
               <motion.div
@@ -438,7 +438,7 @@ export default function App() {
       <section
         className="py-20 md:py-28"
         id="pricing"
-        style={{ background: 'radial-gradient(ellipse at 85% 10%, rgba(139,92,246,0.65) 0%, #0F0A1E 58%)' }}
+        style={{ background: 'linear-gradient(135deg, #EDE7F6 0%, #F9F8FD 45%, #E4DAF5 100%)' }}
       >
         <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
           {/* Header */}
@@ -449,16 +449,16 @@ export default function App() {
             transition={{ duration: 0.5 }}
             className="mb-16 text-left"
           >
-            <h2 className="mb-4 font-serif text-3xl leading-tight text-white md:text-5xl">
+            <h2 className="mb-4 font-serif text-3xl leading-tight text-primary-forest md:text-5xl">
               Simple, transparent pricing
             </h2>
-            <p className="max-w-xl font-sans text-sm text-[#C4B8E8]">
+            <p className="max-w-xl font-sans text-sm text-on-surface-secondary">
               Plans scale with your tables — no hidden fees, no hardware costs. Cancel any time, or switch to annual and get 3 months completely free.
             </p>
 
             {/* Custom pricing Switch toggle */}
             <div className="mt-8 flex items-center justify-start gap-3">
-              <span className={`text-xs font-semibold ${!isAnnualPricing ? 'text-white' : 'text-white/45'}`}>
+              <span className={`text-xs font-semibold ${!isAnnualPricing ? 'text-primary-forest' : 'text-on-surface-secondary'}`}>
                 Monthly Billing
               </span>
               <button
@@ -466,12 +466,12 @@ export default function App() {
                 onClick={() => setIsAnnualPricing(!isAnnualPricing)}
                 aria-checked={isAnnualPricing}
                 role="switch"
-                className={`relative h-6 w-11 rounded-full p-0.5 transition-colors duration-300 focus:outline-none cursor-pointer ${isAnnualPricing ? 'bg-secondary-container-lime' : 'bg-white/20'}`}
+                className={`relative h-6 w-11 rounded-full p-0.5 transition-colors duration-300 focus:outline-none cursor-pointer ${isAnnualPricing ? 'bg-primary-forest' : 'bg-outline-soft'}`}
               >
                 <div className={`h-5 w-5 rounded-full bg-white shadow-sm transition-transform duration-300 ${isAnnualPricing ? 'translate-x-5' : 'translate-x-0'}`} />
               </button>
-              <span className={`text-xs font-semibold flex items-center gap-1.5 ${isAnnualPricing ? 'text-white' : 'text-white/45'}`}>
-                Annual Billing <span className="bg-white/15 text-white px-2 py-0.5 rounded-full text-[10px] font-mono tracking-wider font-bold">3 MONTHS FREE</span>
+              <span className={`text-xs font-semibold flex items-center gap-1.5 ${isAnnualPricing ? 'text-primary-forest' : 'text-on-surface-secondary'}`}>
+                Annual Billing <span className="bg-secondary-container-lime text-primary-forest px-2 py-0.5 rounded-full text-[10px] font-mono tracking-wider font-bold">3 MONTHS FREE</span>
               </span>
             </div>
           </motion.div>
@@ -492,9 +492,13 @@ export default function App() {
                   whileHover={{ y: -6, transition: { duration: 0.2 } }}
                   className={`p-7 rounded-xl border flex flex-col justify-between h-full relative transition-colors duration-300 ${
                     plan.isPopular
-                      ? 'bg-primary-forest text-white border-primary-forest shadow-2xl scale-100 lg:scale-[1.03]'
+                      ? 'text-white border-transparent shadow-2xl scale-100 lg:scale-[1.03]'
                       : 'bg-white border-outline-soft text-on-surface-dark shadow-sm hover:shadow-md'
                   }`}
+                  style={plan.isPopular ? {
+                    background: 'radial-gradient(ellipse at 85% 10%, rgba(139,92,246,0.65) 0%, #0F0A1E 58%)',
+                    boxShadow: '0 8px 40px rgba(109,40,217,0.35)',
+                  } : undefined}
                 >
                   {/* Distinct Popular visual badge tag */}
                   {plan.isPopular && (

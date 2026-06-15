@@ -78,7 +78,7 @@ export const STEP_GUIDES: StepGuide[] = [
     number: 2,
     tagline: 'No app. No friction.',
     title: 'Guests scan, share mood, and order',
-    description: 'Three quick questions — mood, craving, energy — answered before the menu loads. Invisible to guests, invaluable to your team.',
+    description: 'Few quick questions — mood, craving, energy — answered before the menu loads. Invisible to guests, invaluable to your team.',
     imageUrl: step02,
     imageAlt: 'Guest scanning QR and selecting mood on smartphone at restaurant table'
   },

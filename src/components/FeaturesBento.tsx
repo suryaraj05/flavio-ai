@@ -61,7 +61,7 @@ export default function FeaturesBento() {
             </motion.span>
 
             <h3 className="font-serif text-2xl font-semibold leading-snug sm:text-[1.65rem]">
-              Three questions. One perfect moment.
+              Few questions. One perfect moment.
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-white/55">
               Mood, craving, and energy — captured before your menu loads.
@@ -256,7 +256,7 @@ export default function FeaturesBento() {
                 No new hardware. AI sits invisibly over your current digital menu.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
-                {['Any QR menu', 'POS connected', 'Zero hardware'].map((badge, i) => (
+                {['Simple QR system', 'Intelligence connected', 'Zero hardware'].map((badge, i) => (
                   <motion.span
                     key={badge}
                     initial={{ opacity: 0, y: 6 }}

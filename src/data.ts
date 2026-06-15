@@ -4,6 +4,9 @@
  */
 
 import { PricingPlan, StepGuide, TabInsight, ServerBriefingCard, MenuSyncItem } from './types';
+import step01 from '@/assets/steps/step-01.png';
+import step02 from '@/assets/steps/step-02.png';
+import step03 from '@/assets/steps/step-03.png';
 
 export const PRICING_PLANS: PricingPlan[] = [
   {
@@ -68,24 +71,24 @@ export const STEP_GUIDES: StepGuide[] = [
     tagline: '2-minute setup',
     title: 'Register and link your menu',
     description: 'Connect your existing QR menu or POS in minutes — no dev team, no hardware, no disruption. Live from the very first scan.',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAgMTBBF5Xi-FNQBCR0OVJ0a_i85zuJw0ToQqd9LrbtSjR36qSAnIhMYMjrI68BveSoqNG6tTRUXERyeQkeHcSFZ_5RpanIoyyWKKGwcwCLmgga28KDnQKj6n4vWefzwqc94YfSJM5bXTLi8zrnzw1Wwh2Fx6mlNaS1I4-YxOIINtQo4Cj2HFUaBZuRLyL5K7Q0n5J174rzFqdPObMHY8fFf9AfjEEt5TzuDsJAXpTEHbvgAhj5Ptoa3Xwy-yHM93Zci59aqKzZbA',
-    imageAlt: 'Restaurateur linking menu data seamlessly on a premium laptop layout'
+    imageUrl: step01,
+    imageAlt: 'Flavio dashboard on laptop and mobile — restaurant overview with orders and insights'
   },
   {
     number: 2,
     tagline: 'No app. No friction.',
     title: 'Guests scan, share mood, and order',
     description: 'Three quick questions — mood, craving, energy — answered before the menu loads. Invisible to guests, invaluable to your team.',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBlQaeYyxF6EOqZOSjBKzgesRJev14NWyuwjZFOUk_9SAyGtrer_bo3uZNp2wWQKIw4al2ERTUGKLrMF-6SZNW7ah_62lYJdiTbcHaBV7Wc1AeGOi4SPCvV4Udv7TbDH6JzQN5p02tWT-PSFPfUAxtM3wGy50Svb3xwtWp-_EiFwKR0ro58XHH4pEzbfaOMRrKJpFMio6qVwDzPJ0RH3xLJXSfyiWPUh70s2LD3RZrYyxs9kz33JZGOvYH1mXq8r2-aZsd2L8HbeQ',
-    imageAlt: 'Polished smartphone interface showing sensory taste preference options'
+    imageUrl: step02,
+    imageAlt: 'Guest scanning QR and selecting mood on smartphone at restaurant table'
   },
   {
     number: 3,
     tagline: 'Real-time, table by table',
     title: 'AI briefs your floor team instantly',
     description: 'Staff receive a personalised card on their handheld: the right dish, the right tone, one precision upsell — for that exact guest, right now.',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuATJDm81zsoQYduiB8xOSez4oP-UooHYdNWpeH3qmv_FC28Vw0xAHQ6gUjFFY6iJCT89TXME2AXnCekIX13kVgV-tkhmPkyxWh4JFYgGTjHLxN4f7bfT0dGmIn6s4S7NMShKe9fBNUvQAfMwgaSqFf48PEkx2PcasqSs6p8lIARXkNahF-YEpDBJm8cLR3ln-AEx6Ghf0MxFBtMepWyW_LjewKx1TQCvW6G4bXgLgl49uBFXKygXzmd3MPRyVQakaFArCNoj9IiRw',
-    imageAlt: 'Waitstaff reviewing a smart AI briefing card on a handheld device'
+    imageUrl: step03,
+    imageAlt: 'Waiter reviewing AI guest insight card with table briefing on handheld device'
   }
 ];
 

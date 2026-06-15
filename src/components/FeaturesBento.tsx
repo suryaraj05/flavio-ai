@@ -1,29 +1,9 @@
-import { QrCode, Sparkles } from 'lucide-react';
+import { QrCode, Sparkles, TrendingUp, Check } from 'lucide-react';
 import { motion } from 'motion/react';
 import guestQrFlow from '@/assets/guest-qr-flow.png';
 import horizontalLiveMenu from '@/assets/horizontal-live-menu.png';
 
-function DarkPlaceholder({ label, className = '' }: { label: string; className?: string }) {
-  return (
-    <div
-      className={`flex items-center justify-center rounded-2xl border border-dashed border-white/25 bg-white/5 text-center text-xs font-medium text-white/45 ${className}`}
-      aria-hidden
-    >
-      {label}
-    </div>
-  );
-}
-
-function LightPlaceholder({ label, className = '' }: { label: string; className?: string }) {
-  return (
-    <div
-      className={`flex items-center justify-center rounded-2xl border border-dashed border-outline-soft bg-white/70 text-center text-xs font-medium text-outline-neutral ${className}`}
-      aria-hidden
-    >
-      {label}
-    </div>
-  );
-}
+const BAR_HEIGHTS = [32, 50, 41, 68, 57, 80, 72];
 
 export default function FeaturesBento() {
   return (
@@ -44,24 +24,25 @@ export default function FeaturesBento() {
         </motion.div>
 
         <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-[auto_auto_auto]">
-          {/* 1 · Tall left */}
+
+          {/* ── 1 · Tall left — Guest AI ──────────────────────────────── */}
           <motion.article
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0 }}
-            className="bento-card flex min-h-[380px] flex-col bg-primary-forest p-6 text-white md:row-span-2"
+            className="bento-card flex min-h-[400px] flex-col rounded-2xl bg-primary-forest p-6 text-white md:row-span-2"
           >
-            <span className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-secondary-container-lime">
+            <span className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-secondary-container-lime">
               <Sparkles className="h-5 w-5" />
             </span>
-            <h3 className="font-serif text-2xl font-semibold leading-snug sm:text-3xl">
+            <h3 className="font-serif text-2xl font-semibold leading-snug sm:text-[1.65rem]">
               Three questions. One perfect moment.
             </h3>
-            <p className="mt-2 text-sm text-white/65">
+            <p className="mt-2 text-sm leading-relaxed text-white/60">
               Mood, craving, and energy — captured before your menu loads.
             </p>
-            <div className="relative mx-auto mt-6 flex w-full max-w-[260px] flex-1 items-end justify-center overflow-hidden rounded-2xl bg-white/10 p-2">
+            <div className="relative mx-auto mt-6 flex w-full max-w-[240px] flex-1 items-end justify-center overflow-hidden rounded-2xl bg-white/10 p-2">
               <img
                 src={guestQrFlow}
                 alt="Flavio guest QR and table management flow"
@@ -71,127 +52,190 @@ export default function FeaturesBento() {
             </div>
           </motion.article>
 
-          {/* 2 · Wide top */}
+          {/* ── 2 · Wide top — Live Menu Sync ────────────────────────── */}
           <motion.article
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.08 }}
-            className="bento-card flex min-h-[220px] flex-col bg-background-ivory border border-outline-soft p-6 md:col-span-2 md:min-h-[260px] lg:flex-row lg:items-stretch lg:gap-8"
+            className="bento-card flex min-h-[220px] flex-col rounded-2xl border border-outline-soft bg-background-ivory p-5 md:col-span-2 md:min-h-[240px] lg:flex-row lg:items-stretch lg:gap-6"
           >
-            <div className="flex flex-1 items-stretch overflow-hidden rounded-2xl border border-outline-soft bg-white shadow-sm">
+            <div className="flex flex-1 items-stretch overflow-hidden rounded-xl border border-outline-soft bg-white shadow-sm">
               <img
                 src={horizontalLiveMenu}
                 alt="Flavio live menu and orders dashboard"
-                className="h-full w-full min-h-[160px] object-cover object-left-top"
+                className="h-full w-full min-h-[140px] object-cover object-left-top"
                 loading="lazy"
               />
             </div>
-            <div className="mt-6 flex flex-1 flex-col justify-center lg:mt-0 lg:max-w-[45%]">
-              <h3 className="font-serif text-2xl font-semibold text-primary-forest sm:text-3xl">
+            <div className="mt-5 flex flex-1 flex-col justify-center lg:mt-0 lg:max-w-[42%]">
+              <span className="mb-2 font-mono text-[9px] uppercase tracking-widest text-secondary-sage">
+                Real-time
+              </span>
+              <h3 className="font-serif text-xl font-semibold text-primary-forest sm:text-2xl">
                 Live Menu Sync
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-on-surface-secondary">
-                Sold-out dishes are suppressed instantly across every server tablet.
+                Sold-out dishes suppressed instantly across every server tablet — no calls, no confusion.
               </p>
             </div>
           </motion.article>
 
-          {/* 3 · Middle center */}
+          {/* ── 3 · Middle center — Server Intelligence ──────────────── */}
           <motion.article
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.16 }}
-            className="bento-card flex min-h-[200px] flex-col bg-primary-forest p-6 text-white lg:flex-row lg:items-center lg:gap-6"
+            className="bento-card flex min-h-[200px] flex-col rounded-2xl bg-primary-forest p-5 text-white"
           >
-            <div className="flex-1">
-              <h3 className="font-serif text-xl font-semibold sm:text-2xl">Server Intelligence</h3>
-              <p className="mt-2 text-sm text-white/65">
-                Dish, tone, and one complimentary touch — on your team&apos;s phone.
-              </p>
-            </div>
-            <div className="mt-4 flex flex-1 flex-col gap-2 sm:mt-0">
-              <DarkPlaceholder label="Dish to suggest" className="min-h-[64px]" />
-              <DarkPlaceholder label="Tone & personal touch" className="min-h-[64px]" />
+            <h3 className="font-serif text-xl font-semibold">Server Intelligence</h3>
+            <p className="mt-1 text-xs text-white/55">
+              Personalised briefing delivered to every server's handheld.
+            </p>
+
+            {/* Mini briefing card */}
+            <div className="mt-4 space-y-2">
+              <div className="rounded-xl bg-white/10 px-3 py-2.5">
+                <p className="mb-1 font-mono text-[9px] uppercase tracking-wider text-white/35">
+                  Table 12 · 4 guests
+                </p>
+                <p className="text-xs font-medium text-white">
+                  Suggest: Seared Sea Bass with truffle butter
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <div className="rounded-xl border border-white/10 bg-white/[0.07] px-3 py-2.5">
+                  <p className="mb-1 font-mono text-[9px] uppercase tracking-wider text-white/35">Tone</p>
+                  <p className="text-[11px] text-white">Warm & celebratory</p>
+                </div>
+                <div className="rounded-xl border border-secondary-container-lime/20 bg-secondary-container-lime/10 px-3 py-2.5">
+                  <p className="mb-1 font-mono text-[9px] uppercase tracking-wider text-white/35">Upsell</p>
+                  <p className="text-[11px] text-white">Add Asparagus side</p>
+                </div>
+              </div>
             </div>
           </motion.article>
 
-          {/* 4 · Middle right */}
+          {/* ── 4 · Middle right — £340 stat ─────────────────────────── */}
           <motion.article
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.24 }}
-            className="bento-card flex min-h-[200px] flex-col items-center justify-center border border-outline-soft bg-background-ivory p-6 text-center"
+            className="bento-card flex min-h-[200px] flex-col rounded-2xl border border-outline-soft bg-background-ivory p-5"
           >
-            <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-secondary-sage">
+            <span className="font-mono text-[9px] font-bold uppercase tracking-wider text-secondary-sage">
               Performance uplift
             </span>
-            <p className="mt-2 font-serif text-4xl font-bold text-primary-forest">£340</p>
-            <p className="mt-1 max-w-[180px] text-sm text-on-surface-secondary">
-              average monthly uplift per table
-            </p>
-            <div className="mt-5 flex -space-x-2">
-              {['#fcd34d', '#86efac', '#f9a8d4', '#93c5fd', '#c4b5fd'].map((c, i) => (
-                <span
-                  key={i}
-                  className="h-9 w-9 rounded-full border-2 border-background-ivory"
-                  style={{ backgroundColor: c }}
-                />
-              ))}
+            <p className="mt-2 font-serif text-4xl font-bold leading-none text-primary-forest">£340</p>
+            <p className="mt-1 text-xs text-on-surface-secondary">avg monthly uplift per table</p>
+
+            {/* Bar chart */}
+            <div className="mt-auto pt-4">
+              <div className="flex h-10 items-end gap-[3px]">
+                {BAR_HEIGHTS.map((h, i) => (
+                  <div
+                    key={i}
+                    className="flex-1 rounded-sm bg-primary-forest/20 last:bg-primary-forest/60"
+                    style={{ height: `${h}%` }}
+                  />
+                ))}
+              </div>
+              <div className="mt-2.5 flex items-center gap-1.5">
+                <TrendingUp className="h-3 w-3 text-secondary-sage" />
+                <span className="font-mono text-[9px] font-bold text-secondary-sage">+12% this month</span>
+              </div>
             </div>
           </motion.article>
 
-          {/* 5 · Wide bottom */}
+          {/* ── 5 · Wide bottom — QR Integration ─────────────────────── */}
           <motion.article
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.32 }}
-            className="bento-card flex min-h-[200px] flex-col bg-primary-forest p-6 text-white md:col-span-2 lg:flex-row lg:items-center lg:justify-between lg:gap-8"
+            className="bento-card flex min-h-[200px] flex-col rounded-2xl bg-primary-forest p-5 text-white md:col-span-2 lg:flex-row lg:items-center lg:justify-between lg:gap-8"
           >
-            <div className="max-w-md">
-              <h3 className="font-serif text-xl font-semibold sm:text-2xl">Plugs Into Existing QR</h3>
-              <p className="mt-2 text-sm text-white/65">
+            <div className="max-w-sm">
+              <h3 className="font-serif text-xl font-semibold sm:text-2xl">
+                Plugs Into Your Existing QR
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/60">
                 No new hardware. AI sits invisibly over your current digital menu.
               </p>
+              {/* Compatibility badges */}
+              <div className="mt-4 flex flex-wrap gap-2">
+                {['Any QR menu', 'POS connected', 'Zero hardware'].map((badge) => (
+                  <span
+                    key={badge}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] text-white/80"
+                  >
+                    <Check className="h-3 w-3 text-secondary-container-lime shrink-0" />
+                    {badge}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="mt-6 flex shrink-0 items-center gap-4 rounded-2xl bg-primary-dark/80 p-5 lg:mt-0">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-secondary-container-lime">
-                <QrCode className="h-6 w-6" />
+
+            {/* Active status widget */}
+            <div className="mt-5 flex shrink-0 items-center gap-4 rounded-2xl bg-primary-dark/70 p-4 lg:mt-0">
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-secondary-container-lime">
+                <QrCode className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-serif text-lg font-semibold">POS layer active</p>
-                <p className="text-xs text-white/55">Live feedback loop</p>
+                <p className="font-serif text-base font-semibold">POS layer active</p>
+                <div className="mt-1 flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-secondary-container-lime animate-pulse" />
+                  <p className="text-xs text-white/50">Live feedback loop</p>
+                </div>
               </div>
             </div>
           </motion.article>
 
-          {/* 6 · Bottom right */}
+          {/* ── 6 · Bottom right — ROI ────────────────────────────────── */}
           <motion.article
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.4 }}
-            className="bento-card flex min-h-[200px] flex-col border border-outline-soft bg-background-ivory p-6 lg:flex-row lg:items-center lg:gap-6"
+            className="bento-card flex min-h-[200px] flex-col rounded-2xl border border-outline-soft bg-background-ivory p-5"
           >
-            <div className="flex-1">
-              <h3 className="font-serif text-xl font-semibold text-primary-forest sm:text-2xl">
-                Track Your ROI With Ease
-              </h3>
-              <p className="mt-2 text-sm text-on-surface-secondary">
-                Forecast uplift by tables and average cover spend.
-              </p>
-            </div>
-            <div className="mt-4 flex flex-1 items-center justify-center lg:mt-0">
-              <div className="rounded-2xl border border-outline-soft bg-white p-4 shadow-sm">
-                <p className="text-xs text-outline-neutral">Est. monthly uplift</p>
-                <p className="mt-1 font-serif text-2xl font-bold text-primary-forest">£6,800</p>
-                <p className="mt-1 text-[10px] text-secondary-sage">20 tables · £65 avg cover</p>
-              </div>
+            <h3 className="font-serif text-xl font-semibold text-primary-forest">
+              Track Your ROI
+            </h3>
+            <p className="mt-1 text-xs text-on-surface-secondary">
+              Forecast uplift by tables and average cover spend.
+            </p>
+
+            {/* Metric rows */}
+            <div className="mt-4 flex-1 space-y-0 overflow-hidden rounded-xl border border-outline-soft bg-white shadow-sm">
+              {[
+                { label: 'Tables', value: '20', sub: '' },
+                { label: 'Avg Cover', value: '£65', sub: '' },
+                { label: 'Est. Monthly Uplift', value: '£6,800', highlight: true },
+              ].map(({ label, value, highlight }, i) => (
+                <div
+                  key={label}
+                  className={`flex items-center justify-between px-4 py-3 ${
+                    i < 2 ? 'border-b border-outline-soft' : ''
+                  } ${highlight ? 'bg-primary-forest/[0.04]' : ''}`}
+                >
+                  <span className="font-mono text-[9px] uppercase tracking-wider text-outline-neutral">
+                    {label}
+                  </span>
+                  <span
+                    className={`font-serif text-lg font-bold ${
+                      highlight ? 'text-primary-forest' : 'text-on-surface-dark'
+                    }`}
+                  >
+                    {value}
+                  </span>
+                </div>
+              ))}
             </div>
           </motion.article>
+
         </div>
       </div>
     </section>

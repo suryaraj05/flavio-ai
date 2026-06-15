@@ -7,51 +7,52 @@ import { PricingPlan, StepGuide, TabInsight, ServerBriefingCard, MenuSyncItem } 
 
 export const PRICING_PLANS: PricingPlan[] = [
   {
-    id: 'essential',
-    name: 'Essential',
-    description: 'Perfect for single boutique venues',
-    priceMonthly: 49,
-    priceAnnualDiscounted: 39,
-    ctaText: 'Get Started Free',
+    id: 'ai-basic',
+    name: 'AI Basic',
+    description: 'Ideal for small venues up to 10 tables',
+    priceMonthly: 15,
+    priceAnnualDiscounted: 7.5,
+    ctaText: 'Start Free Trial',
     features: [
-      'Up to 500 covers/mo',
-      'Basic upselling recommendations',
-      'Standard guest preference capture',
-      'Daily performance digest via email',
-      'Standard analytics dashboard'
+      'Up to 10 tables',
+      'QR menu link & instant setup',
+      'AI guest preference capture',
+      'Smart upsell recommendations',
+      'Basic analytics dashboard',
+      'Email support'
     ]
   },
   {
-    id: 'growth',
-    name: 'Growth',
-    description: 'For serious high-growth hospitality groups',
-    priceMonthly: 120,
-    priceAnnualDiscounted: 96,
+    id: 'ai-medium',
+    name: 'AI Medium',
+    description: 'For growing restaurants up to 20 tables',
+    priceMonthly: 25,
+    priceAnnualDiscounted: 12.5,
     isPopular: true,
-    ctaText: 'Start 14-Day Free Trial',
+    ctaText: 'Start Free Trial',
     features: [
-      'Unlimited cover tracking',
-      'Advanced AI guest profiling & segments',
-      'Real-time server digital briefing cards',
-      'Multi-device waitstaff integration',
-      'Live menu sync with custom inventory alerts',
-      'Weekly automated ROI reporting'
+      'Up to 20 tables',
+      'Everything in AI Basic',
+      'Real-time server briefing cards',
+      'Live menu sync & sold-out suppression',
+      'Guest intelligence profiles',
+      'Priority email & chat support'
     ]
   },
   {
-    id: 'enterprise',
-    name: 'Enterprise',
-    description: 'For high-volume multi-location chains',
-    priceMonthly: 499,
-    priceAnnualDiscounted: 399,
+    id: 'ai-advanced',
+    name: 'AI Advanced',
+    description: 'Designed for large venues up to 30 tables',
+    priceMonthly: 35,
+    priceAnnualDiscounted: 17.5,
     ctaText: 'Contact Sales',
     features: [
-      'Multi-location regional management',
-      'Custom API & POS custom legacy integration',
-      'Custom machine learning models per brand',
-      'SLA-backed priority support',
-      'Dedicated account manager',
-      'On-site staff training sessions'
+      'Up to 30 tables',
+      'Everything in AI Medium',
+      'Multi-location management',
+      'Custom POS integration',
+      'Advanced ROI & revenue reporting',
+      'Dedicated account manager'
     ]
   }
 ];

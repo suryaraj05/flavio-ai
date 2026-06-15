@@ -446,7 +446,7 @@ export default function App() {
               Simple, transparent pricing
             </h2>
             <p className="max-w-xl font-sans text-sm text-on-surface-secondary">
-              Start with no credit card required, scale organically as your Covers expand. Clear pricing, no integration setup overhead.
+              Plans scale with your tables — no hidden fees, no hardware costs. Cancel any time, or switch to annual and get 6 months completely free.
             </p>
 
             {/* Custom pricing Switch toggle */}
@@ -464,7 +464,7 @@ export default function App() {
                 <div className={`h-5 w-5 rounded-full bg-white shadow-sm transition-transform duration-300 ${isAnnualPricing ? 'translate-x-5' : 'translate-x-0'}`} />
               </button>
               <span className={`text-xs font-semibold flex items-center gap-1.5 ${isAnnualPricing ? 'text-primary-forest' : 'text-on-surface-secondary'}`}>
-                Annual Save <span className="bg-secondary-container-lime text-primary-forest px-2 py-0.5 rounded-full text-[10px] font-mono tracking-wider font-bold">SAVE 20%</span>
+                Annual Billing <span className="bg-secondary-container-lime text-primary-forest px-2 py-0.5 rounded-full text-[10px] font-mono tracking-wider font-bold">6 MONTHS FREE</span>
               </span>
             </div>
           </motion.div>
@@ -472,7 +472,8 @@ export default function App() {
           {/* Pricing cards Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
             {PRICING_PLANS.map((plan, idx) => {
-              const currentPrice = isAnnualPricing ? plan.priceAnnualDiscounted : plan.priceMonthly;
+              const rawPrice = isAnnualPricing ? plan.priceAnnualDiscounted : plan.priceMonthly;
+              const currentPrice = Number.isInteger(rawPrice) ? rawPrice : rawPrice.toFixed(2);
 
               return (
                 <motion.div
@@ -514,7 +515,9 @@ export default function App() {
                       /month
                     </span>
                     <div className="text-[10px] font-mono tracking-wider opacity-65 mt-1 select-none">
-                      {isAnnualPricing ? 'billed annually' : 'cancel any time'}
+                      {isAnnualPricing
+                        ? `£${(plan.priceAnnualDiscounted * 12).toFixed(0)} billed annually · 6 months free`
+                        : 'cancel any time'}
                     </div>
                   </div>
 

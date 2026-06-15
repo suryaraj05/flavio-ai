@@ -272,56 +272,47 @@ export default function App() {
             </h2>
           </motion.div>
 
-          {/* Alternating story rows */}
-          <div className="space-y-16 md:space-y-24">
-            {STEP_GUIDES.map((step, idx) => {
-              const isEven = idx % 2 === 1;
-              return (
-                <motion.div
-                  key={step.number}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.55, delay: 0.05 }}
-                  className={`group flex flex-col gap-8 md:gap-16 md:items-center ${isEven ? 'md:flex-row-reverse' : 'md:flex-row'}`}
-                >
-                  {/* Image — 55% on desktop */}
-                  <div className="relative w-full overflow-hidden rounded-2xl border border-outline-soft md:w-[55%] aspect-[4/3]">
-                    <img
-                      src={step.imageUrl}
-                      alt={step.imageAlt}
-                      referrerPolicy="no-referrer"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    />
-                    {/* Step number overlay badge */}
-                    <div className="absolute bottom-4 left-4 flex h-9 w-9 items-center justify-center rounded-full bg-primary-dark/80 backdrop-blur-sm font-serif text-sm font-bold text-white shadow-lg">
-                      {`0${step.number}`}
-                    </div>
+          {/* Three-column step grid */}
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 md:gap-8">
+            {STEP_GUIDES.map((step, idx) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: idx * 0.1 }}
+                className="group flex flex-col"
+              >
+                {/* Image */}
+                <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-xl border border-outline-soft">
+                  <img
+                    src={step.imageUrl}
+                    alt={step.imageAlt}
+                    referrerPolicy="no-referrer"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  />
+                  {/* Step badge */}
+                  <div className="absolute left-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-primary-dark/80 backdrop-blur-sm font-serif text-xs font-bold text-white shadow">
+                    {`0${step.number}`}
                   </div>
+                </div>
 
-                  {/* Text — 45% on desktop */}
-                  <div className="flex w-full flex-col justify-center space-y-4 md:w-[45%]">
-                    {/* Tagline pill */}
-                    <span className="inline-flex w-fit items-center rounded-full border border-outline-soft bg-white px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-secondary-sage shadow-sm">
-                      {step.tagline}
-                    </span>
+                {/* Tagline */}
+                <span className="mb-2 inline-flex w-fit items-center rounded-full border border-outline-soft bg-white px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-widest text-secondary-sage">
+                  {step.tagline}
+                </span>
 
-                    <h3 className="font-serif text-2xl leading-snug text-primary-forest md:text-3xl">
-                      {step.title}
-                    </h3>
+                {/* Title */}
+                <h3 className="mb-2 font-serif text-lg leading-snug text-primary-forest md:text-xl">
+                  {step.title}
+                </h3>
 
-                    <p className="text-sm leading-relaxed text-on-surface-secondary md:text-base">
-                      {step.description}
-                    </p>
-
-                    {/* Connector line to next step — hidden on last */}
-                    {idx < STEP_GUIDES.length - 1 && (
-                      <div className="mt-2 hidden h-px w-12 bg-outline-soft md:block" />
-                    )}
-                  </div>
-                </motion.div>
-              );
-            })}
+                {/* Description */}
+                <p className="text-xs leading-relaxed text-on-surface-secondary md:text-sm">
+                  {step.description}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

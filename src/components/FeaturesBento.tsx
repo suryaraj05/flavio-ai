@@ -1,7 +1,7 @@
 import { QrCode, Sparkles, TrendingUp, Check } from 'lucide-react';
 import { motion } from 'motion/react';
-import guestQrFlow from '@/assets/guest-qr-flow.png';
-import horizontalLiveMenu from '@/assets/horizontal-live-menu.png';
+import fewQuestions from '@/assets/few-questions.png';
+import liveMenu from '@/assets/live-menu.png';
 
 const BAR_HEIGHTS = [32, 50, 41, 68, 57, 80, 72];
 
@@ -67,11 +67,11 @@ export default function FeaturesBento() {
               Mood, craving, and energy — captured before your menu loads.
             </p>
 
-            <div className="relative mx-auto mt-6 flex w-full max-w-[240px] flex-1 items-end justify-center overflow-hidden rounded-2xl bg-white/10 p-2">
+            <div className="relative mx-auto mt-6 flex w-full max-w-[260px] flex-1 items-end justify-center">
               <img
-                src={guestQrFlow}
-                alt="Flavio guest QR and table management flow"
-                className="w-full rounded-xl object-contain shadow-lg transition-transform duration-700 group-hover:scale-[1.04]"
+                src={fewQuestions}
+                alt="Flavio guest mood check-in on mobile — few questions before the menu loads"
+                className="w-full object-contain transition-transform duration-700 group-hover:scale-[1.04]"
                 loading="lazy"
               />
             </div>
@@ -85,13 +85,13 @@ export default function FeaturesBento() {
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.08 }}
             whileHover={{ y: -6, transition: CARD_SPRING }}
-            className="group flex min-h-[220px] flex-col overflow-hidden rounded-2xl border border-outline-soft bg-background-ivory p-5 md:col-span-2 md:min-h-[240px] lg:flex-row lg:items-stretch lg:gap-5 cursor-default"
+            className="group flex min-h-[220px] flex-col overflow-hidden rounded-2xl bg-background-ivory p-5 md:col-span-2 md:min-h-[240px] lg:flex-row lg:items-stretch lg:gap-5 cursor-default"
             style={{ boxShadow: '0 2px 12px rgba(61,21,128,0.07)' }}
           >
-            <div className="flex flex-1 items-stretch overflow-hidden rounded-xl border border-outline-soft bg-white shadow-sm">
+            <div className="flex flex-1 items-stretch overflow-hidden rounded-xl bg-white shadow-sm">
               <img
-                src={horizontalLiveMenu}
-                alt="Flavio live menu and orders dashboard"
+                src={liveMenu}
+                alt="Flavio live orders dashboard with UK menu items synced across tablets"
                 className="h-full w-full min-h-[140px] object-cover object-left-top transition-transform duration-700 group-hover:scale-[1.03]"
                 loading="lazy"
               />
@@ -177,7 +177,7 @@ export default function FeaturesBento() {
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.24 }}
             whileHover={{ y: -6, transition: CARD_SPRING }}
-            className="flex min-h-[200px] flex-col overflow-hidden rounded-2xl border border-outline-soft bg-white p-5 cursor-default"
+            className="flex min-h-[200px] flex-col overflow-hidden rounded-2xl bg-white p-5 cursor-default"
             style={{
               boxShadow: '0 2px 12px rgba(61,21,128,0.07)',
               background: 'linear-gradient(160deg, #ffffff 60%, rgba(196,184,232,0.18) 100%)',
@@ -298,7 +298,7 @@ export default function FeaturesBento() {
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.4 }}
             whileHover={{ y: -6, transition: CARD_SPRING }}
-            className="flex min-h-[200px] flex-col overflow-hidden rounded-2xl border border-outline-soft bg-background-ivory p-5 cursor-default"
+            className="flex min-h-[200px] flex-col overflow-hidden rounded-2xl bg-background-ivory p-5 cursor-default"
             style={{ boxShadow: '0 2px 12px rgba(61,21,128,0.07)' }}
           >
             <h3 className="font-serif text-xl font-semibold text-primary-dark">
@@ -308,7 +308,7 @@ export default function FeaturesBento() {
               Forecast uplift by table count and average cover.
             </p>
 
-            <div className="mt-4 flex-1 overflow-hidden rounded-xl border border-outline-soft bg-white shadow-sm">
+            <div className="mt-4 flex-1 overflow-hidden rounded-xl bg-white shadow-sm">
               {ROI_ROWS.map(({ label, value, highlight }, i) => (
                 <motion.div
                   key={label}

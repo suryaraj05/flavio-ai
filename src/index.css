@@ -3,6 +3,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+  scroll-padding-top: 5rem;
 }
 
 @theme {
@@ -50,6 +52,13 @@ html {
 /* Hide horizontal scrollbar for tab strip */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Phone demo — smooth in-device scroll, no page scroll chaining */
+.phone-scroll {
+  scroll-behavior: smooth;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+}
 
 /* Custom styles for high-fidelity interactive details */
 .scroll-smooth {

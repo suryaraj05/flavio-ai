@@ -7,6 +7,9 @@ import { PricingPlan, StepGuide, TabInsight, ServerBriefingCard, MenuSyncItem } 
 import step01 from '@/assets/steps/step-01.png';
 import step02 from '@/assets/steps/step-02.png';
 import step03 from '@/assets/steps/step-03.png';
+import guestAnalysis from '@/assets/ai-power/guest-analysis.png';
+import guestInsights from '@/assets/ai-power/guest-insights.png';
+import operations from '@/assets/ai-power/operations.png';
 
 export const PRICING_PLANS: PricingPlan[] = [
   {
@@ -102,8 +105,8 @@ export const TAB_INSIGHTS: TabInsight[] = [
     metric1Label: 'Average Uplift Per Cover',
     metric2Value: '£340',
     metric2Label: 'Avg Monthly Per Table',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCUs9S6HWa7BVgYeeMSpH5iOF7GjmJTBtIpNKpT0DOzpuZeKQ43me862JcpZ76KjBJ4iJLvDvoL6uHCTrR87ubv0NyaigHUEyzF0UoABqA_rDh5qHqygw1oNOdDSYXly6vkiYcx2cadZoAqSXz_flltGqy68FJ_QehZPYvGer1L8PhNXDCCAr-FI78YmPDudRuucya0c3R5qrQ7TDT4OSGSpwdsvpMBfp6ubIH8QyTZw6xi-kdwXmfHTQgo_FtIatUBBWqRuVgtlw',
-    imageAlt: 'Flavio revenue uplift dashboard showing weekly upsell performance across tables'
+    imageUrl: guestAnalysis,
+    imageAlt: 'Guest completing Flavio AI mood check-in on smartphone at restaurant table'
   },
   {
     id: 'guest-insights',
@@ -114,8 +117,8 @@ export const TAB_INSIGHTS: TabInsight[] = [
     metric1Label: 'More Return Visits',
     metric2Value: '4.2x',
     metric2Label: 'Higher Guest Lifetime Value',
-    imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200',
-    imageAlt: 'Restaurant team reviewing guest preference data on a tablet during service prep'
+    imageUrl: guestInsights,
+    imageAlt: 'Waiter reviewing Flavio AI guest insight cards on handheld device'
   },
   {
     id: 'operations',
@@ -126,8 +129,8 @@ export const TAB_INSIGHTS: TabInsight[] = [
     metric1Label: 'Reduction in Food Waste',
     metric2Value: '15 min',
     metric2Label: 'Avg Wait Time Saved Per Table',
-    imageUrl: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=1200',
-    imageAlt: 'Efficient kitchen and floor service running with AI-powered menu and staff coordination'
+    imageUrl: operations,
+    imageAlt: 'Flavio AI restaurant dashboard on laptop with live menu on smartphone'
   }
 ];
 

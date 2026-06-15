@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import {
   Sparkles,
   ArrowUpRight,
@@ -28,7 +28,8 @@ import { PRICING_PLANS, STEP_GUIDES, TAB_INSIGHTS } from './data';
 import BookDemoModal from './components/BookDemoModal';
 import FeaturesBento from './components/FeaturesBento';
 import Logo from './components/Logo';
-import heroBg from '@/assets/homepage-landing-image.png';
+import darkBackground from '@/assets/dark-background.png';
+import HeroPhoneMockup from './components/hero/HeroPhoneMockup';
 
 export default function App() {
   // Navigation & interaction states
@@ -39,6 +40,14 @@ export default function App() {
 
   // Step image lightbox
   const [expandedStep, setExpandedStep] = useState<{ src: string; alt: string } | null>(null);
+
+  // Hero scroll — phone zoom-out micro-interaction
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const phoneScale = useTransform(scrollYProgress, [0, 1], [1, 0.88]);
 
   // Nav scroll shadow
   const [scrolled, setScrolled] = useState(false);
@@ -65,9 +74,9 @@ export default function App() {
   };
 
   return (
-    <div className="bg-background-ivory text-on-surface-dark font-sans overflow-x-hidden min-h-screen">
+    <div className="bg-background-ivory text-on-surface-dark font-sans min-h-screen">
       {/* Dynamic Header / Navigation */}
-      <nav className={`fixed top-0 w-full z-40 bg-background-ivory/95 backdrop-blur-md border-b border-outline-soft transition-all duration-300 ${scrolled ? 'h-14 shadow-md' : 'h-14 md:h-20 shadow-none'}`}>
+      <nav className={`sticky top-0 w-full z-40 bg-background-ivory/95 backdrop-blur-md border-b border-outline-soft transition-all duration-300 ${scrolled ? 'h-14 shadow-md' : 'h-14 md:h-20 shadow-none'}`}>
         <div className="flex justify-between items-center px-5 md:px-10 lg:px-16 max-w-7xl mx-auto h-full">
           <Logo size="sm" />
 
@@ -181,32 +190,44 @@ export default function App() {
       </AnimatePresence>
 
       {/* Hero Section */}
-      <header className="relative min-h-[94svh] max-h-[900px] overflow-hidden">
+      <header
+        ref={heroRef}
+        className="relative min-h-[94svh] max-h-[900px] overflow-hidden"
+      >
+        {/* Restaurant ambience background */}
         <div
-          className="absolute inset-0 bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-no-repeat"
           style={{
-            backgroundImage: `url(${heroBg})`,
-            backgroundPosition: 'right bottom',
-            backgroundSize: 'cover',
+            backgroundImage: `url(${darkBackground})`,
+            backgroundPosition: 'right center',
           }}
           aria-hidden
         />
 
-        {/* Stronger gradient — left heavy so text always readable */}
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{ background: 'linear-gradient(100deg, rgba(249,248,253,0.97) 30%, rgba(249,248,253,0.6) 60%, transparent 80%)' }}
-          aria-hidden
-        />
+        {/* Black overlay */}
+        <div className="absolute inset-0 bg-black/65" aria-hidden />
 
-        <div className="relative z-10 mx-auto flex min-h-[94svh] max-h-[900px] max-w-7xl flex-col items-start justify-start px-5 pb-[min(20vh,180px)] pt-28 text-left md:px-10 lg:px-16 md:pb-[min(38vh,340px)] md:pt-40">
-          <div className="w-full max-w-full md:max-w-[50vw] lg:max-w-[min(50vw,36rem)]">
+        {/* Phone — pinned bottom-right, above hero copy so screen stays interactive */}
+        <motion.div
+          style={{ scale: phoneScale, rotate: 4 }}
+          className="absolute bottom-0 right-0 z-20 hidden origin-bottom-right lg:block"
+        >
+          <HeroPhoneMockup
+            variant="desktop"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
+          />
+        </motion.div>
+
+        <div className="pointer-events-none relative z-10 mx-auto flex min-h-[94svh] max-h-[900px] max-w-7xl flex-col justify-start px-5 pb-10 pt-10 md:px-10 lg:px-16 md:pb-12 md:pt-14">
+          <div className="pointer-events-auto w-full max-w-2xl lg:max-w-[44rem]">
             <motion.span
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mb-5 inline-flex items-center gap-2 rounded-full border border-outline-soft bg-white/90 px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-on-surface-secondary shadow-sm backdrop-blur-sm md:text-xs"
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2 font-mono text-xs uppercase tracking-widest text-white/80 backdrop-blur-sm md:text-sm"
             >
-              <Sparkles className="h-3 w-3 text-secondary-sage" />
+              <Sparkles className="h-3.5 w-3.5 text-secondary-container-lime" />
               <span>AI-Powered Guest Insights · UK Restaurants</span>
             </motion.span>
 
@@ -214,7 +235,7 @@ export default function App() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="mb-5 font-serif text-[2.25rem] leading-[1.12] text-on-surface-dark md:mb-8 md:text-[3.5rem] lg:text-6xl"
+              className="mb-6 font-serif text-[2.5rem] leading-[1.1] text-white md:mb-8 md:text-5xl lg:text-[4.25rem] xl:text-7xl"
             >
               Your restaurant is losing revenue between the scan and the menu.
             </motion.h1>
@@ -223,7 +244,7 @@ export default function App() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="mb-8 font-sans text-sm leading-relaxed text-on-surface-secondary md:mb-10 md:text-base lg:text-lg"
+              className="mb-10 font-sans text-base leading-relaxed text-white/75 md:mb-12 md:text-lg lg:text-xl"
             >
               Track guest preferences, scale table flow, and implement data-driven decisions with the singular intelligence hub designed for the modern hospitality era.
             </motion.p>
@@ -232,25 +253,37 @@ export default function App() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
+              className="flex flex-col gap-4 sm:flex-row sm:flex-wrap"
             >
               <motion.button
                 onClick={() => setIsDemoModalOpen(true)}
                 whileTap={{ scale: 0.96 }}
-                className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-primary-forest px-8 py-3.5 font-bold text-white shadow-lg transition-colors duration-200 hover:bg-secondary-sage sm:w-auto sm:px-10 sm:py-4"
+                whileHover={{ scale: 1.02 }}
+                className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-secondary-sage px-10 py-4 text-base font-bold text-white shadow-lg transition-colors duration-200 hover:bg-secondary-container-lime hover:text-primary-dark sm:w-auto md:px-12 md:py-4.5 md:text-lg"
               >
                 <span>Book a Demo</span>
-                <ArrowUpRight className="h-4 w-4" />
+                <ArrowUpRight className="h-5 w-5" />
               </motion.button>
               <motion.a
                 href="#how-it-works"
                 whileTap={{ scale: 0.97 }}
-                className="w-full rounded-full border border-outline-soft bg-white/90 px-8 py-3.5 text-center font-bold text-on-surface-dark backdrop-blur-sm transition-colors duration-200 hover:border-outline-neutral sm:w-auto sm:px-10 sm:py-4"
+                whileHover={{ scale: 1.02 }}
+                className="w-full rounded-full border border-white/30 bg-white/10 px-10 py-4 text-center text-base font-bold text-white backdrop-blur-sm transition-colors duration-200 hover:border-white/50 hover:bg-white/15 sm:w-auto md:px-12 md:py-4.5 md:text-lg"
               >
                 How it works
               </motion.a>
             </motion.div>
           </div>
+
+          {/* Mobile phone */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35 }}
+            className="pointer-events-auto mt-8 flex justify-center lg:hidden"
+          >
+            <HeroPhoneMockup variant="mobile" />
+          </motion.div>
         </div>
       </header>
 
@@ -433,7 +466,6 @@ export default function App() {
                 >
                   <img
                     alt={activeTabContent.imageAlt}
-                    referrerPolicy="no-referrer"
                     className="w-full h-full object-cover"
                     src={activeTabContent.imageUrl}
                   />

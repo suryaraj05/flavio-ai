@@ -463,8 +463,8 @@ export default function App() {
               >
                 <div className={`h-5 w-5 rounded-full bg-white shadow-sm transition-transform duration-300 ${isAnnualPricing ? 'translate-x-5' : 'translate-x-0'}`} />
               </button>
-              <span className={`text-xs font-semibold ${isAnnualPricing ? 'text-primary-forest' : 'text-on-surface-secondary'}`}>
-                Annual Billing
+              <span className={`text-xs font-semibold flex items-center gap-1.5 ${isAnnualPricing ? 'text-primary-forest' : 'text-on-surface-secondary'}`}>
+                Annual Billing <span className="bg-secondary-container-lime text-primary-forest px-2 py-0.5 rounded-full text-[10px] font-mono tracking-wider font-bold">3 MONTHS FREE</span>
               </span>
             </div>
           </motion.div>
@@ -527,7 +527,7 @@ export default function App() {
                         </span>
                         <div className="text-[10px] font-mono tracking-wider opacity-65 mt-1 select-none">
                           {isAnnualPricing
-                            ? `£${(plan.priceAnnualDiscounted * 12).toFixed(0)} billed annually`
+                            ? `£${(plan.priceAnnualDiscounted * 12).toFixed(0)}/yr · 3 months free`
                             : 'cancel any time'}
                         </div>
                       </>

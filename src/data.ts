@@ -9,67 +9,55 @@ export const PRICING_PLANS: PricingPlan[] = [
   {
     id: 'ai-basic',
     name: 'AI Basic',
-    description: 'Ideal for small venues up to 10 tables',
+    description: 'Small independent venues',
     priceMonthly: 15,
-    priceAnnualDiscounted: 7.5,
-    ctaText: 'Start Your 3-Month Free Trial',
+    priceAnnualDiscounted: 11.25,
+    ctaText: 'Claim 3 Months Free',
     features: [
       'Up to 10 tables',
-      'QR menu link & instant setup',
-      'AI guest preference capture',
-      'Smart upsell recommendations',
-      'Basic analytics dashboard',
+      '1 restaurant location',
       'Email support'
     ]
   },
   {
     id: 'ai-medium',
     name: 'AI Medium',
-    description: 'For growing restaurants up to 20 tables',
+    description: 'Growing single-site restaurants',
     priceMonthly: 25,
-    priceAnnualDiscounted: 12.5,
+    priceAnnualDiscounted: 18.75,
     isPopular: true,
-    ctaText: 'Start Your 3-Month Free Trial',
+    ctaText: 'Claim 3 Months Free',
     features: [
       'Up to 20 tables',
-      'Everything in AI Basic',
-      'Real-time server briefing cards',
-      'Live menu sync & sold-out suppression',
-      'Guest intelligence profiles',
+      'Up to 3 restaurant locations',
       'Priority email & chat support'
     ]
   },
   {
     id: 'ai-advanced',
     name: 'AI Advanced',
-    description: 'Designed for large venues up to 30 tables',
+    description: 'Established large-format venues',
     priceMonthly: 35,
-    priceAnnualDiscounted: 17.5,
-    ctaText: 'Start Your 3-Month Free Trial',
+    priceAnnualDiscounted: 26.25,
+    ctaText: 'Claim 3 Months Free',
     features: [
       'Up to 30 tables',
-      'Everything in AI Medium',
-      'Multi-location management',
-      'Custom POS integration',
-      'Advanced ROI & revenue reporting',
+      'Up to 5 restaurant locations',
       'Dedicated account manager'
     ]
   },
   {
     id: 'custom',
     name: 'Custom',
-    description: 'For large groups & chains with 30+ tables',
+    description: 'Franchises & multi-site chains',
     priceMonthly: 0,
     priceAnnualDiscounted: 0,
     isCustom: true,
     ctaText: 'Talk to Our Team',
     features: [
       'Unlimited tables',
-      'Everything in AI Advanced',
-      'Custom machine learning models',
-      'White-label guest experience',
-      'SLA-backed priority support',
-      'On-site staff training & onboarding'
+      'Unlimited franchise locations',
+      'SLA-backed priority support'
     ]
   }
 ];

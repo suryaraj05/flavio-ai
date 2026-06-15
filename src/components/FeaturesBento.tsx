@@ -280,7 +280,7 @@ export default function FeaturesBento() {
               </span>
               <div>
                 <p className="font-serif text-base font-semibold text-secondary-container-lime">
-                  POS layer active
+                  QR & AI layer active
                 </p>
                 <div className="mt-1 flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-secondary-container-lime" />

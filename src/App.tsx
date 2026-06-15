@@ -254,7 +254,11 @@ export default function App() {
       <FeaturesBento />
 
       {/* Onboarding Guide / simple setup */}
-      <section className="py-20 md:py-28 bg-background-ivory" id="how-it-works">
+      <section
+        className="py-20 md:py-28"
+        id="how-it-works"
+        style={{ background: 'linear-gradient(150deg, #F9F8FD 0%, #EDE7F6 40%, #F0EBF9 70%, #F9F8FD 100%)' }}
+      >
         <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
           {/* Header */}
           <motion.div
@@ -432,7 +436,11 @@ export default function App() {
       </section>
 
       {/* Pricing Plans Tiers Section */}
-      <section className="py-20 md:py-28 bg-background-ivory" id="pricing">
+      <section
+        className="py-20 md:py-28"
+        id="pricing"
+        style={{ background: 'linear-gradient(135deg, #EDE7F6 0%, #F9F8FD 45%, #E4DAF5 100%)' }}
+      >
         <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
           {/* Header */}
           <motion.div
@@ -575,8 +583,8 @@ export default function App() {
             className="w-full h-full object-cover brightness-[0.4]"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfPF0oGPBhw-C6H8UPJ8wU7Eo6N-WEI4RyvaibJAEuIma7vszBoDG96QAxYrZIKklSMyB0VGKng3lYIzAohfmNh30cVBnvj1qS3-FsJC_vO9HuMZRoXMNcX7uTFUFVpmiOv6ih0Xc3eL-y_0eH58K6lFHmF2zo537kIwoclnz68B2VA-O4zVVi5Uujs7yS2bhw0gNK2AAO1NgZiYSQgabM7mMVOfYYzgUBKyLrasoQVdcKKXtE-5WwQZKHwVSAfAnkv_NEUvC5zw"
           />
-          {/* Flat deep forest solid tint */}
-          <div className="absolute inset-0 bg-primary-dark/40 mix-blend-multiply" />
+          {/* Deep purple gradient overlay */}
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(26,7,80,0.82) 0%, rgba(61,21,128,0.68) 50%, rgba(109,40,217,0.55) 100%)' }} />
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-10 lg:px-16 space-y-8 md:space-y-12">

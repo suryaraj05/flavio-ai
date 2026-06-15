@@ -18,7 +18,7 @@ export default function BookDemoModal({ isOpen, onClose }: BookDemoModalProps) {
     email: '',
     restaurant: '',
     covers: '100-300',
-    currentPos: 'Lightspeed'
+    tableCount: '1-10'
   });
   const [submitted, setSubmitted] = useState(false);
   const [selectedDate, setSelectedDate] = useState('Monday, June 8');
@@ -129,8 +129,8 @@ export default function BookDemoModal({ isOpen, onClose }: BookDemoModalProps) {
                           Number of Tables
                         </label>
                         <select
-                          value={formData.currentPos}
-                          onChange={(e) => setFormData({ ...formData, currentPos: e.target.value })}
+                          value={formData.tableCount}
+                          onChange={(e) => setFormData({ ...formData, tableCount: e.target.value })}
                           className="w-full bg-white border border-outline-soft rounded px-3 py-2 text-xs focus:ring-1 focus:ring-primary-forest outline-none transition-all"
                         >
                           <option value="1-10">1 – 10 tables</option>

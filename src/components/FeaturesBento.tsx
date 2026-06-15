@@ -28,7 +28,7 @@ export default function FeaturesBento() {
           <p className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-secondary-sage md:text-xs">
             Core Intelligence
           </p>
-          <h2 className="mt-4 max-w-3xl font-serif text-3xl font-semibold leading-tight text-primary-forest md:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-4 max-w-3xl font-serif text-3xl font-semibold leading-tight text-primary-dark md:text-4xl lg:text-[2.75rem]">
             Powerful features and clear insights for smarter operations
           </h2>
         </motion.div>
@@ -104,7 +104,7 @@ export default function FeaturesBento() {
                 transition={{ duration: 0.4, delay: 0.3 }}
                 className="mb-3 block h-0.5 rounded-full bg-secondary-container-lime"
               />
-              <h3 className="font-serif text-xl font-semibold text-primary-forest sm:text-2xl">
+              <h3 className="font-serif text-xl font-semibold text-primary-dark sm:text-2xl">
                 Live Menu Sync
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-on-surface-secondary">

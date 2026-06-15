@@ -269,7 +269,7 @@ export default function App() {
             <span className="text-secondary-sage font-mono text-[11px] md:text-xs uppercase tracking-widest font-bold">
               Simple Setup
             </span>
-            <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight text-primary-forest md:text-5xl">
+            <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight text-primary-dark md:text-5xl">
               From setup to first AI-powered service in three steps
             </h2>
           </motion.div>
@@ -304,7 +304,7 @@ export default function App() {
                 </span>
 
                 {/* Title */}
-                <h3 className="mb-2 font-serif text-lg leading-snug text-primary-forest md:text-xl">
+                <h3 className="mb-2 font-serif text-lg leading-snug text-primary-dark md:text-xl">
                   {step.title}
                 </h3>
 
@@ -449,7 +449,7 @@ export default function App() {
             transition={{ duration: 0.5 }}
             className="mb-16 text-left"
           >
-            <h2 className="mb-4 font-serif text-3xl leading-tight text-primary-forest md:text-5xl">
+            <h2 className="mb-4 font-serif text-3xl leading-tight text-primary-dark md:text-5xl">
               Simple, transparent pricing
             </h2>
             <p className="max-w-xl font-sans text-sm text-on-surface-secondary">
@@ -618,7 +618,7 @@ export default function App() {
             transition={{ duration: 0.45, delay: 0.1 }}
             className="max-w-lg text-sm leading-relaxed text-white/70 md:text-base"
           >
-            Flavio plugs into your existing QR menu in minutes. No new hardware. No developer needed. Just smarter hospitality from day one.
+            Flavio plugs intelligence into your existing QR menu in minutes. No new hardware. No developer needed. Just smarter hospitality from day one.
           </motion.p>
 
           {/* Links row */}

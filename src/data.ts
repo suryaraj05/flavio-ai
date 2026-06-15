@@ -59,24 +59,27 @@ export const PRICING_PLANS: PricingPlan[] = [
 export const STEP_GUIDES: StepGuide[] = [
   {
     number: 1,
-    title: 'Link Your Menu',
-    description: 'Sync your existing POS and QR menu in under 5 minutes. No technical or engineering team required.',
+    tagline: '5-minute setup',
+    title: 'Register, connect your menu, and go live',
+    description: 'Sign up to Flavio AI and link your existing QR menu or POS in under five minutes. No dev team. No hardware. No disruption to service. Your AI-powered guest layer activates the moment the first table scans.',
     imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAgMTBBF5Xi-FNQBCR0OVJ0a_i85zuJw0ToQqd9LrbtSjR36qSAnIhMYMjrI68BveSoqNG6tTRUXERyeQkeHcSFZ_5RpanIoyyWKKGwcwCLmgga28KDnQKj6n4vWefzwqc94YfSJM5bXTLi8zrnzw1Wwh2Fx6mlNaS1I4-YxOIINtQo4Cj2HFUaBZuRLyL5K7Q0n5J174rzFqdPObMHY8fFf9AfjEEt5TzuDsJAXpTEHbvgAhj5Ptoa3Xwy-yHM93Zci59aqKzZbA',
     imageAlt: 'Restaurateur linking menu data seamlessly on a premium laptop layout'
   },
   {
     number: 2,
-    title: 'Guests Share Tastes',
-    description: 'As guests browse your digital menu on their phones, Flavio gently captures preference details to tailors suggestions.',
+    tagline: 'No app. No friction.',
+    title: 'Guests scan, share their mood, and order — effortlessly',
+    description: 'Three elegantly simple questions — mood, craving, energy. That is all Flavio asks. Guests answer before your menu even loads. It feels entirely natural to them; the data it generates is transformational for you.',
     imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBlQaeYyxF6EOqZOSjBKzgesRJev14NWyuwjZFOUk_9SAyGtrer_bo3uZNp2wWQKIw4al2ERTUGKLrMF-6SZNW7ah_62lYJdiTbcHaBV7Wc1AeGOi4SPCvV4Udv7TbDH6JzQN5p02tWT-PSFPfUAxtM3wGy50Svb3xwtWp-_EiFwKR0ro58XHH4pEzbfaOMRrKJpFMio6qVwDzPJ0RH3xLJXSfyiWPUh70s2LD3RZrYyxs9kz33JZGOvYH1mXq8r2-aZsd2L8HbeQ',
     imageAlt: 'Polished smartphone interface showing sensory taste preference options'
   },
   {
     number: 3,
-    title: 'AI Powers Service',
-    description: 'Your floor staff receives instant, highly accurate upselling briefs on their handhelds, growing covers organically.',
+    tagline: 'Real-time, table by table',
+    title: 'AI reads the room and briefs your floor team',
+    description: 'Every guest response is processed instantly. Your staff receive a concise, personalised briefing card on their handhelds: the ideal dish suggestion, the right conversational tone, and a single precision upsell — crafted for that exact guest, at that exact moment.',
     imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuATJDm81zsoQYduiB8xOSez4oP-UooHYdNWpeH3qmv_FC28Vw0xAHQ6gUjFFY6iJCT89TXME2AXnCekIX13kVgV-tkhmPkyxWh4JFYgGTjHLxN4f7bfT0dGmIn6s4S7NMShKe9fBNUvQAfMwgaSqFf48PEkx2PcasqSs6p8lIARXkNahF-YEpDBJm8cLR3ln-AEx6Ghf0MxFBtMepWyW_LjewKx1TQCvW6G4bXgLgl49uBFXKygXzmd3MPRyVQakaFArCNoj9IiRw',
-    imageAlt: 'Waitstaff reviewing a smart briefing table recommendation on the server view'
+    imageAlt: 'Waitstaff reviewing a smart AI briefing card on a handheld device'
   }
 ];
 

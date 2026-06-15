@@ -16,6 +16,7 @@ export interface PricingPlan {
 
 export interface StepGuide {
   number: number;
+  tagline: string;
   title: string;
   description: string;
   imageUrl: string;

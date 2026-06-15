@@ -71,16 +71,16 @@ export default function App() {
           {/* Desktop Links */}
           <div className="hidden md:flex gap-8 items-center">
             <a
-              href="#features"
-              className="text-on-surface-secondary text-sm font-medium hover:text-primary-forest transition-colors"
-            >
-              Features
-            </a>
-            <a
               href="#how-it-works"
               className="text-on-surface-secondary text-sm font-medium hover:text-primary-forest transition-colors"
             >
               How It Works
+            </a>
+            <a
+              href="#features"
+              className="text-on-surface-secondary text-sm font-medium hover:text-primary-forest transition-colors"
+            >
+              Features
             </a>
             <a
               href="#results"
@@ -108,7 +108,7 @@ export default function App() {
               onClick={() => setIsDemoModalOpen(true)}
               className="hidden sm:block text-on-surface-secondary text-sm font-bold hover:text-primary-forest transition-all cursor-pointer"
             >
-              Client Login
+              Restaurant Login
             </button>
             <button
               onClick={() => setIsDemoModalOpen(true)}
@@ -138,8 +138,8 @@ export default function App() {
             className="fixed top-14 left-0 w-full bg-background-ivory/98 backdrop-blur-md border-b border-outline-soft z-30 px-5 py-6 md:hidden shadow-lg space-y-1 font-sans text-sm"
           >
             {[
-              { href: '#features', label: 'Features' },
               { href: '#how-it-works', label: 'How It Works' },
+              { href: '#features', label: 'Features' },
               { href: '#results', label: 'Results' },
               { href: '#pricing', label: 'Pricing' },
               { href: '#contact', label: 'Contact' },

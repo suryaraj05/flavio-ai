@@ -126,19 +126,17 @@ export default function BookDemoModal({ isOpen, onClose }: BookDemoModalProps) {
 
                       <div className="space-y-1">
                         <label className="block font-bold text-primary-forest uppercase tracking-wider text-[10px]">
-                          Current POS System
+                          Number of Tables
                         </label>
                         <select
                           value={formData.currentPos}
                           onChange={(e) => setFormData({ ...formData, currentPos: e.target.value })}
                           className="w-full bg-white border border-outline-soft rounded px-3 py-2 text-xs focus:ring-1 focus:ring-primary-forest outline-none transition-all"
                         >
-                          <option value="Lightspeed">Lightspeed L-Series</option>
-                          <option value="Tevalis">Tevalis</option>
-                          <option value="Toast">Toast POS</option>
-                          <option value="Zonal">Zonal</option>
-                          <option value="Square">Square</option>
-                          <option value="Other">Other / Paper Ledger</option>
+                          <option value="1-10">1 – 10 tables</option>
+                          <option value="11-20">11 – 20 tables</option>
+                          <option value="21-30">21 – 30 tables</option>
+                          <option value="30+">30+ tables</option>
                         </select>
                       </div>
                     </div>

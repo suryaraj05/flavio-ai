@@ -41,7 +41,7 @@ export default function InteractiveMenuSync() {
       setItems((prev) =>
         prev.map((item) => ({
           ...item,
-          lastSynced: 'Synced with POS just now'
+          lastSynced: 'Synced just now'
         }))
       );
     }, 850);
@@ -56,7 +56,7 @@ export default function InteractiveMenuSync() {
       <div className="flex justify-between items-center pb-3 border-b border-outline-soft">
         <div className="flex items-center gap-2">
           <Database className="w-4.5 h-4.5 text-primary-forest" />
-          <span className="font-serif text-sm font-bold text-primary-forest">Kitchen POS Sync</span>
+          <span className="font-serif text-sm font-bold text-primary-forest">Kitchen Menu Sync</span>
         </div>
         <button
           onClick={triggerManualSync}
@@ -64,7 +64,7 @@ export default function InteractiveMenuSync() {
           className="text-[11px] font-mono hover:text-primary-forest text-outline-neutral flex items-center gap-1 bg-background-ivory px-2.5 py-1 rounded-full border border-outline-soft hover:bg-white transition-all cursor-pointer"
         >
           <RefreshCw className={`w-3 h-3 ${isSyncing ? 'animate-spin' : ''}`} />
-          {isSyncing ? 'Syncing...' : 'Sync POS'}
+          {isSyncing ? 'Syncing...' : 'Sync Menu'}
         </button>
       </div>
 

@@ -70,7 +70,7 @@ export const STEP_GUIDES: StepGuide[] = [
     number: 1,
     tagline: '2-minute setup',
     title: 'Register and link your menu',
-    description: 'Connect your existing QR menu or POS in minutes — no dev team, no hardware, no disruption. Live from the very first scan.',
+    description: 'Connect your existing QR menu in minutes — no dev team, no hardware, no disruption. Live from the very first scan.',
     imageUrl: step01,
     imageAlt: 'Flavio dashboard on laptop and mobile — restaurant overview with orders and insights'
   },

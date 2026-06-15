@@ -321,7 +321,7 @@ export default function App() {
       <FeaturesBento />
 
       {/* Dynamic Tabbed Insights Section */}
-      <section className="py-20 md:py-28" id="results" style={{ background: 'linear-gradient(150deg, #1A0750 0%, #2D1060 40%, #3D1580 70%, #1A0750 100%)' }}>
+      <section className="py-20 md:py-28" id="results" style={{ background: 'linear-gradient(115deg, #0F0A1E 45%, rgba(109,40,217,0.5) 100%)' }}>
         <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
           {/* Section banner */}
           <motion.div

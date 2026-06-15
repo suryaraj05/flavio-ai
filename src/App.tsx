@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   Sparkles,
@@ -37,6 +37,14 @@ export default function App() {
   const [isAnnualPricing, setIsAnnualPricing] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Nav scroll shadow
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   // Newsletter subscription
   const [newsEmail, setNewsEmail] = useState('');
   const [newsSubscribed, setNewsSubscribed] = useState(false);
@@ -56,7 +64,7 @@ export default function App() {
   return (
     <div className="bg-background-ivory text-on-surface-dark font-sans overflow-x-hidden min-h-screen">
       {/* Dynamic Header / Navigation */}
-      <nav className="fixed top-0 w-full z-40 bg-background-ivory/80 backdrop-blur-md border-b border-outline-soft h-20">
+      <nav className={`fixed top-0 w-full z-40 bg-background-ivory/80 backdrop-blur-md border-b border-outline-soft h-20 transition-shadow duration-300 ${scrolled ? 'shadow-md' : 'shadow-none'}`}>
         <div className="flex justify-between items-center px-6 md:px-12 max-w-7xl mx-auto h-full">
           <Logo size="sm" />
 
@@ -240,19 +248,21 @@ export default function App() {
               transition={{ delay: 0.3 }}
               className="flex flex-col justify-start gap-4 sm:flex-row sm:flex-wrap sm:gap-6"
             >
-              <button
+              <motion.button
                 onClick={() => setIsDemoModalOpen(true)}
-                className="flex cursor-pointer items-center justify-center gap-2 rounded-full bg-primary-forest px-10 py-4 font-bold text-white shadow-lg transition-all hover:bg-secondary-sage"
+                whileTap={{ scale: 0.96 }}
+                className="flex cursor-pointer items-center justify-center gap-2 rounded-full bg-primary-forest px-10 py-4 font-bold text-white shadow-lg transition-colors hover:bg-secondary-sage"
               >
                 <span>Book a Demo</span>
                 <ArrowUpRight className="h-4.5 w-4.5" />
-              </button>
-              <a
+              </motion.button>
+              <motion.a
                 href="#how-it-works"
-                className="rounded-full border border-outline-soft bg-white/90 px-10 py-4 text-center font-bold text-on-surface-dark backdrop-blur-sm transition-all hover:border-outline-neutral"
+                whileTap={{ scale: 0.97 }}
+                className="rounded-full border border-outline-soft bg-white/90 px-10 py-4 text-center font-bold text-on-surface-dark backdrop-blur-sm transition-colors hover:border-outline-neutral"
               >
                 How it works
-              </a>
+              </motion.a>
             </motion.div>
           </div>
         </div>
@@ -264,14 +274,20 @@ export default function App() {
       <section className="py-24 bg-background-ivory" id="how-it-works">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           {/* Header */}
-          <div className="mb-16 text-left md:mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-16 text-left md:mb-20"
+          >
             <span className="text-secondary-sage font-mono text-[11px] md:text-xs uppercase tracking-widest font-bold">
               Simple Setup
             </span>
             <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight text-primary-forest md:text-5xl">
               Get started in minutes
             </h2>
-          </div>
+          </motion.div>
 
           {/* Three Guides Stack */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
@@ -314,14 +330,20 @@ export default function App() {
       <section className="py-24 bg-white" id="results">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           {/* Section banner */}
-          <div className="mb-16 max-w-3xl text-left">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-16 max-w-3xl text-left"
+          >
             <span className="text-secondary-sage font-mono text-[11px] md:text-xs uppercase tracking-widest font-bold">
               Superpowered by AI
             </span>
             <h2 className="mt-3 font-serif text-3xl italic leading-tight text-primary-forest md:text-5xl">
               How Flavio helps you manage hospitality better
             </h2>
-          </div>
+          </motion.div>
 
           {/* Nav Custom Tabs selectors */}
           <div className="mb-12 flex justify-start border-b border-outline-soft">
@@ -415,7 +437,13 @@ export default function App() {
       <section className="py-24 bg-background-ivory" id="pricing">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           {/* Header */}
-          <div className="mb-16 text-left">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-16 text-left"
+          >
             <h2 className="mb-4 font-serif text-3xl leading-tight text-primary-forest md:text-5xl">
               Simple, transparent pricing
             </h2>
@@ -443,20 +471,25 @@ export default function App() {
                 Annual Save <span className="bg-secondary-container-lime text-primary-forest px-2 py-0.5 rounded-full text-[10px] font-mono tracking-wider font-bold">SAVE 20%</span>
               </span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Pricing cards Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
-            {PRICING_PLANS.map((plan) => {
+            {PRICING_PLANS.map((plan, idx) => {
               const currentPrice = isAnnualPricing ? plan.priceAnnualDiscounted : plan.priceMonthly;
 
               return (
-                <div
+                <motion.div
                   key={plan.id}
-                  className={`p-8 md:p-10 rounded-xl border flex flex-col justify-between h-full relative transition-all duration-300 ${
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: idx * 0.1 }}
+                  whileHover={!plan.isPopular ? { y: -6, transition: { duration: 0.2 } } : {}}
+                  className={`p-8 md:p-10 rounded-xl border flex flex-col justify-between h-full relative transition-colors duration-300 ${
                     plan.isPopular
                       ? 'bg-primary-forest text-white border-primary-forest shadow-2xl scale-100 lg:scale-[1.03]'
-                      : 'bg-white border-outline-soft text-on-surface-dark shadow-sm'
+                      : 'bg-white border-outline-soft text-on-surface-dark shadow-sm hover:shadow-md'
                   }`}
                 >
                   {/* Distinct Popular visual badge tag */}
@@ -513,7 +546,7 @@ export default function App() {
                       ))}
                     </ul>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -535,12 +568,24 @@ export default function App() {
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl space-y-10 px-6 md:px-12">
-          <h2 className="max-w-3xl font-serif text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55 }}
+            className="max-w-3xl font-serif text-3xl font-bold leading-tight tracking-tight md:text-5xl"
+          >
             Build wealth faster. Plan your financial future with us.
-          </h2>
+          </motion.h2>
 
           {/* Social connections block */}
-          <div className="flex flex-wrap justify-start gap-6 text-xs font-bold uppercase tracking-widest sm:gap-10">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.15 }}
+            className="flex flex-wrap justify-start gap-6 text-xs font-bold uppercase tracking-widest sm:gap-10"
+          >
             <button
               onClick={() => setIsDemoModalOpen(true)}
               className="text-white hover:text-secondary-container-lime border-b border-white pb-1.5 transition-colors flex items-center gap-2 cursor-pointer text-xs uppercase"
@@ -562,14 +607,19 @@ export default function App() {
               <span>INSTAGRAM</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
-          </div>
+          </motion.div>
 
-          <button
+          <motion.button
             onClick={() => setIsDemoModalOpen(true)}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.25 }}
+            whileTap={{ scale: 0.97 }}
             className="bg-white text-primary-forest hover:bg-secondary-container-lime px-12 py-5 rounded-full font-serif text-xl font-bold hover:scale-105 transition-all shadow-2xl cursor-pointer"
           >
             Book a Demo
-          </button>
+          </motion.button>
         </div>
       </section>
 

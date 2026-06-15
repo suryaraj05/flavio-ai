@@ -1,4 +1,5 @@
 import { QrCode, Sparkles } from 'lucide-react';
+import { motion } from 'motion/react';
 import guestQrFlow from '@/assets/guest-qr-flow.png';
 import horizontalLiveMenu from '@/assets/horizontal-live-menu.png';
 
@@ -28,16 +29,29 @@ export default function FeaturesBento() {
   return (
     <section className="bg-white py-24" id="features">
       <div className="mx-auto max-w-6xl px-6 md:px-12">
-        <p className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-secondary-sage md:text-xs">
-          Core Intelligence
-        </p>
-        <h2 className="mt-4 max-w-3xl font-serif text-3xl font-semibold leading-tight text-primary-forest md:text-4xl lg:text-[2.75rem]">
-          Powerful features and clear insights for smarter operations
-        </h2>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-secondary-sage md:text-xs">
+            Core Intelligence
+          </p>
+          <h2 className="mt-4 max-w-3xl font-serif text-3xl font-semibold leading-tight text-primary-forest md:text-4xl lg:text-[2.75rem]">
+            Powerful features and clear insights for smarter operations
+          </h2>
+        </motion.div>
 
         <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-[auto_auto_auto]">
           {/* 1 · Tall left */}
-          <article className="bento-card flex min-h-[380px] flex-col bg-primary-forest p-6 text-white md:row-span-2">
+          <motion.article
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0 }}
+            className="bento-card flex min-h-[380px] flex-col bg-primary-forest p-6 text-white md:row-span-2"
+          >
             <span className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-secondary-container-lime">
               <Sparkles className="h-5 w-5" />
             </span>
@@ -55,10 +69,16 @@ export default function FeaturesBento() {
                 loading="lazy"
               />
             </div>
-          </article>
+          </motion.article>
 
           {/* 2 · Wide top */}
-          <article className="bento-card flex min-h-[220px] flex-col bg-background-ivory border border-outline-soft p-6 md:col-span-2 md:min-h-[260px] lg:flex-row lg:items-stretch lg:gap-8">
+          <motion.article
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.08 }}
+            className="bento-card flex min-h-[220px] flex-col bg-background-ivory border border-outline-soft p-6 md:col-span-2 md:min-h-[260px] lg:flex-row lg:items-stretch lg:gap-8"
+          >
             <div className="flex flex-1 items-stretch overflow-hidden rounded-2xl border border-outline-soft bg-white shadow-sm">
               <img
                 src={horizontalLiveMenu}
@@ -75,10 +95,16 @@ export default function FeaturesBento() {
                 Sold-out dishes are suppressed instantly across every server tablet.
               </p>
             </div>
-          </article>
+          </motion.article>
 
           {/* 3 · Middle center */}
-          <article className="bento-card flex min-h-[200px] flex-col bg-primary-forest p-6 text-white lg:flex-row lg:items-center lg:gap-6">
+          <motion.article
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.16 }}
+            className="bento-card flex min-h-[200px] flex-col bg-primary-forest p-6 text-white lg:flex-row lg:items-center lg:gap-6"
+          >
             <div className="flex-1">
               <h3 className="font-serif text-xl font-semibold sm:text-2xl">Server Intelligence</h3>
               <p className="mt-2 text-sm text-white/65">
@@ -89,10 +115,16 @@ export default function FeaturesBento() {
               <DarkPlaceholder label="Dish to suggest" className="min-h-[64px]" />
               <DarkPlaceholder label="Tone & personal touch" className="min-h-[64px]" />
             </div>
-          </article>
+          </motion.article>
 
           {/* 4 · Middle right */}
-          <article className="bento-card flex min-h-[200px] flex-col items-center justify-center border border-outline-soft bg-background-ivory p-6 text-center">
+          <motion.article
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.24 }}
+            className="bento-card flex min-h-[200px] flex-col items-center justify-center border border-outline-soft bg-background-ivory p-6 text-center"
+          >
             <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-secondary-sage">
               Performance uplift
             </span>
@@ -109,10 +141,16 @@ export default function FeaturesBento() {
                 />
               ))}
             </div>
-          </article>
+          </motion.article>
 
           {/* 5 · Wide bottom */}
-          <article className="bento-card flex min-h-[200px] flex-col bg-primary-forest p-6 text-white md:col-span-2 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
+          <motion.article
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.32 }}
+            className="bento-card flex min-h-[200px] flex-col bg-primary-forest p-6 text-white md:col-span-2 lg:flex-row lg:items-center lg:justify-between lg:gap-8"
+          >
             <div className="max-w-md">
               <h3 className="font-serif text-xl font-semibold sm:text-2xl">Plugs Into Existing QR</h3>
               <p className="mt-2 text-sm text-white/65">
@@ -128,10 +166,16 @@ export default function FeaturesBento() {
                 <p className="text-xs text-white/55">Live feedback loop</p>
               </div>
             </div>
-          </article>
+          </motion.article>
 
           {/* 6 · Bottom right */}
-          <article className="bento-card flex min-h-[200px] flex-col border border-outline-soft bg-background-ivory p-6 lg:flex-row lg:items-center lg:gap-6">
+          <motion.article
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.4 }}
+            className="bento-card flex min-h-[200px] flex-col border border-outline-soft bg-background-ivory p-6 lg:flex-row lg:items-center lg:gap-6"
+          >
             <div className="flex-1">
               <h3 className="font-serif text-xl font-semibold text-primary-forest sm:text-2xl">
                 Track Your ROI With Ease
@@ -147,7 +191,7 @@ export default function FeaturesBento() {
                 <p className="mt-1 text-[10px] text-emerald-700">20 tables · £65 avg cover</p>
               </div>
             </div>
-          </article>
+          </motion.article>
         </div>
       </div>
     </section>

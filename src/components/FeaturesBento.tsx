@@ -46,8 +46,8 @@ export default function FeaturesBento() {
             className="group flex min-h-[400px] flex-col overflow-hidden rounded-2xl p-6 text-white md:row-span-2 cursor-default"
             style={{
               background:
-                'radial-gradient(ellipse at 15% 90%, rgba(107,34,21,0.85) 0%, #180A08 58%)',
-              boxShadow: '0 4px 24px rgba(24,10,8,0.18)',
+                'radial-gradient(ellipse at 15% 90%, rgba(212,175,55,0.38) 0%, #0D0D0D 58%)',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.28)',
             }}
           >
             <motion.span
@@ -86,7 +86,7 @@ export default function FeaturesBento() {
             transition={{ duration: 0.45, delay: 0.08 }}
             whileHover={{ y: -6, transition: CARD_SPRING }}
             className="group flex min-h-[220px] flex-col overflow-hidden rounded-2xl border border-outline-soft bg-background-ivory p-5 md:col-span-2 md:min-h-[240px] lg:flex-row lg:items-stretch lg:gap-5 cursor-default"
-            style={{ boxShadow: '0 2px 12px rgba(24,10,8,0.06)' }}
+            style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}
           >
             <div className="flex flex-1 items-stretch overflow-hidden rounded-xl border border-outline-soft bg-white shadow-sm">
               <img
@@ -124,8 +124,8 @@ export default function FeaturesBento() {
             className="flex min-h-[200px] flex-col overflow-hidden rounded-2xl p-5 text-white cursor-default"
             style={{
               background:
-                'radial-gradient(ellipse at 85% 10%, rgba(168,82,53,0.75) 0%, #180A08 58%)',
-              boxShadow: '0 4px 24px rgba(24,10,8,0.18)',
+                'radial-gradient(ellipse at 85% 10%, rgba(212,175,55,0.45) 0%, #0D0D0D 58%)',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.28)',
             }}
           >
             <h3 className="font-serif text-xl font-semibold">Server Intelligence</h3>
@@ -179,8 +179,8 @@ export default function FeaturesBento() {
             whileHover={{ y: -6, transition: CARD_SPRING }}
             className="flex min-h-[200px] flex-col overflow-hidden rounded-2xl border border-outline-soft bg-white p-5 cursor-default"
             style={{
-              boxShadow: '0 2px 12px rgba(24,10,8,0.06)',
-              background: 'linear-gradient(160deg, #ffffff 60%, rgba(196,149,90,0.06) 100%)',
+              boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+              background: 'linear-gradient(160deg, #ffffff 60%, rgba(212,175,55,0.07) 100%)',
             }}
           >
             <span className="font-mono text-[9px] font-bold uppercase tracking-wider text-secondary-container-lime">
@@ -212,8 +212,8 @@ export default function FeaturesBento() {
                     style={{
                       backgroundColor:
                         i === BAR_HEIGHTS.length - 1
-                          ? '#C4955A'
-                          : 'rgba(196,149,90,0.22)',
+                          ? '#D4AF37'
+                          : 'rgba(212,175,55,0.22)',
                     }}
                   />
                 ))}
@@ -244,8 +244,8 @@ export default function FeaturesBento() {
             className="group flex min-h-[200px] flex-col overflow-hidden rounded-2xl p-5 text-white md:col-span-2 lg:flex-row lg:items-center lg:justify-between lg:gap-8 cursor-default"
             style={{
               background:
-                'linear-gradient(115deg, #180A08 45%, rgba(107,34,21,0.6) 100%)',
-              boxShadow: '0 4px 24px rgba(24,10,8,0.22)',
+                'linear-gradient(115deg, #0D0D0D 45%, rgba(212,175,55,0.28) 100%)',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.28)',
             }}
           >
             <div className="max-w-sm">
@@ -299,7 +299,7 @@ export default function FeaturesBento() {
             transition={{ duration: 0.45, delay: 0.4 }}
             whileHover={{ y: -6, transition: CARD_SPRING }}
             className="flex min-h-[200px] flex-col overflow-hidden rounded-2xl border border-outline-soft bg-background-ivory p-5 cursor-default"
-            style={{ boxShadow: '0 2px 12px rgba(24,10,8,0.06)' }}
+            style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}
           >
             <h3 className="font-serif text-xl font-semibold text-primary-dark">
               Track Your ROI

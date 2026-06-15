@@ -192,7 +192,7 @@ export default function App() {
         {/* Stronger gradient — left heavy so text always readable */}
         <div
           className="pointer-events-none absolute inset-0"
-          style={{ background: 'linear-gradient(100deg, rgba(247,237,224,0.92) 30%, rgba(247,237,224,0.45) 60%, transparent 80%)' }}
+          style={{ background: 'linear-gradient(100deg, rgba(245,243,240,0.95) 30%, rgba(245,243,240,0.55) 60%, transparent 80%)' }}
           aria-hidden
         />
 
@@ -649,7 +649,7 @@ export default function App() {
       </section>
 
       {/* Footer block */}
-      <footer className="bg-[#EDD5BA] py-16 md:py-20 border-t border-outline-soft">
+      <footer className="bg-[#ECEAE7] py-16 md:py-20 border-t border-outline-soft">
         <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 mb-16">
             {/* Left subscription brand description */}
@@ -690,7 +690,7 @@ export default function App() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="text-[11px] text-primary-forest bg-[#FBF3EA] border border-outline-soft p-2.5 rounded-lg flex items-center gap-2 max-w-md"
+                      className="text-[11px] text-primary-forest bg-[#ECEAE7] border border-outline-soft p-2.5 rounded-lg flex items-center gap-2 max-w-md"
                     >
                       <CheckCircle2 className="w-4 h-4 text-secondary-sage shrink-0" />
                       <span>Thank you! You are subscribed to our monthly intelligence reports.</span>

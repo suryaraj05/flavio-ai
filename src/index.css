@@ -10,15 +10,15 @@ html {
   --font-sans: "DM Sans", sans-serif;
   --font-mono: "Space Mono", monospace;
 
-  --color-background-ivory: #F7EDE0;
-  --color-primary-forest: #6B2215;
-  --color-primary-dark: #180A08;
-  --color-secondary-sage: #A85235;
-  --color-secondary-container-lime: #C4955A;
-  --color-on-surface-dark: #180A08;
-  --color-on-surface-secondary: #5C2E18;
-  --color-outline-neutral: #9A6040;
-  --color-outline-soft: #D4B898;
+  --color-background-ivory: #F5F3F0;
+  --color-primary-forest: #111111;
+  --color-primary-dark: #0A0A0A;
+  --color-secondary-sage: #B8922A;
+  --color-secondary-container-lime: #D4AF37;
+  --color-on-surface-dark: #111111;
+  --color-on-surface-secondary: #5A5652;
+  --color-outline-neutral: #9A9690;
+  --color-outline-soft: #E2DDD8;
 }
 
 /* ── Accessibility & motion ───────────────────────────────────────── */
@@ -36,7 +36,7 @@ html {
 
 /* Keyboard focus ring — only shows on keyboard nav, not on click */
 :focus-visible {
-  outline: 2px solid #6B2215;
+  outline: 2px solid #B8922A;
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -44,8 +44,8 @@ html {
 /* ── Thin warm scrollbar ───────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #D4B898; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #A85235; }
+::-webkit-scrollbar-thumb { background: #B8922A; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
 
 /* Hide horizontal scrollbar for tab strip */
 .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -69,6 +69,6 @@ html {
 
 .bento-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0px 8px 30px rgba(107, 34, 21, 0.08);
+  box-shadow: 0px 8px 30px rgba(212, 175, 55, 0.12);
 }
 

@@ -257,7 +257,7 @@ export default function App() {
       <section
         className="py-20 md:py-28"
         id="how-it-works"
-        style={{ background: 'linear-gradient(150deg, #1A0750 0%, #2D1060 40%, #3D1580 70%, #1A0750 100%)' }}
+        style={{ background: 'linear-gradient(150deg, #F9F8FD 0%, #EDE7F6 40%, #F0EBF9 70%, #F9F8FD 100%)' }}
       >
         <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
           {/* Header */}
@@ -268,10 +268,10 @@ export default function App() {
             transition={{ duration: 0.5 }}
             className="mb-16 text-left md:mb-20"
           >
-            <span className="font-mono text-[11px] md:text-xs uppercase tracking-widest font-bold text-[#C4B8E8]">
+            <span className="text-secondary-sage font-mono text-[11px] md:text-xs uppercase tracking-widest font-bold">
               Simple Setup
             </span>
-            <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight text-white md:text-5xl">
+            <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight text-primary-forest md:text-5xl">
               From setup to first AI-powered service in three steps
             </h2>
           </motion.div>
@@ -288,7 +288,7 @@ export default function App() {
                 className="group flex flex-col"
               >
                 {/* Image */}
-                <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-xl border border-white/15">
+                <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-xl border border-outline-soft">
                   <img
                     src={step.imageUrl}
                     alt={step.imageAlt}
@@ -302,17 +302,17 @@ export default function App() {
                 </div>
 
                 {/* Tagline */}
-                <span className="mb-2 inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-widest text-[#C4B8E8]">
+                <span className="mb-2 inline-flex w-fit items-center rounded-full border border-outline-soft bg-white px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-widest text-secondary-sage">
                   {step.tagline}
                 </span>
 
                 {/* Title */}
-                <h3 className="mb-2 font-serif text-lg leading-snug text-white md:text-xl">
+                <h3 className="mb-2 font-serif text-lg leading-snug text-primary-forest md:text-xl">
                   {step.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-xs leading-relaxed text-[#C4B8E8] md:text-sm">
+                <p className="text-xs leading-relaxed text-on-surface-secondary md:text-sm">
                   {step.description}
                 </p>
               </motion.div>
@@ -322,7 +322,7 @@ export default function App() {
       </section>
 
       {/* Dynamic Tabbed Insights Section */}
-      <section className="py-20 md:py-28 bg-white" id="results">
+      <section className="py-20 md:py-28" id="results" style={{ background: 'linear-gradient(150deg, #1A0750 0%, #2D1060 40%, #3D1580 70%, #1A0750 100%)' }}>
         <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
           {/* Section banner */}
           <motion.div
@@ -332,16 +332,16 @@ export default function App() {
             transition={{ duration: 0.5 }}
             className="mb-16 max-w-3xl text-left"
           >
-            <span className="text-secondary-sage font-mono text-[11px] md:text-xs uppercase tracking-widest font-bold">
+            <span className="font-mono text-[11px] md:text-xs uppercase tracking-widest font-bold text-[#C4B8E8]">
               Powered by AI
             </span>
-            <h2 className="mt-3 font-serif text-3xl italic leading-tight text-primary-forest md:text-5xl">
+            <h2 className="mt-3 font-serif text-3xl italic leading-tight text-white md:text-5xl">
               From menu link to measurable results
             </h2>
           </motion.div>
 
           {/* Tab selectors */}
-          <div className="mb-12 border-b border-outline-soft overflow-x-auto no-scrollbar">
+          <div className="mb-12 border-b border-white/15 overflow-x-auto no-scrollbar">
             <div className="flex min-w-max">
               {TAB_INSIGHTS.map((tab) => (
                 <button
@@ -349,15 +349,15 @@ export default function App() {
                   onClick={() => setActiveTabId(tab.id)}
                   className={`relative px-5 py-3.5 font-sans text-xs md:text-sm whitespace-nowrap cursor-pointer transition-colors duration-200 ${
                     activeTabId === tab.id
-                      ? 'text-primary-forest font-bold'
-                      : 'text-on-surface-secondary hover:text-primary-forest'
+                      ? 'text-white font-bold'
+                      : 'text-white/50 hover:text-white'
                   }`}
                 >
                   {tab.label}
                   {activeTabId === tab.id && (
                     <motion.div
                       layoutId="tab-underline"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-forest rounded-full"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-white rounded-full"
                       transition={{ type: 'spring', stiffness: 500, damping: 35 }}
                     />
                   )}
@@ -379,28 +379,28 @@ export default function App() {
                   transition={{ duration: 0.3 }}
                   className="space-y-6"
                 >
-                  <h3 className="font-serif text-2xl md:text-4xl text-primary-forest leading-tight font-medium">
+                  <h3 className="font-serif text-2xl md:text-4xl text-white leading-tight font-medium">
                     {activeTabContent.title}
                   </h3>
-                  <p className="text-on-surface-secondary text-xs sm:text-sm leading-relaxed font-sans">
+                  <p className="text-[#C4B8E8] text-xs sm:text-sm leading-relaxed font-sans">
                     {activeTabContent.description}
                   </p>
 
-                  <div className="grid grid-cols-2 gap-8 pt-4 border-t border-outline-soft">
+                  <div className="grid grid-cols-2 gap-8 pt-4 border-t border-white/15">
                     <div>
-                      <div className="text-4xl font-serif font-bold text-primary-forest block mb-1">
+                      <div className="text-4xl font-serif font-bold text-white block mb-1">
                         {activeTabContent.metric1Value}
                       </div>
-                      <p className="text-[11px] uppercase tracking-wider text-outline-neutral font-medium font-sans">
+                      <p className="text-[11px] uppercase tracking-wider text-[#C4B8E8] font-medium font-sans">
                         {activeTabContent.metric1Label}
                       </p>
                     </div>
 
                     <div>
-                      <div className="text-4xl font-serif font-bold text-primary-forest block mb-1">
+                      <div className="text-4xl font-serif font-bold text-white block mb-1">
                         {activeTabContent.metric2Value}
                       </div>
-                      <p className="text-[11px] uppercase tracking-wider text-outline-neutral font-medium font-sans">
+                      <p className="text-[11px] uppercase tracking-wider text-[#C4B8E8] font-medium font-sans">
                         {activeTabContent.metric2Label}
                       </p>
                     </div>
@@ -439,7 +439,7 @@ export default function App() {
       <section
         className="py-20 md:py-28"
         id="pricing"
-        style={{ background: 'linear-gradient(135deg, #1A0750 0%, #3D1580 50%, #2D1060 100%)' }}
+        style={{ background: 'linear-gradient(135deg, #EDE7F6 0%, #F9F8FD 45%, #E4DAF5 100%)' }}
       >
         <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
           {/* Header */}
@@ -450,16 +450,16 @@ export default function App() {
             transition={{ duration: 0.5 }}
             className="mb-16 text-left"
           >
-            <h2 className="mb-4 font-serif text-3xl leading-tight text-white md:text-5xl">
+            <h2 className="mb-4 font-serif text-3xl leading-tight text-primary-forest md:text-5xl">
               Simple, transparent pricing
             </h2>
-            <p className="max-w-xl font-sans text-sm text-[#C4B8E8]">
+            <p className="max-w-xl font-sans text-sm text-on-surface-secondary">
               Plans scale with your tables — no hidden fees, no hardware costs. Cancel any time, or switch to annual and get 3 months completely free.
             </p>
 
             {/* Custom pricing Switch toggle */}
             <div className="mt-8 flex items-center justify-start gap-3">
-              <span className={`text-xs font-semibold ${!isAnnualPricing ? 'text-white' : 'text-white/45'}`}>
+              <span className={`text-xs font-semibold ${!isAnnualPricing ? 'text-primary-forest' : 'text-on-surface-secondary'}`}>
                 Monthly Billing
               </span>
               <button
@@ -467,12 +467,12 @@ export default function App() {
                 onClick={() => setIsAnnualPricing(!isAnnualPricing)}
                 aria-checked={isAnnualPricing}
                 role="switch"
-                className={`relative h-6 w-11 rounded-full p-0.5 transition-colors duration-300 focus:outline-none cursor-pointer ${isAnnualPricing ? 'bg-secondary-container-lime' : 'bg-white/20'}`}
+                className={`relative h-6 w-11 rounded-full p-0.5 transition-colors duration-300 focus:outline-none cursor-pointer ${isAnnualPricing ? 'bg-primary-forest' : 'bg-outline-soft'}`}
               >
                 <div className={`h-5 w-5 rounded-full bg-white shadow-sm transition-transform duration-300 ${isAnnualPricing ? 'translate-x-5' : 'translate-x-0'}`} />
               </button>
-              <span className={`text-xs font-semibold flex items-center gap-1.5 ${isAnnualPricing ? 'text-white' : 'text-white/45'}`}>
-                Annual Billing <span className="bg-white/15 text-white px-2 py-0.5 rounded-full text-[10px] font-mono tracking-wider font-bold">3 MONTHS FREE</span>
+              <span className={`text-xs font-semibold flex items-center gap-1.5 ${isAnnualPricing ? 'text-primary-forest' : 'text-on-surface-secondary'}`}>
+                Annual Billing <span className="bg-secondary-container-lime text-primary-forest px-2 py-0.5 rounded-full text-[10px] font-mono tracking-wider font-bold">3 MONTHS FREE</span>
               </span>
             </div>
           </motion.div>
@@ -657,34 +657,34 @@ export default function App() {
       </section>
 
       {/* Footer block */}
-      <footer className="bg-[#EEE9F8] py-16 md:py-20 border-t border-outline-soft">
+      <footer className="bg-[#1A0750] py-16 md:py-20 border-t border-white/10">
         <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 mb-16">
             {/* Left subscription brand description */}
             <div className="md:col-span-5 space-y-6">
               <Logo size="lg" className="mb-2" />
-              <p className="text-on-surface-secondary text-xs sm:text-sm leading-relaxed max-w-sm">
+              <p className="text-[#C4B8E8] text-xs sm:text-sm leading-relaxed max-w-sm">
                 The smart hospitality companion to dynamically identify, synchronize, and capture upselling revenues seamlessly across all locations.
               </p>
 
               {/* Newsletter form with Toast simulation */}
               <div className="space-y-3">
-                <span className="font-mono text-[10px] md:text-xs text-outline-neutral tracking-wider uppercase font-semibold block">
+                <span className="font-mono text-[10px] md:text-xs text-[#C4B8E8] tracking-wider uppercase font-semibold block">
                   Subscribe to intelligence reports
                 </span>
                 
-                <form onSubmit={handleSubscribeNews} className="flex max-w-md bg-white rounded-full border border-outline-soft overflow-hidden p-1">
+                <form onSubmit={handleSubscribeNews} className="flex max-w-md bg-white/10 rounded-full border border-white/20 overflow-hidden p-1">
                   <input
                     type="email"
                     required
                     value={newsEmail}
                     onChange={(e) => setNewsEmail(e.target.value)}
                     placeholder="E.g. headwaiter@theivy.co.uk"
-                    className="flex-1 bg-transparent px-4 py-2 outline-none border-none text-xs text-on-surface-dark font-sans placeholder:text-outline-neutral/60"
+                    className="flex-1 bg-transparent px-4 py-2 outline-none border-none text-xs text-white font-sans placeholder:text-white/40"
                   />
                   <button
                     type="submit"
-                    className="bg-primary-forest text-white px-5 rounded-full text-xs hover:bg-secondary-sage transition-all block cursor-pointer flex items-center justify-center gap-1 shrink-0 font-bold"
+                    className="bg-secondary-sage text-white px-5 rounded-full text-xs hover:bg-secondary-container-lime hover:text-primary-dark transition-all block cursor-pointer flex items-center justify-center gap-1 shrink-0 font-bold"
                   >
                     <span>Subscribe</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -698,7 +698,7 @@ export default function App() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="text-[11px] text-primary-forest bg-[#EEE9F8] border border-outline-soft p-2.5 rounded-lg flex items-center gap-2 max-w-md"
+                      className="text-[11px] text-white bg-white/10 border border-white/20 p-2.5 rounded-lg flex items-center gap-2 max-w-md"
                     >
                       <CheckCircle2 className="w-4 h-4 text-secondary-sage shrink-0" />
                       <span>Thank you! You are subscribed to our monthly intelligence reports.</span>
@@ -711,45 +711,45 @@ export default function App() {
             {/* Right Links blocks config */}
             <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
               <div>
-                <h4 className="font-bold text-sm text-primary-forest mb-5 tracking-tight font-sans">Product</h4>
-                <ul className="space-y-3.5 text-xs text-on-surface-secondary font-medium">
-                  <li><a href="#features" className="hover:text-primary-forest transition-colors duration-150">Features</a></li>
-                  <li><a href="#pricing" className="hover:text-primary-forest transition-colors duration-150">Pricing</a></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors duration-150 text-left font-medium cursor-pointer">Integrations</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors duration-150 text-left font-medium cursor-pointer">Security</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors duration-150 text-left font-medium cursor-pointer">Updates</button></li>
+                <h4 className="font-bold text-sm text-white mb-5 tracking-tight font-sans">Product</h4>
+                <ul className="space-y-3.5 text-xs text-[#C4B8E8] font-medium">
+                  <li><a href="#features" className="hover:text-white transition-colors duration-150">Features</a></li>
+                  <li><a href="#pricing" className="hover:text-white transition-colors duration-150">Pricing</a></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white transition-colors duration-150 text-left font-medium cursor-pointer">Integrations</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white transition-colors duration-150 text-left font-medium cursor-pointer">Security</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white transition-colors duration-150 text-left font-medium cursor-pointer">Updates</button></li>
                 </ul>
               </div>
 
               <div>
-                <h4 className="font-bold text-sm text-primary-forest mb-5 tracking-tight font-sans">Resources</h4>
-                <ul className="space-y-3.5 text-xs text-on-surface-secondary font-medium">
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Help Centre</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Hospitality Blog</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Case Studies</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Restaurant Guide</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">API Docs</button></li>
+                <h4 className="font-bold text-sm text-white mb-5 tracking-tight font-sans">Resources</h4>
+                <ul className="space-y-3.5 text-xs text-[#C4B8E8] font-medium">
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">Help Centre</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">Hospitality Blog</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">Case Studies</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">Restaurant Guide</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">API Docs</button></li>
                 </ul>
               </div>
 
               <div className="col-span-2 sm:col-span-1">
-                <h4 className="font-bold text-sm text-primary-forest mb-5 tracking-tight font-sans">Company</h4>
-                <ul className="space-y-3.5 text-xs text-on-surface-secondary font-medium">
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">About Us</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Careers</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Press</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Partners</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Contact</button></li>
+                <h4 className="font-bold text-sm text-white mb-5 tracking-tight font-sans">Company</h4>
+                <ul className="space-y-3.5 text-xs text-[#C4B8E8] font-medium">
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">About Us</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">Careers</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">Press</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">Partners</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">Contact</button></li>
                 </ul>
               </div>
             </div>
           </div>
 
           {/* Bottom Copyright controls */}
-          <div className="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-outline-soft text-[11px] text-outline-neutral uppercase font-mono tracking-widest gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-white/10 text-[11px] text-white/40 uppercase font-mono tracking-widest gap-4">
             <div className="flex gap-6 sm:gap-10">
-              <button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors cursor-pointer font-bold">Privacy Policy</button>
-              <button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors cursor-pointer font-bold">Terms of Service</button>
+              <button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white transition-colors cursor-pointer font-bold">Privacy Policy</button>
+              <button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white transition-colors cursor-pointer font-bold">Terms of Service</button>
             </div>
             <div>© {new Date().getFullYear()} Flavio AI. All rights reserved.</div>
           </div>

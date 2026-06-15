@@ -251,8 +251,6 @@ export default function App() {
         </div>
       </header>
 
-      <FeaturesBento />
-
       {/* Onboarding Guide / simple setup */}
       <section
         className="py-20 md:py-28"
@@ -320,6 +318,8 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      <FeaturesBento />
 
       {/* Dynamic Tabbed Insights Section */}
       <section className="py-20 md:py-28" id="results" style={{ background: 'linear-gradient(150deg, #1A0750 0%, #2D1060 40%, #3D1580 70%, #1A0750 100%)' }}>
@@ -657,34 +657,34 @@ export default function App() {
       </section>
 
       {/* Footer block */}
-      <footer className="bg-[#1A0750] py-16 md:py-20 border-t border-white/10">
+      <footer className="bg-[#EEE9F8] py-16 md:py-20 border-t border-outline-soft">
         <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 mb-16">
             {/* Left subscription brand description */}
             <div className="md:col-span-5 space-y-6">
               <Logo size="lg" className="mb-2" />
-              <p className="text-[#C4B8E8] text-xs sm:text-sm leading-relaxed max-w-sm">
+              <p className="text-on-surface-secondary text-xs sm:text-sm leading-relaxed max-w-sm">
                 The smart hospitality companion to dynamically identify, synchronize, and capture upselling revenues seamlessly across all locations.
               </p>
 
               {/* Newsletter form with Toast simulation */}
               <div className="space-y-3">
-                <span className="font-mono text-[10px] md:text-xs text-[#C4B8E8] tracking-wider uppercase font-semibold block">
+                <span className="font-mono text-[10px] md:text-xs text-outline-neutral tracking-wider uppercase font-semibold block">
                   Subscribe to intelligence reports
                 </span>
                 
-                <form onSubmit={handleSubscribeNews} className="flex max-w-md bg-white/10 rounded-full border border-white/20 overflow-hidden p-1">
+                <form onSubmit={handleSubscribeNews} className="flex max-w-md bg-white rounded-full border border-outline-soft overflow-hidden p-1">
                   <input
                     type="email"
                     required
                     value={newsEmail}
                     onChange={(e) => setNewsEmail(e.target.value)}
                     placeholder="E.g. headwaiter@theivy.co.uk"
-                    className="flex-1 bg-transparent px-4 py-2 outline-none border-none text-xs text-white font-sans placeholder:text-white/40"
+                    className="flex-1 bg-transparent px-4 py-2 outline-none border-none text-xs text-on-surface-dark font-sans placeholder:text-outline-neutral/60"
                   />
                   <button
                     type="submit"
-                    className="bg-secondary-sage text-white px-5 rounded-full text-xs hover:bg-secondary-container-lime hover:text-primary-dark transition-all block cursor-pointer flex items-center justify-center gap-1 shrink-0 font-bold"
+                    className="bg-primary-forest text-white px-5 rounded-full text-xs hover:bg-secondary-sage transition-all block cursor-pointer flex items-center justify-center gap-1 shrink-0 font-bold"
                   >
                     <span>Subscribe</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -698,7 +698,7 @@ export default function App() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="text-[11px] text-white bg-white/10 border border-white/20 p-2.5 rounded-lg flex items-center gap-2 max-w-md"
+                      className="text-[11px] text-primary-forest bg-[#EEE9F8] border border-outline-soft p-2.5 rounded-lg flex items-center gap-2 max-w-md"
                     >
                       <CheckCircle2 className="w-4 h-4 text-secondary-sage shrink-0" />
                       <span>Thank you! You are subscribed to our monthly intelligence reports.</span>
@@ -711,45 +711,45 @@ export default function App() {
             {/* Right Links blocks config */}
             <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
               <div>
-                <h4 className="font-bold text-sm text-white mb-5 tracking-tight font-sans">Product</h4>
-                <ul className="space-y-3.5 text-xs text-[#C4B8E8] font-medium">
-                  <li><a href="#features" className="hover:text-white transition-colors duration-150">Features</a></li>
-                  <li><a href="#pricing" className="hover:text-white transition-colors duration-150">Pricing</a></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white transition-colors duration-150 text-left font-medium cursor-pointer">Integrations</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white transition-colors duration-150 text-left font-medium cursor-pointer">Security</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white transition-colors duration-150 text-left font-medium cursor-pointer">Updates</button></li>
+                <h4 className="font-bold text-sm text-primary-forest mb-5 tracking-tight font-sans">Product</h4>
+                <ul className="space-y-3.5 text-xs text-on-surface-secondary font-medium">
+                  <li><a href="#features" className="hover:text-primary-forest transition-colors duration-150">Features</a></li>
+                  <li><a href="#pricing" className="hover:text-primary-forest transition-colors duration-150">Pricing</a></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors duration-150 text-left font-medium cursor-pointer">Integrations</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors duration-150 text-left font-medium cursor-pointer">Security</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors duration-150 text-left font-medium cursor-pointer">Updates</button></li>
                 </ul>
               </div>
 
               <div>
-                <h4 className="font-bold text-sm text-white mb-5 tracking-tight font-sans">Resources</h4>
-                <ul className="space-y-3.5 text-xs text-[#C4B8E8] font-medium">
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">Help Centre</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">Hospitality Blog</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">Case Studies</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">Restaurant Guide</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">API Docs</button></li>
+                <h4 className="font-bold text-sm text-primary-forest mb-5 tracking-tight font-sans">Resources</h4>
+                <ul className="space-y-3.5 text-xs text-on-surface-secondary font-medium">
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Help Centre</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Hospitality Blog</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Case Studies</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Restaurant Guide</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">API Docs</button></li>
                 </ul>
               </div>
 
               <div className="col-span-2 sm:col-span-1">
-                <h4 className="font-bold text-sm text-white mb-5 tracking-tight font-sans">Company</h4>
-                <ul className="space-y-3.5 text-xs text-[#C4B8E8] font-medium">
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">About Us</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">Careers</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">Press</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">Partners</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white text-left font-medium transition-colors duration-150 cursor-pointer">Contact</button></li>
+                <h4 className="font-bold text-sm text-primary-forest mb-5 tracking-tight font-sans">Company</h4>
+                <ul className="space-y-3.5 text-xs text-on-surface-secondary font-medium">
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">About Us</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Careers</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Press</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Partners</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Contact</button></li>
                 </ul>
               </div>
             </div>
           </div>
 
           {/* Bottom Copyright controls */}
-          <div className="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-white/10 text-[11px] text-white/40 uppercase font-mono tracking-widest gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-outline-soft text-[11px] text-outline-neutral uppercase font-mono tracking-widest gap-4">
             <div className="flex gap-6 sm:gap-10">
-              <button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white transition-colors cursor-pointer font-bold">Privacy Policy</button>
-              <button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-white transition-colors cursor-pointer font-bold">Terms of Service</button>
+              <button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors cursor-pointer font-bold">Privacy Policy</button>
+              <button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors cursor-pointer font-bold">Terms of Service</button>
             </div>
             <div>© {new Date().getFullYear()} Flavio AI. All rights reserved.</div>
           </div>

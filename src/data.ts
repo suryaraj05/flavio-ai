@@ -12,7 +12,7 @@ export const PRICING_PLANS: PricingPlan[] = [
     description: 'Ideal for small venues up to 10 tables',
     priceMonthly: 15,
     priceAnnualDiscounted: 7.5,
-    ctaText: 'Start Free Trial',
+    ctaText: 'Start Your 3-Month Free Trial',
     features: [
       'Up to 10 tables',
       'QR menu link & instant setup',
@@ -29,7 +29,7 @@ export const PRICING_PLANS: PricingPlan[] = [
     priceMonthly: 25,
     priceAnnualDiscounted: 12.5,
     isPopular: true,
-    ctaText: 'Start Free Trial',
+    ctaText: 'Start Your 3-Month Free Trial',
     features: [
       'Up to 20 tables',
       'Everything in AI Basic',
@@ -45,7 +45,7 @@ export const PRICING_PLANS: PricingPlan[] = [
     description: 'Designed for large venues up to 30 tables',
     priceMonthly: 35,
     priceAnnualDiscounted: 17.5,
-    ctaText: 'Contact Sales',
+    ctaText: 'Start Your 3-Month Free Trial',
     features: [
       'Up to 30 tables',
       'Everything in AI Medium',
@@ -53,6 +53,23 @@ export const PRICING_PLANS: PricingPlan[] = [
       'Custom POS integration',
       'Advanced ROI & revenue reporting',
       'Dedicated account manager'
+    ]
+  },
+  {
+    id: 'custom',
+    name: 'Custom',
+    description: 'For large groups & chains with 30+ tables',
+    priceMonthly: 0,
+    priceAnnualDiscounted: 0,
+    isCustom: true,
+    ctaText: 'Talk to Our Team',
+    features: [
+      'Unlimited tables',
+      'Everything in AI Advanced',
+      'Custom machine learning models',
+      'White-label guest experience',
+      'SLA-backed priority support',
+      'On-site staff training & onboarding'
     ]
   }
 ];

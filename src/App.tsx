@@ -463,14 +463,14 @@ export default function App() {
               >
                 <div className={`h-5 w-5 rounded-full bg-white shadow-sm transition-transform duration-300 ${isAnnualPricing ? 'translate-x-5' : 'translate-x-0'}`} />
               </button>
-              <span className={`text-xs font-semibold flex items-center gap-1.5 ${isAnnualPricing ? 'text-primary-forest' : 'text-on-surface-secondary'}`}>
-                Annual Billing <span className="bg-secondary-container-lime text-primary-forest px-2 py-0.5 rounded-full text-[10px] font-mono tracking-wider font-bold">6 MONTHS FREE</span>
+              <span className={`text-xs font-semibold ${isAnnualPricing ? 'text-primary-forest' : 'text-on-surface-secondary'}`}>
+                Annual Billing
               </span>
             </div>
           </motion.div>
 
           {/* Pricing cards Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {PRICING_PLANS.map((plan, idx) => {
               const rawPrice = isAnnualPricing ? plan.priceAnnualDiscounted : plan.priceMonthly;
               const currentPrice = Number.isInteger(rawPrice) ? rawPrice : rawPrice.toFixed(2);
@@ -483,7 +483,7 @@ export default function App() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.45, delay: idx * 0.1 }}
                   whileHover={!plan.isPopular ? { y: -6, transition: { duration: 0.2 } } : {}}
-                  className={`p-8 md:p-10 rounded-xl border flex flex-col justify-between h-full relative transition-colors duration-300 ${
+                  className={`p-7 rounded-xl border flex flex-col justify-between h-full relative transition-colors duration-300 ${
                     plan.isPopular
                       ? 'bg-primary-forest text-white border-primary-forest shadow-2xl scale-100 lg:scale-[1.03]'
                       : 'bg-white border-outline-soft text-on-surface-dark shadow-sm hover:shadow-md'
@@ -508,17 +508,30 @@ export default function App() {
 
                   {/* Price display section */}
                   <div className="mb-8">
-                    <span className="text-4xl md:text-5xl font-serif font-extrabold tracking-tight">
-                      £{currentPrice}
-                    </span>
-                    <span className={`text-sm ${plan.isPopular ? 'text-white/60' : 'text-on-surface-secondary font-medium'}`}>
-                      /month
-                    </span>
-                    <div className="text-[10px] font-mono tracking-wider opacity-65 mt-1 select-none">
-                      {isAnnualPricing
-                        ? `£${(plan.priceAnnualDiscounted * 12).toFixed(0)} billed annually · 6 months free`
-                        : 'cancel any time'}
-                    </div>
+                    {plan.isCustom ? (
+                      <>
+                        <span className="text-4xl md:text-5xl font-serif font-extrabold tracking-tight">
+                          Custom
+                        </span>
+                        <div className="text-[10px] font-mono tracking-wider opacity-65 mt-1 select-none">
+                          let's build the right plan together
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <span className="text-4xl md:text-5xl font-serif font-extrabold tracking-tight">
+                          £{currentPrice}
+                        </span>
+                        <span className={`text-sm ${plan.isPopular ? 'text-white/60' : 'text-on-surface-secondary font-medium'}`}>
+                          /month
+                        </span>
+                        <div className="text-[10px] font-mono tracking-wider opacity-65 mt-1 select-none">
+                          {isAnnualPricing
+                            ? `£${(plan.priceAnnualDiscounted * 12).toFixed(0)} billed annually`
+                            : 'cancel any time'}
+                        </div>
+                      </>
+                    )}
                   </div>
 
                   {/* Primary card Action CTA button */}

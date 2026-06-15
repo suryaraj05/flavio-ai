@@ -10,6 +10,7 @@ export interface PricingPlan {
   priceMonthly: number;
   priceAnnualDiscounted: number;
   isPopular?: boolean;
+  isCustom?: boolean;
   ctaText: string;
   features: string[];
 }

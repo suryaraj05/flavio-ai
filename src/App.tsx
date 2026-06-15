@@ -37,6 +37,9 @@ export default function App() {
   const [isAnnualPricing, setIsAnnualPricing] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Step image lightbox
+  const [expandedStep, setExpandedStep] = useState<{ src: string; alt: string } | null>(null);
+
   // Nav scroll shadow
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -286,7 +289,10 @@ export default function App() {
                 className="group flex flex-col"
               >
                 {/* Image */}
-                <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-xl border border-outline-soft">
+                <div
+                  className="relative mb-5 aspect-[16/10] overflow-hidden rounded-xl border border-outline-soft cursor-zoom-in"
+                  onClick={() => setExpandedStep({ src: step.imageUrl, alt: step.imageAlt })}
+                >
                   <img
                     src={step.imageUrl}
                     alt={step.imageAlt}
@@ -295,6 +301,12 @@ export default function App() {
                   {/* Step badge */}
                   <div className="absolute left-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-primary-dark/80 backdrop-blur-sm font-serif text-xs font-bold text-white shadow">
                     {`0${step.number}`}
+                  </div>
+                  {/* Expand hint */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center">
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 backdrop-blur-sm text-primary-dark text-[10px] font-mono uppercase tracking-widest px-3 py-1.5 rounded-full font-bold shadow">
+                      Click to expand
+                    </span>
                   </div>
                 </div>
 
@@ -765,6 +777,46 @@ export default function App() {
 
       {/* Book Private Demo Modal element */}
       <BookDemoModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
+
+      {/* Step image lightbox */}
+      <AnimatePresence>
+        {expandedStep && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-10"
+            onClick={() => setExpandedStep(null)}
+          >
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+
+            {/* Image container */}
+            <motion.div
+              initial={{ scale: 0.88, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.88, opacity: 0 }}
+              transition={{ type: 'spring', stiffness: 320, damping: 30 }}
+              className="relative z-10 max-w-4xl w-full rounded-2xl overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={expandedStep.src}
+                alt={expandedStep.alt}
+                className="w-full h-auto object-contain"
+              />
+              <button
+                onClick={() => setExpandedStep(null)}
+                className="absolute top-3 right-3 h-9 w-9 flex items-center justify-center rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors backdrop-blur-sm cursor-pointer"
+                aria-label="Close"
+              >
+                <X className="w-4.5 h-4.5" />
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

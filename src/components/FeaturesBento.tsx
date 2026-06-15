@@ -274,8 +274,8 @@ export default function FeaturesBento() {
             </div>
 
             {/* Gold-on-dark status widget */}
-            <div className="mt-5 flex shrink-0 items-center gap-4 rounded-2xl border border-secondary-container-lime/20 bg-secondary-container-lime/10 p-4 transition-colors duration-200 hover:bg-secondary-container-lime/15 lg:mt-0">
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-secondary-container-lime/20 text-secondary-container-lime">
+            <div className="mt-5 flex shrink-0 items-center gap-4 rounded-2xl border border-secondary-container-lime/40 bg-secondary-container-lime/25 p-4 transition-colors duration-200 hover:bg-secondary-container-lime/32 lg:mt-0">
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-secondary-container-lime/35 text-secondary-container-lime">
                 <QrCode className="h-5 w-5" />
               </span>
               <div>
@@ -284,7 +284,7 @@ export default function FeaturesBento() {
                 </p>
                 <div className="mt-1 flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-secondary-container-lime" />
-                  <p className="text-xs text-white/40">Live feedback loop</p>
+                  <p className="text-xs text-white/65">Live feedback loop</p>
                 </div>
               </div>
             </div>

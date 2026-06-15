@@ -257,7 +257,7 @@ export default function App() {
       <section
         className="py-20 md:py-28"
         id="how-it-works"
-        style={{ background: 'linear-gradient(150deg, #F9F8FD 0%, #EDE7F6 40%, #F0EBF9 70%, #F9F8FD 100%)' }}
+        style={{ background: 'linear-gradient(150deg, #1A0750 0%, #2D1060 40%, #3D1580 70%, #1A0750 100%)' }}
       >
         <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
           {/* Header */}
@@ -268,10 +268,10 @@ export default function App() {
             transition={{ duration: 0.5 }}
             className="mb-16 text-left md:mb-20"
           >
-            <span className="text-secondary-sage font-mono text-[11px] md:text-xs uppercase tracking-widest font-bold">
+            <span className="font-mono text-[11px] md:text-xs uppercase tracking-widest font-bold text-[#C4B8E8]">
               Simple Setup
             </span>
-            <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight text-primary-forest md:text-5xl">
+            <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight text-white md:text-5xl">
               From setup to first AI-powered service in three steps
             </h2>
           </motion.div>
@@ -288,7 +288,7 @@ export default function App() {
                 className="group flex flex-col"
               >
                 {/* Image */}
-                <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-xl border border-outline-soft">
+                <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-xl border border-white/15">
                   <img
                     src={step.imageUrl}
                     alt={step.imageAlt}
@@ -302,17 +302,17 @@ export default function App() {
                 </div>
 
                 {/* Tagline */}
-                <span className="mb-2 inline-flex w-fit items-center rounded-full border border-outline-soft bg-white px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-widest text-secondary-sage">
+                <span className="mb-2 inline-flex w-fit items-center rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-widest text-[#C4B8E8]">
                   {step.tagline}
                 </span>
 
                 {/* Title */}
-                <h3 className="mb-2 font-serif text-lg leading-snug text-primary-forest md:text-xl">
+                <h3 className="mb-2 font-serif text-lg leading-snug text-white md:text-xl">
                   {step.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-xs leading-relaxed text-on-surface-secondary md:text-sm">
+                <p className="text-xs leading-relaxed text-[#C4B8E8] md:text-sm">
                   {step.description}
                 </p>
               </motion.div>
@@ -439,7 +439,7 @@ export default function App() {
       <section
         className="py-20 md:py-28"
         id="pricing"
-        style={{ background: 'linear-gradient(135deg, #EDE7F6 0%, #F9F8FD 45%, #E4DAF5 100%)' }}
+        style={{ background: 'linear-gradient(135deg, #1A0750 0%, #3D1580 50%, #2D1060 100%)' }}
       >
         <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
           {/* Header */}
@@ -450,16 +450,16 @@ export default function App() {
             transition={{ duration: 0.5 }}
             className="mb-16 text-left"
           >
-            <h2 className="mb-4 font-serif text-3xl leading-tight text-primary-forest md:text-5xl">
+            <h2 className="mb-4 font-serif text-3xl leading-tight text-white md:text-5xl">
               Simple, transparent pricing
             </h2>
-            <p className="max-w-xl font-sans text-sm text-on-surface-secondary">
+            <p className="max-w-xl font-sans text-sm text-[#C4B8E8]">
               Plans scale with your tables — no hidden fees, no hardware costs. Cancel any time, or switch to annual and get 3 months completely free.
             </p>
 
             {/* Custom pricing Switch toggle */}
             <div className="mt-8 flex items-center justify-start gap-3">
-              <span className={`text-xs font-semibold ${!isAnnualPricing ? 'text-primary-forest' : 'text-on-surface-secondary'}`}>
+              <span className={`text-xs font-semibold ${!isAnnualPricing ? 'text-white' : 'text-white/45'}`}>
                 Monthly Billing
               </span>
               <button
@@ -467,12 +467,12 @@ export default function App() {
                 onClick={() => setIsAnnualPricing(!isAnnualPricing)}
                 aria-checked={isAnnualPricing}
                 role="switch"
-                className={`relative h-6 w-11 rounded-full p-0.5 transition-colors duration-300 focus:outline-none cursor-pointer ${isAnnualPricing ? 'bg-primary-forest' : 'bg-outline-soft'}`}
+                className={`relative h-6 w-11 rounded-full p-0.5 transition-colors duration-300 focus:outline-none cursor-pointer ${isAnnualPricing ? 'bg-secondary-container-lime' : 'bg-white/20'}`}
               >
                 <div className={`h-5 w-5 rounded-full bg-white shadow-sm transition-transform duration-300 ${isAnnualPricing ? 'translate-x-5' : 'translate-x-0'}`} />
               </button>
-              <span className={`text-xs font-semibold flex items-center gap-1.5 ${isAnnualPricing ? 'text-primary-forest' : 'text-on-surface-secondary'}`}>
-                Annual Billing <span className="bg-secondary-container-lime text-primary-forest px-2 py-0.5 rounded-full text-[10px] font-mono tracking-wider font-bold">3 MONTHS FREE</span>
+              <span className={`text-xs font-semibold flex items-center gap-1.5 ${isAnnualPricing ? 'text-white' : 'text-white/45'}`}>
+                Annual Billing <span className="bg-white/15 text-white px-2 py-0.5 rounded-full text-[10px] font-mono tracking-wider font-bold">3 MONTHS FREE</span>
               </span>
             </div>
           </motion.div>
@@ -583,8 +583,8 @@ export default function App() {
             className="w-full h-full object-cover brightness-[0.4]"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfPF0oGPBhw-C6H8UPJ8wU7Eo6N-WEI4RyvaibJAEuIma7vszBoDG96QAxYrZIKklSMyB0VGKng3lYIzAohfmNh30cVBnvj1qS3-FsJC_vO9HuMZRoXMNcX7uTFUFVpmiOv6ih0Xc3eL-y_0eH58K6lFHmF2zo537kIwoclnz68B2VA-O4zVVi5Uujs7yS2bhw0gNK2AAO1NgZiYSQgabM7mMVOfYYzgUBKyLrasoQVdcKKXtE-5WwQZKHwVSAfAnkv_NEUvC5zw"
           />
-          {/* Deep purple gradient overlay */}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(26,7,80,0.82) 0%, rgba(61,21,128,0.68) 50%, rgba(109,40,217,0.55) 100%)' }} />
+          {/* Flat dark tint */}
+          <div className="absolute inset-0 bg-primary-dark/40 mix-blend-multiply" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-10 lg:px-16 space-y-8 md:space-y-12">

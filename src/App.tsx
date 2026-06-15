@@ -446,7 +446,7 @@ export default function App() {
               Simple, transparent pricing
             </h2>
             <p className="max-w-xl font-sans text-sm text-on-surface-secondary">
-              Plans scale with your tables — no hidden fees, no hardware costs. Cancel any time, or switch to annual and get 6 months completely free.
+              Plans scale with your tables — no hidden fees, no hardware costs. Cancel any time, or switch to annual and get 3 months completely free.
             </p>
 
             {/* Custom pricing Switch toggle */}

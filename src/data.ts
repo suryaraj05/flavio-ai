@@ -11,7 +11,7 @@ export const PRICING_PLANS: PricingPlan[] = [
     name: 'AI Basic',
     description: 'Small independent venues',
     priceMonthly: 15,
-    priceAnnualDiscounted: 11.25,
+    priceAnnualDiscounted: 12,
     ctaText: 'Claim 3 Months Free',
     features: [
       'Up to 10 tables',
@@ -24,7 +24,7 @@ export const PRICING_PLANS: PricingPlan[] = [
     name: 'AI Medium',
     description: 'Growing single-site restaurants',
     priceMonthly: 25,
-    priceAnnualDiscounted: 18.75,
+    priceAnnualDiscounted: 20,
     isPopular: true,
     ctaText: 'Claim 3 Months Free',
     features: [
@@ -38,7 +38,7 @@ export const PRICING_PLANS: PricingPlan[] = [
     name: 'AI Advanced',
     description: 'Established large-format venues',
     priceMonthly: 35,
-    priceAnnualDiscounted: 26.25,
+    priceAnnualDiscounted: 28,
     ctaText: 'Claim 3 Months Free',
     features: [
       'Up to 30 tables',

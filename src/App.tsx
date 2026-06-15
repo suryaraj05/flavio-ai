@@ -502,7 +502,7 @@ export default function App() {
                 >
                   {/* Distinct Popular visual badge tag */}
                   {plan.isPopular && (
-                    <div className="absolute top-6 right-6 bg-secondary-sage text-white text-[10px] uppercase font-mono tracking-widest px-3 py-1 rounded-full font-bold">
+                    <div className="absolute top-6 right-6 bg-white text-primary-forest text-[10px] uppercase font-mono tracking-widest px-3 py-1 rounded-full font-bold">
                       Most Popular
                     </div>
                   )}

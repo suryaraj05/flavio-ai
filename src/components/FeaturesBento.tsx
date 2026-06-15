@@ -28,7 +28,7 @@ export default function FeaturesBento() {
           <p className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-secondary-sage md:text-xs">
             Core Intelligence
           </p>
-          <h2 className="mt-4 max-w-3xl font-serif text-3xl font-semibold leading-tight text-primary-dark md:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-4 max-w-3xl font-serif text-3xl italic leading-tight text-primary-dark md:text-5xl">
             Powerful features and clear insights for smarter operations
           </h2>
         </motion.div>

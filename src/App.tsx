@@ -269,7 +269,7 @@ export default function App() {
             <span className="text-secondary-sage font-mono text-[11px] md:text-xs uppercase tracking-widest font-bold">
               Simple Setup
             </span>
-            <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight text-primary-dark md:text-5xl">
+            <h2 className="mt-3 max-w-2xl font-serif text-3xl italic leading-tight text-primary-dark md:text-5xl">
               From setup to first AI-powered service in three steps
             </h2>
           </motion.div>
@@ -449,7 +449,7 @@ export default function App() {
             transition={{ duration: 0.5 }}
             className="mb-16 text-left"
           >
-            <h2 className="mb-4 font-serif text-3xl leading-tight text-primary-dark md:text-5xl">
+            <h2 className="mb-4 font-serif text-3xl italic leading-tight text-primary-dark md:text-5xl">
               Simple, transparent pricing
             </h2>
             <p className="max-w-xl font-sans text-sm text-on-surface-secondary">
@@ -606,7 +606,7 @@ export default function App() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            className="max-w-3xl font-serif text-3xl font-bold leading-tight tracking-tight md:text-5xl"
+            className="max-w-3xl font-serif text-3xl italic leading-tight md:text-5xl"
           >
             Fill more covers. Keep every guest coming back.
           </motion.h2>

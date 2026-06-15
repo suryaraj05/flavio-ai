@@ -329,10 +329,10 @@ export default function App() {
             className="mb-16 max-w-3xl text-left"
           >
             <span className="text-secondary-sage font-mono text-[11px] md:text-xs uppercase tracking-widest font-bold">
-              Superpowered by AI
+              Powered by AI
             </span>
             <h2 className="mt-3 font-serif text-3xl italic leading-tight text-primary-forest md:text-5xl">
-              How Flavio helps you manage hospitality better
+              From menu link to measurable results
             </h2>
           </motion.div>
 

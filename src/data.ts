@@ -59,7 +59,7 @@ export const PRICING_PLANS: PricingPlan[] = [
 export const STEP_GUIDES: StepGuide[] = [
   {
     number: 1,
-    tagline: '5-minute setup',
+    tagline: '2-minute setup',
     title: 'Register and link your menu',
     description: 'Connect your existing QR menu or POS in minutes — no dev team, no hardware, no disruption. Live from the very first scan.',
     imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAgMTBBF5Xi-FNQBCR0OVJ0a_i85zuJw0ToQqd9LrbtSjR36qSAnIhMYMjrI68BveSoqNG6tTRUXERyeQkeHcSFZ_5RpanIoyyWKKGwcwCLmgga28KDnQKj6n4vWefzwqc94YfSJM5bXTLi8zrnzw1Wwh2Fx6mlNaS1I4-YxOIINtQo4Cj2HFUaBZuRLyL5K7Q0n5J174rzFqdPObMHY8fFf9AfjEEt5TzuDsJAXpTEHbvgAhj5Ptoa3Xwy-yHM93Zci59aqKzZbA',
@@ -87,38 +87,38 @@ export const TAB_INSIGHTS: TabInsight[] = [
   {
     id: 'revenue',
     label: 'Revenue',
-    title: 'Connect your financial accounts',
-    description: "Securely connect your bank accounts, cards, and POS terminals to access a unified overview of your restaurant's financial heartbeat, tracking peak hourly traffic and profit margins.",
-    metric1Value: '12%',
-    metric1Label: 'Average Revenue Increase',
-    metric2Value: '£2.4k',
-    metric2Label: 'Avg Monthly Table Uplift',
+    title: 'Turn every QR scan into measurable cover uplift',
+    description: "Flavio's AI reads each guest's mood and cravings at the exact moment they browse your digital menu. Your floor team receives a precision upsell briefing before taking the order — driving incremental revenue per cover without pressure, scripts, or guesswork.",
+    metric1Value: '+18%',
+    metric1Label: 'Average Uplift Per Cover',
+    metric2Value: '£340',
+    metric2Label: 'Avg Monthly Per Table',
     imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCUs9S6HWa7BVgYeeMSpH5iOF7GjmJTBtIpNKpT0DOzpuZeKQ43me862JcpZ76KjBJ4iJLvDvoL6uHCTrR87ubv0NyaigHUEyzF0UoABqA_rDh5qHqygw1oNOdDSYXly6vkiYcx2cadZoAqSXz_flltGqy68FJ_QehZPYvGer1L8PhNXDCCAr-FI78YmPDudRuucya0c3R5qrQ7TDT4OSGSpwdsvpMBfp6ubIH8QyTZw6xi-kdwXmfHTQgo_FtIatUBBWqRuVgtlw',
-    imageAlt: 'Unified dashboard showcasing weekly restaurant revenue uplifts and interactive ROI visualizations'
+    imageAlt: 'Flavio revenue uplift dashboard showing weekly upsell performance across tables'
   },
   {
-    id: 'retention',
-    label: 'Retention',
-    title: 'Understand guest behavior & loyalty',
-    description: 'Determine which guests return and why. Monitor customer frequency, preferred seating areas, favorite ingredients, and loyalty rates automatically without complex card systems.',
+    id: 'guest-insights',
+    label: 'Guest Insights',
+    title: 'Know your guests before they even order',
+    description: 'Every scan builds a richer profile — dietary preferences, mood patterns, flavour affinities, and spending tendencies. Your team walks to each table already briefed, turning first-time visitors into regulars and regulars into advocates.',
     metric1Value: '28%',
     metric1Label: 'More Return Visits',
     metric2Value: '4.2x',
-    metric2Label: 'Higher Lifetime Value',
+    metric2Label: 'Higher Guest Lifetime Value',
     imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200',
-    imageAlt: 'Waitstaff interacting with returning regular customers in a high-end setup'
+    imageAlt: 'Restaurant team reviewing guest preference data on a tablet during service prep'
   },
   {
     id: 'operations',
     label: 'Operations',
-    title: 'Optimize kitchen flow & stock levels',
-    description: 'Eliminate waste and reduce prep times: our predictive AI maps incoming guest trends to preemptively manage inventory, syncing directly with the POS to limit service friction.',
+    title: 'Seamless service from menu link to table',
+    description: 'Live menu sync suppresses sold-out dishes across every server device the instant stock runs out. AI-driven demand forecasting reduces kitchen waste and prep time, so your team delivers every service with clarity, confidence, and zero scrambling.',
     metric1Value: '18%',
-    metric1Label: 'Decrease in Food Waste',
-    metric2Value: '15m',
-    metric2Label: 'Average Table Wait Reduction',
+    metric1Label: 'Reduction in Food Waste',
+    metric2Value: '15 min',
+    metric2Label: 'Avg Wait Time Saved Per Table',
     imageUrl: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=1200',
-    imageAlt: 'Highly efficient kitchen brigade cooking to precise demand forecasts'
+    imageAlt: 'Efficient kitchen and floor service running with AI-powered menu and staff coordination'
   }
 ];
 

@@ -64,8 +64,8 @@ export default function App() {
   return (
     <div className="bg-background-ivory text-on-surface-dark font-sans overflow-x-hidden min-h-screen">
       {/* Dynamic Header / Navigation */}
-      <nav className={`fixed top-0 w-full z-40 bg-background-ivory/80 backdrop-blur-md border-b border-outline-soft h-20 transition-shadow duration-300 ${scrolled ? 'shadow-md' : 'shadow-none'}`}>
-        <div className="flex justify-between items-center px-6 md:px-12 max-w-7xl mx-auto h-full">
+      <nav className={`fixed top-0 w-full z-40 bg-background-ivory/95 backdrop-blur-md border-b border-outline-soft transition-all duration-300 ${scrolled ? 'h-14 shadow-md' : 'h-14 md:h-20 shadow-none'}`}>
+        <div className="flex justify-between items-center px-5 md:px-10 lg:px-16 max-w-7xl mx-auto h-full">
           <Logo size="sm" />
 
           {/* Desktop Links */}
@@ -135,44 +135,25 @@ export default function App() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-20 left-0 w-full bg-background-ivory border-b border-outline-soft z-30 p-6 md:hidden shadow-lg space-y-4 font-sans text-sm"
+            className="fixed top-14 left-0 w-full bg-background-ivory/98 backdrop-blur-md border-b border-outline-soft z-30 px-5 py-6 md:hidden shadow-lg space-y-1 font-sans text-sm"
           >
-            <a
-              href="#features"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-on-surface-secondary font-medium py-2"
-            >
-              Features
-            </a>
-            <a
-              href="#how-it-works"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-on-surface-secondary font-medium py-2"
-            >
-              How It Works
-            </a>
-            <a
-              href="#results"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-on-surface-secondary font-medium py-2"
-            >
-              Results
-            </a>
-            <a
-              href="#pricing"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-on-surface-secondary font-medium py-2"
-            >
-              Pricing
-            </a>
-            <a
-              href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-on-surface-secondary font-medium py-2"
-            >
-              Contact
-            </a>
-            <div className="pt-4 border-t border-outline-soft flex gap-4">
+            {[
+              { href: '#features', label: 'Features' },
+              { href: '#how-it-works', label: 'How It Works' },
+              { href: '#results', label: 'Results' },
+              { href: '#pricing', label: 'Pricing' },
+              { href: '#contact', label: 'Contact' },
+            ].map(({ href, label }) => (
+              <a
+                key={href}
+                href={href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center text-on-surface-secondary font-medium py-3 border-b border-outline-soft/50 hover:text-primary-forest transition-colors duration-150 last:border-0"
+              >
+                {label}
+              </a>
+            ))}
+            <div className="pt-5 flex gap-3">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
@@ -208,27 +189,29 @@ export default function App() {
           aria-hidden
         />
 
+        {/* Stronger gradient — left heavy so text always readable */}
         <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background-ivory/80 via-background-ivory/30 to-transparent"
+          className="pointer-events-none absolute inset-0"
+          style={{ background: 'linear-gradient(100deg, rgba(247,237,224,0.92) 30%, rgba(247,237,224,0.45) 60%, transparent 80%)' }}
           aria-hidden
         />
 
-        <div className="relative z-10 mx-auto flex min-h-[94svh] max-h-[900px] max-w-7xl flex-col items-start justify-start px-6 pb-[min(38vh,340px)] pt-36 text-left md:px-12 md:pt-40">
+        <div className="relative z-10 mx-auto flex min-h-[94svh] max-h-[900px] max-w-7xl flex-col items-start justify-start px-5 pb-[min(20vh,180px)] pt-28 text-left md:px-10 lg:px-16 md:pb-[min(38vh,340px)] md:pt-40">
           <div className="w-full max-w-full md:max-w-[50vw] lg:max-w-[min(50vw,36rem)]">
             <motion.span
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mb-6 inline-flex items-center gap-1.5 rounded-full border border-outline-soft bg-white/85 px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-on-surface-secondary shadow-sm backdrop-blur-sm md:text-xs"
+              className="mb-5 inline-flex items-center gap-2 rounded-full border border-outline-soft bg-white/90 px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-on-surface-secondary shadow-sm backdrop-blur-sm md:text-xs"
             >
-              <Sparkles className="h-3.5 w-3.5 text-secondary-sage" />
-              New: AI-Powered Guest Insights for UK Restaurants
+              <Sparkles className="h-3 w-3 text-secondary-sage" />
+              <span>AI-Powered Guest Insights · UK Restaurants</span>
             </motion.span>
 
             <motion.h1
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="mb-6 font-serif text-4xl leading-tight text-on-surface-dark md:mb-8 md:text-6xl"
+              className="mb-5 font-serif text-[2.25rem] leading-[1.12] text-on-surface-dark md:mb-8 md:text-[3.5rem] lg:text-6xl"
             >
               Your restaurant is losing revenue between the scan and the menu.
             </motion.h1>
@@ -237,7 +220,7 @@ export default function App() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="mb-10 font-sans text-base leading-relaxed text-on-surface-secondary md:text-lg"
+              className="mb-8 font-sans text-sm leading-relaxed text-on-surface-secondary md:mb-10 md:text-base lg:text-lg"
             >
               Track guest preferences, scale table flow, and implement data-driven decisions with the singular intelligence hub designed for the modern hospitality era.
             </motion.p>
@@ -246,20 +229,20 @@ export default function App() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex flex-col justify-start gap-4 sm:flex-row sm:flex-wrap sm:gap-6"
+              className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
             >
               <motion.button
                 onClick={() => setIsDemoModalOpen(true)}
                 whileTap={{ scale: 0.96 }}
-                className="flex cursor-pointer items-center justify-center gap-2 rounded-full bg-primary-forest px-10 py-4 font-bold text-white shadow-lg transition-colors hover:bg-secondary-sage"
+                className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-primary-forest px-8 py-3.5 font-bold text-white shadow-lg transition-colors duration-200 hover:bg-secondary-sage sm:w-auto sm:px-10 sm:py-4"
               >
                 <span>Book a Demo</span>
-                <ArrowUpRight className="h-4.5 w-4.5" />
+                <ArrowUpRight className="h-4 w-4" />
               </motion.button>
               <motion.a
                 href="#how-it-works"
                 whileTap={{ scale: 0.97 }}
-                className="rounded-full border border-outline-soft bg-white/90 px-10 py-4 text-center font-bold text-on-surface-dark backdrop-blur-sm transition-colors hover:border-outline-neutral"
+                className="w-full rounded-full border border-outline-soft bg-white/90 px-8 py-3.5 text-center font-bold text-on-surface-dark backdrop-blur-sm transition-colors duration-200 hover:border-outline-neutral sm:w-auto sm:px-10 sm:py-4"
               >
                 How it works
               </motion.a>
@@ -271,8 +254,8 @@ export default function App() {
       <FeaturesBento />
 
       {/* Onboarding Guide / simple setup */}
-      <section className="py-24 bg-background-ivory" id="how-it-works">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <section className="py-20 md:py-28 bg-background-ivory" id="how-it-works">
+        <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -300,21 +283,25 @@ export default function App() {
                 transition={{ duration: 0.5, delay: step.number * 0.15 }}
                 className="group relative"
               >
-                {/* Image holder with absolute indexing */}
-                <div className="relative aspect-square overflow-hidden rounded-xl bg-primary-forest/5 border border-outline-soft mb-6">
+                {/* Step number badge above card */}
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-forest font-serif text-base font-bold text-white shadow-sm">
+                    {step.number}
+                  </div>
+                  <div className="h-px flex-1 bg-outline-soft" />
+                </div>
+
+                {/* Image */}
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-outline-soft mb-5">
                   <img
                     alt={step.imageAlt}
                     referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
                     src={step.imageUrl}
                   />
-                  {/* Rounded visual badge number */}
-                  <div className="absolute top-5 left-5 w-12 h-12 bg-white rounded-full flex items-center justify-center font-bold font-serif text-primary-forest text-lg shadow-lg border border-outline-soft">
-                    {step.number}
-                  </div>
                 </div>
 
-                <h3 className="font-serif text-xl md:text-2xl font-bold text-primary-forest mb-3">
+                <h3 className="font-serif text-xl md:text-2xl font-semibold text-primary-forest mb-2">
                   {step.title}
                 </h3>
                 <p className="text-on-surface-secondary text-xs md:text-sm leading-relaxed">
@@ -327,8 +314,8 @@ export default function App() {
       </section>
 
       {/* Dynamic Tabbed Insights Section */}
-      <section className="py-24 bg-white" id="results">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <section className="py-20 md:py-28 bg-white" id="results">
+        <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
           {/* Section banner */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -345,20 +332,27 @@ export default function App() {
             </h2>
           </motion.div>
 
-          {/* Nav Custom Tabs selectors */}
-          <div className="mb-12 flex justify-start border-b border-outline-soft">
-            <div className="flex gap-4 sm:gap-8 overflow-x-auto pb-0.5 no-scrollbar scroll-smooth">
+          {/* Tab selectors */}
+          <div className="mb-12 border-b border-outline-soft overflow-x-auto no-scrollbar">
+            <div className="flex min-w-max">
               {TAB_INSIGHTS.map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTabId(tab.id)}
-                  className={`px-6 py-4 font-sans text-xs md:text-sm transition-all duration-300 relative whitespace-nowrap cursor-pointer ${
+                  className={`relative px-5 py-3.5 font-sans text-xs md:text-sm whitespace-nowrap cursor-pointer transition-colors duration-200 ${
                     activeTabId === tab.id
-                      ? 'text-primary-forest font-bold border-b-2 border-primary-forest'
+                      ? 'text-primary-forest font-bold'
                       : 'text-on-surface-secondary hover:text-primary-forest'
                   }`}
                 >
                   {tab.label}
+                  {activeTabId === tab.id && (
+                    <motion.div
+                      layoutId="tab-underline"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-forest rounded-full"
+                      transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                    />
+                  )}
                 </button>
               ))}
             </div>
@@ -434,8 +428,8 @@ export default function App() {
       </section>
 
       {/* Pricing Plans Tiers Section */}
-      <section className="py-24 bg-background-ivory" id="pricing">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <section className="py-20 md:py-28 bg-background-ivory" id="pricing">
+        <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
@@ -459,13 +453,11 @@ export default function App() {
               <button
                 type="button"
                 onClick={() => setIsAnnualPricing(!isAnnualPricing)}
-                className="w-12 h-6 rounded-full bg-outline-soft p-0.5 relative transition-colors focus:outline-none cursor-pointer"
+                aria-checked={isAnnualPricing}
+                role="switch"
+                className={`relative h-6 w-11 rounded-full p-0.5 transition-colors duration-300 focus:outline-none cursor-pointer ${isAnnualPricing ? 'bg-primary-forest' : 'bg-outline-soft'}`}
               >
-                <div
-                  className={`w-5 h-5 rounded-full bg-primary-forest shadow-sm transition-transform ${
-                    isAnnualPricing ? 'translate-x-6 bg-secondary-sage' : 'translate-x-0'
-                  }`}
-                />
+                <div className={`h-5 w-5 rounded-full bg-white shadow-sm transition-transform duration-300 ${isAnnualPricing ? 'translate-x-5' : 'translate-x-0'}`} />
               </button>
               <span className={`text-xs font-semibold flex items-center gap-1.5 ${isAnnualPricing ? 'text-primary-forest' : 'text-on-surface-secondary'}`}>
                 Annual Save <span className="bg-secondary-container-lime text-primary-forest px-2 py-0.5 rounded-full text-[10px] font-mono tracking-wider font-bold">SAVE 20%</span>
@@ -567,7 +559,17 @@ export default function App() {
           <div className="absolute inset-0 bg-primary-dark/40 mix-blend-multiply" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl space-y-10 px-6 md:px-12">
+        <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-10 lg:px-16 space-y-8 md:space-y-12">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="font-mono text-[10px] uppercase tracking-widest text-white/60"
+          >
+            Ready to grow?
+          </motion.p>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -575,38 +577,41 @@ export default function App() {
             transition={{ duration: 0.55 }}
             className="max-w-3xl font-serif text-3xl font-bold leading-tight tracking-tight md:text-5xl"
           >
-            Build wealth faster. Plan your financial future with us.
+            Fill more covers. Keep every guest coming back.
           </motion.h2>
 
-          {/* Social connections block */}
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.1 }}
+            className="max-w-lg text-sm leading-relaxed text-white/70 md:text-base"
+          >
+            Flavio plugs into your existing QR menu in minutes. No new hardware. No developer needed. Just smarter hospitality from day one.
+          </motion.p>
+
+          {/* Links row */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.15 }}
-            className="flex flex-wrap justify-start gap-6 text-xs font-bold uppercase tracking-widest sm:gap-10"
+            className="flex flex-wrap gap-6 sm:gap-10"
           >
-            <button
-              onClick={() => setIsDemoModalOpen(true)}
-              className="text-white hover:text-secondary-container-lime border-b border-white pb-1.5 transition-colors flex items-center gap-2 cursor-pointer text-xs uppercase"
-            >
-              <span>TALK TO US</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </button>
-            <button
-              onClick={() => setIsDemoModalOpen(true)}
-              className="text-white hover:text-secondary-container-lime border-b border-white pb-1.5 transition-colors flex items-center gap-2 cursor-pointer text-xs uppercase"
-            >
-              <span>TWITTER</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </button>
-            <button
-              onClick={() => setIsDemoModalOpen(true)}
-              className="text-white hover:text-secondary-container-lime border-b border-white pb-1.5 transition-colors flex items-center gap-2 cursor-pointer text-xs uppercase"
-            >
-              <span>INSTAGRAM</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </button>
+            {[
+              { label: 'Talk to us' },
+              { label: 'LinkedIn' },
+              { label: 'Instagram' },
+            ].map(({ label }) => (
+              <button
+                key={label}
+                onClick={() => setIsDemoModalOpen(true)}
+                className="text-white/80 hover:text-white border-b border-white/40 hover:border-white pb-1 transition-colors duration-200 flex items-center gap-1.5 cursor-pointer text-xs uppercase tracking-wider font-bold"
+              >
+                <span>{label}</span>
+                <ArrowUpRight className="w-3 h-3" />
+              </button>
+            ))}
           </motion.div>
 
           <motion.button
@@ -616,16 +621,16 @@ export default function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.25 }}
             whileTap={{ scale: 0.97 }}
-            className="bg-white text-primary-forest hover:bg-secondary-container-lime px-12 py-5 rounded-full font-serif text-xl font-bold hover:scale-105 transition-all shadow-2xl cursor-pointer"
+            className="bg-white text-primary-forest hover:bg-secondary-container-lime px-10 py-4 rounded-full font-serif text-lg font-bold hover:scale-[1.03] transition-all duration-200 shadow-2xl cursor-pointer"
           >
-            Book a Demo
+            Book a Free Demo
           </motion.button>
         </div>
       </section>
 
       {/* Footer block */}
-      <footer className="bg-[#EDD5BA] py-20 border-t border-outline-soft">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <footer className="bg-[#EDD5BA] py-16 md:py-20 border-t border-outline-soft">
+        <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 mb-16">
             {/* Left subscription brand description */}
             <div className="md:col-span-5 space-y-6">
@@ -676,37 +681,37 @@ export default function App() {
             </div>
 
             {/* Right Links blocks config */}
-            <div className="md:col-span-7 grid grid-cols-3 gap-8">
+            <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
               <div>
                 <h4 className="font-bold text-sm text-primary-forest mb-5 tracking-tight font-sans">Product</h4>
                 <ul className="space-y-3.5 text-xs text-on-surface-secondary font-medium">
-                  <li><a href="#features" className="hover:text-primary-forest transition-colors">Features</a></li>
-                  <li><a href="#pricing" className="hover:text-primary-forest transition-colors">Pricing</a></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors text-left font-medium cursor-pointer">Integrations</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors text-left font-medium cursor-pointer">Security</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors text-left font-medium cursor-pointer">Updates</button></li>
+                  <li><a href="#features" className="hover:text-primary-forest transition-colors duration-150">Features</a></li>
+                  <li><a href="#pricing" className="hover:text-primary-forest transition-colors duration-150">Pricing</a></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors duration-150 text-left font-medium cursor-pointer">Integrations</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors duration-150 text-left font-medium cursor-pointer">Security</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors duration-150 text-left font-medium cursor-pointer">Updates</button></li>
                 </ul>
               </div>
 
               <div>
                 <h4 className="font-bold text-sm text-primary-forest mb-5 tracking-tight font-sans">Resources</h4>
                 <ul className="space-y-3.5 text-xs text-on-surface-secondary font-medium">
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors cursor-pointer">Help Center</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors cursor-pointer">Blog</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors cursor-pointer">Financial Guides</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors cursor-pointer">Community</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors cursor-pointer">Developers</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Help Centre</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Hospitality Blog</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Case Studies</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Restaurant Guide</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">API Docs</button></li>
                 </ul>
               </div>
 
-              <div>
+              <div className="col-span-2 sm:col-span-1">
                 <h4 className="font-bold text-sm text-primary-forest mb-5 tracking-tight font-sans">Company</h4>
                 <ul className="space-y-3.5 text-xs text-on-surface-secondary font-medium">
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors cursor-pointer">About Us</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors cursor-pointer">Careers</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors cursor-pointer">Press</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors cursor-pointer">Partners</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors cursor-pointer">Contact</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">About Us</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Careers</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Press</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Partners</button></li>
+                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Contact</button></li>
                 </ul>
               </div>
             </div>

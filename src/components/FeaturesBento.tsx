@@ -27,8 +27,8 @@ function LightPlaceholder({ label, className = '' }: { label: string; className?
 
 export default function FeaturesBento() {
   return (
-    <section className="bg-white py-24" id="features">
-      <div className="mx-auto max-w-6xl px-6 md:px-12">
+    <section className="bg-white py-20 md:py-28" id="features">
+      <div className="mx-auto max-w-6xl px-5 md:px-10 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}

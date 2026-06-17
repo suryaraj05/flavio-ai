@@ -10,7 +10,7 @@ import {
   LogOut,
 } from 'lucide-react';
 import { motion } from 'motion/react';
-import { BOTTOM_NAV_ITEMS } from '@/data/insightsDemo';
+import { BOTTOM_NAV_ITEMS, DEMO_RESTAURANT_NAME } from '@/data/insightsDemo';
 
 const ICONS = {
   grid: LayoutGrid,
@@ -37,18 +37,20 @@ export default function PhoneAppChrome({ activeNav, onNavChange, children }: Pho
 
   return (
     <div className="flex h-full min-h-0 flex-col bg-[#F8FAFC] font-sans text-[#1E293B]">
-      <header className="flex shrink-0 items-center justify-between border-b border-slate-100 bg-white px-2.5 py-2">
-        <div className="flex items-center gap-1.5">
-          <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[#2563EB]">
-            <UtensilsCrossed className="h-3 w-3 text-white" strokeWidth={2.5} />
+      <header className="flex shrink-0 items-center justify-between border-b border-slate-100 bg-white px-2 py-1.5">
+        <div className="flex min-w-0 items-center gap-1">
+          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-[#111111]">
+            <UtensilsCrossed className="h-2.5 w-2.5 text-white" strokeWidth={2.5} />
           </span>
-          <span className="text-[11px] font-bold text-[#1E293B]">Flavio</span>
+          <span className="truncate text-[7.5px] font-bold leading-tight text-[#111111]">
+            {DEMO_RESTAURANT_NAME}
+          </span>
         </div>
-        <div className="flex items-center gap-2 text-[8px] text-slate-400">
-          <span>Dashboard</span>
+        <div className="flex shrink-0 items-center gap-1 text-[7px] text-slate-400">
+          <span className="hidden min-[280px]:inline">Dashboard</span>
           <span className="flex items-center gap-0.5">
-            <LogOut className="h-2.5 w-2.5" />
-            Logout
+            <LogOut className="h-2 w-2" />
+            <span className="sr-only">Logout</span>
           </span>
         </div>
       </header>
@@ -61,7 +63,7 @@ export default function PhoneAppChrome({ activeNav, onNavChange, children }: Pho
         {children}
       </div>
 
-      <nav className="flex shrink-0 items-center justify-between border-t border-slate-100 bg-white px-1 py-1.5">
+      <nav className="flex shrink-0 items-center justify-between border-t border-slate-100 bg-white px-0.5 py-1">
         {BOTTOM_NAV_ITEMS.map(({ id, label, icon }) => {
           const Icon = ICONS[icon];
           const isActive = activeNav === id;
@@ -76,11 +78,11 @@ export default function PhoneAppChrome({ activeNav, onNavChange, children }: Pho
               className="flex flex-1 flex-col items-center gap-0.5 px-0.5"
             >
               <Icon
-                className={`h-3.5 w-3.5 transition-colors duration-200 ${isActive ? 'text-[#2563EB]' : 'text-slate-400'}`}
+                className={`h-3 w-3 transition-colors duration-200 ${isActive ? 'text-[#2563EB]' : 'text-slate-400'}`}
                 strokeWidth={isActive ? 2.25 : 1.75}
               />
               <span
-                className={`text-[6px] leading-none transition-colors duration-200 ${isActive ? 'font-semibold text-[#2563EB]' : 'text-slate-400'}`}
+                className={`text-[5.5px] leading-none transition-colors duration-200 ${isActive ? 'font-semibold text-[#2563EB]' : 'text-slate-400'}`}
               >
                 {label}
               </span>

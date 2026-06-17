@@ -1,6 +1,9 @@
 import { motion, type MotionStyle } from 'motion/react';
 import phoneBlank from '@/assets/phone-blank.png';
-import { PHONE_SCREEN_INSETS } from '@/data/insightsDemo';
+import {
+  PHONE_SCREEN_INSETS,
+  PHONE_SCREEN_INSETS_MOBILE,
+} from '@/data/insightsDemo';
 import InsightsPhoneDemo from './insights/InsightsPhoneDemo';
 
 type HeroPhoneMockupProps = {
@@ -21,10 +24,11 @@ export default function HeroPhoneMockup({
   transition,
 }: HeroPhoneMockupProps) {
   const isDesktop = variant === 'desktop';
+  const insets = isDesktop ? PHONE_SCREEN_INSETS : PHONE_SCREEN_INSETS_MOBILE;
 
   const sizeClass = isDesktop
     ? 'h-[min(94vh,920px)] max-h-[920px] w-auto'
-    : 'h-auto w-full max-w-[300px]';
+    : 'h-auto w-full max-w-[280px]';
 
   return (
     <motion.div
@@ -45,25 +49,35 @@ export default function HeroPhoneMockup({
 
       {/* Interactive demo — in front, held by the hand */}
       <div
-        className="absolute z-10"
+        className="absolute z-10 overflow-hidden"
         style={{
-          top: PHONE_SCREEN_INSETS.top,
-          left: PHONE_SCREEN_INSETS.left,
-          width: PHONE_SCREEN_INSETS.width,
-          height: PHONE_SCREEN_INSETS.height,
+          top: insets.top,
+          left: insets.left,
+          width: insets.width,
+          height: insets.height,
         }}
         role="application"
-        aria-label="Flavio Insights interactive demo"
+        aria-label="Tavora Bites Insights interactive demo"
       >
-        <div className="relative h-full w-full">
-          <div className="relative flex h-full flex-col overflow-hidden rounded-[1.1rem] border-[2.5px] border-[#1a1a1c] bg-[#0a0a0a] shadow-[0_0_0_1px_rgba(255,255,255,0.08)_inset,0_10px_36px_rgba(0,0,0,0.55)]">
+        <div className="relative box-border h-full w-full">
+          <div
+            className={`relative box-border flex h-full w-full flex-col overflow-hidden bg-[#000000] shadow-[0_0_0_1px_rgba(255,255,255,0.06)_inset] ${
+              isDesktop
+                ? 'rounded-[1.05rem] border-[2px] border-[#000000]'
+                : 'rounded-[0.8rem] border border-[#000000]'
+            }`}
+          >
             {/* Dynamic Island */}
             <div
-              className="pointer-events-none absolute left-1/2 top-[5px] z-20 h-[4px] w-[26%] min-w-[20px] max-w-[34px] -translate-x-1/2 rounded-full bg-black ring-1 ring-white/[0.05]"
+              className="pointer-events-none absolute left-1/2 top-[4px] z-20 h-[3px] w-[24%] min-w-[18px] max-w-[30px] -translate-x-1/2 rounded-full bg-black ring-1 ring-white/[0.04]"
               aria-hidden
             />
 
-            <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden rounded-[0.9rem] bg-[#F8FAFC]">
+            <div
+              className={`relative box-border flex min-h-0 flex-1 flex-col overflow-hidden bg-[#F8FAFC] ${
+                isDesktop ? 'rounded-[0.88rem]' : 'rounded-[0.68rem]'
+              }`}
+            >
               <InsightsPhoneDemo />
             </div>
           </div>

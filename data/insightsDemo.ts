@@ -38,7 +38,7 @@ export const MOOD_SEGMENTS: MoodSegment[] = [
   { label: 'Together', count: 4, color: '#F59E0B' },
   { label: 'Quick bite', count: 3, color: '#64748B' },
   { label: 'Food Lover', count: 1, color: '#F97316' },
-  { label: 'Need a break', count: 1, color: '#8B5CF6' },
+  { label: 'Need a break', count: 1, color: '#334155' },
 ];
 
 export const MOOD_BREAKDOWN_ORDER = [
@@ -140,8 +140,8 @@ export const SURVEY_QUESTIONS: SurveyQuestion[] = [
     number: 4,
     question: 'How many are you?',
     totalResponses: 2,
-    color: '#7C3AED',
-    barColor: '#C4B5FD',
+    color: '#1E293B',
+    barColor: '#64748B',
     options: [
       { label: '2', count: 1, percent: 50 },
       { label: 'Solo', count: 1, percent: 50 },
@@ -202,10 +202,21 @@ export const BOTTOM_NAV_ITEMS = [
   { id: 'feedback', label: 'Feedback', icon: 'message' },
 ] as const;
 
+export const DEMO_RESTAURANT_NAME = 'Tavora Bites';
+
 export const PHONE_SCREEN_INSETS = {
   top: '15.33%',
   left: '17.44%',
   width: '44.87%',
   height: '67.19%',
   radius: '1.15rem',
+} as const;
+
+/** Tighter fit for hero mobile — keeps UI inside the phone frame */
+export const PHONE_SCREEN_INSETS_MOBILE = {
+  top: '16.6%',
+  left: '19.2%',
+  width: '42.4%',
+  height: '64.8%',
+  radius: '0.85rem',
 } as const;

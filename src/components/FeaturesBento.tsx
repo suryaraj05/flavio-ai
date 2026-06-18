@@ -3,7 +3,13 @@ import { motion } from 'motion/react';
 import fewQuestions from '@/assets/few-questions.png';
 import liveMenu from '@/assets/live-menu.png';
 
-const BAR_HEIGHTS = [32, 50, 41, 68, 57, 80, 72];
+const UPLIFT_BREAKDOWN = [
+  { label: 'Mood-led upsells', value: '£98', percent: 82 },
+  { label: 'Personalised specials', value: '£76', percent: 68 },
+  { label: 'Faster table turns', value: '£54', percent: 52 },
+  { label: 'Repeat guest lift', value: '£68', percent: 62 },
+  { label: 'Peak-hour cover', value: '£44', percent: 48 },
+];
 
 const ROI_ROWS = [
   { label: 'Tables', value: '20' },
@@ -28,7 +34,7 @@ export default function FeaturesBento() {
           <p className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-secondary-sage md:text-xs">
             Core Intelligence
           </p>
-          <h2 className="mt-4 max-w-3xl font-serif text-3xl italic leading-tight text-primary-dark md:text-5xl">
+          <h2 className="mt-4 max-w-3xl font-serif text-2xl italic leading-tight text-primary-dark md:text-4xl">
             Powerful features and clear insights for smarter operations
           </h2>
         </motion.div>
@@ -170,14 +176,14 @@ export default function FeaturesBento() {
           </motion.article>
 
           {/* ── 4 · Middle right — £340 stat
-              Base: white · Gold accent bar chart ────────────────── */}
+              Base: white · labelled uplift breakdown ───────────── */}
           <motion.article
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.24 }}
             whileHover={{ y: -6, transition: CARD_SPRING }}
-            className="flex min-h-[200px] flex-col overflow-hidden rounded-2xl bg-white p-5 cursor-default"
+            className="flex h-full min-h-[200px] flex-col overflow-hidden rounded-2xl bg-white p-5 cursor-default"
             style={{
               boxShadow: '0 2px 12px rgba(61,21,128,0.07)',
               background: 'linear-gradient(160deg, #ffffff 60%, rgba(196,184,232,0.18) 100%)',
@@ -187,50 +193,68 @@ export default function FeaturesBento() {
               Performance uplift
             </span>
 
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.2, type: 'spring', stiffness: 300 }}
-              className="mt-2 font-serif text-4xl font-bold leading-none text-primary-dark"
-            >
-              £340
-            </motion.p>
-            <p className="mt-1 text-xs text-on-surface-secondary">avg monthly uplift per table</p>
-
-            {/* Animated gold bar chart */}
-            <div className="mt-auto pt-4">
-              <div className="flex h-10 items-end gap-[3px]">
-                {BAR_HEIGHTS.map((h, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ height: 0 }}
-                    whileInView={{ height: `${h}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.45, delay: 0.3 + i * 0.055, ease: 'easeOut' }}
-                    className="flex-1 rounded-sm"
-                    style={{
-                      backgroundColor:
-                        i === BAR_HEIGHTS.length - 1
-                          ? '#8B5CF6'
-                          : 'rgba(139,92,246,0.22)',
-                    }}
-                  />
-                ))}
-              </div>
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+            <div className="mt-2 flex items-end gap-2.5">
+              <motion.p
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.75 }}
-                className="mt-2.5 flex items-center gap-1.5"
+                transition={{ duration: 0.4, delay: 0.2, type: 'spring', stiffness: 300 }}
+                className="font-serif text-3xl font-bold leading-none text-primary-dark"
               >
-                <TrendingUp className="h-3 w-3 text-secondary-container-lime" />
-                <span className="font-mono text-[9px] font-bold text-secondary-container-lime">
-                  +12% this month
-                </span>
-              </motion.div>
+                £340
+              </motion.p>
+              <p className="pb-0.5 text-[10px] leading-tight text-on-surface-secondary">
+                avg monthly uplift per table
+              </p>
             </div>
+
+            <p className="mt-1.5 text-[10px] text-on-surface-secondary">
+              Revenue drivers — last 30 days
+            </p>
+
+            {/* Labelled breakdown — fills remaining card height */}
+            <div className="mt-3 flex flex-1 flex-col justify-evenly gap-2">
+              {UPLIFT_BREAKDOWN.map((item, i) => (
+                <div key={item.label}>
+                  <div className="mb-1 flex items-center justify-between gap-2">
+                    <span className="text-[10px] leading-tight text-on-surface-secondary">
+                      {item.label}
+                    </span>
+                    <span className="shrink-0 font-mono text-[9px] font-bold text-primary-dark">
+                      {item.value}
+                    </span>
+                  </div>
+                  <div className="h-1.5 w-full overflow-hidden rounded-full bg-[rgba(139,92,246,0.12)]">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${item.percent}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.45, delay: 0.3 + i * 0.06, ease: 'easeOut' }}
+                      className="h-full rounded-full"
+                      style={{
+                        backgroundColor:
+                          i === UPLIFT_BREAKDOWN.length - 1
+                            ? '#8B5CF6'
+                            : 'rgba(139,92,246,0.45)',
+                      }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.75 }}
+              className="mt-3 flex items-center gap-1.5 border-t border-outline-soft/70 pt-2.5"
+            >
+              <TrendingUp className="h-3 w-3 text-secondary-container-lime" />
+              <span className="font-mono text-[9px] font-bold text-secondary-container-lime">
+                +12% vs prior month
+              </span>
+            </motion.div>
           </motion.article>
 
           {/* ── 5 · Wide bottom — QR Integration
@@ -249,7 +273,7 @@ export default function FeaturesBento() {
             }}
           >
             <div className="max-w-sm">
-              <h3 className="font-serif text-xl font-semibold sm:text-2xl">
+              <h3 className="font-serif text-lg font-semibold sm:text-xl">
                 Plugs Into Your Existing QR
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-white/50">
@@ -273,18 +297,25 @@ export default function FeaturesBento() {
               </div>
             </div>
 
-            {/* Gold-on-dark status widget */}
-            <div className="mt-5 flex shrink-0 items-center gap-4 rounded-2xl border border-secondary-container-lime/60 bg-secondary-container-lime/45 p-4 transition-colors duration-200 hover:bg-secondary-container-lime/55 lg:mt-0">
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-secondary-container-lime/55 text-secondary-container-lime">
+            {/* Dark glassmorphism status widget */}
+            <div
+              className="mt-5 flex shrink-0 items-center gap-4 rounded-2xl border border-white/15 p-4 backdrop-blur-md lg:mt-0"
+              style={{
+                background:
+                  'linear-gradient(135deg, rgba(15,10,30,0.82) 0%, rgba(61,21,128,0.55) 55%, rgba(109,40,217,0.35) 100%)',
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.08), 0 8px 24px rgba(0,0,0,0.25)',
+              }}
+            >
+              <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-secondary-container-lime">
                 <QrCode className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-serif text-base font-semibold text-secondary-container-lime">
+                <p className="font-serif text-base font-semibold text-white">
                   QR & AI layer active
                 </p>
                 <div className="mt-1 flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-secondary-container-lime" />
-                  <p className="text-xs text-white/65">Live feedback loop</p>
+                  <p className="text-xs text-white/60">Live feedback loop</p>
                 </div>
               </div>
             </div>

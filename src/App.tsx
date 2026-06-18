@@ -26,14 +26,18 @@ import {
 
 import { PRICING_PLANS, STEP_GUIDES, TAB_INSIGHTS } from './data';
 import BookDemoModal from './components/BookDemoModal';
+import PlanOnboardingModal from './components/PlanOnboardingModal';
 import FeaturesBento from './components/FeaturesBento';
 import Logo from './components/Logo';
+import type { PricingPlan } from './types';
 import darkBackground from '@/assets/dark-background.png';
 import HeroPhoneMockup from './components/hero/HeroPhoneMockup';
 
 export default function App() {
   // Navigation & interaction states
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const [isPlanModalOpen, setIsPlanModalOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<PricingPlan | null>(null);
   const [activeTabId, setActiveTabId] = useState('revenue');
   const [isAnnualPricing, setIsAnnualPricing] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -48,6 +52,11 @@ export default function App() {
     offset: ['start start', 'end start'],
   });
   const phoneScale = useTransform(scrollYProgress, [0, 1], [1, 0.88]);
+
+  const openPlanOnboarding = (plan: PricingPlan) => {
+    setSelectedPlan(plan);
+    setIsPlanModalOpen(true);
+  };
 
   // Nav scroll shadow
   const [scrolled, setScrolled] = useState(false);
@@ -117,17 +126,18 @@ export default function App() {
           {/* Nav CTAs */}
           <div className="flex items-center gap-4">
             <button
+              type="button"
               onClick={() => setIsDemoModalOpen(true)}
-              className="hidden sm:block text-on-surface-secondary text-sm font-bold hover:text-primary-forest transition-all cursor-pointer"
-            >
-              Restaurant Login
-            </button>
-            <button
-              onClick={() => setIsDemoModalOpen(true)}
-              className="bg-primary-forest text-white text-xs md:text-sm px-6 md:px-8 py-2.5 md:py-3 rounded-full font-bold hover:bg-secondary-sage transition-all cursor-pointer shadow-sm"
+              className="hidden cursor-pointer text-sm font-bold text-on-surface-secondary transition-all hover:text-primary-forest sm:block"
             >
               Book Demo
             </button>
+            <a
+              href="https://client-five-iota-12.vercel.app/login"
+              className="btn-gradient-purple rounded-full px-6 py-2.5 text-xs font-bold md:px-8 md:py-3 md:text-sm"
+            >
+              Restaurant Login
+            </a>
             
             {/* Mobile Menu Toggle */}
             <button
@@ -167,23 +177,22 @@ export default function App() {
             ))}
             <div className="pt-5 flex gap-3">
               <button
+                type="button"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   setIsDemoModalOpen(true);
                 }}
-                className="w-1/2 py-2.5 border border-primary-forest rounded-full font-bold text-center text-primary-forest cursor-pointer"
-              >
-                Log In
-              </button>
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  setIsDemoModalOpen(true);
-                }}
-                className="w-1/2 py-2.5 bg-primary-forest text-white rounded-full font-bold text-center cursor-pointer"
+                className="w-1/2 cursor-pointer rounded-full border border-primary-forest py-2.5 text-center font-bold text-primary-forest"
               >
                 Book Demo
               </button>
+              <a
+                href="https://client-five-iota-12.vercel.app/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="btn-gradient-purple w-1/2 rounded-full py-2.5 text-center font-bold"
+              >
+                Log In
+              </a>
             </div>
           </motion.div>
         )}
@@ -192,7 +201,7 @@ export default function App() {
       {/* Hero Section */}
       <header
         ref={heroRef}
-        className="relative min-h-[94svh] max-h-[900px] overflow-hidden"
+        className="relative h-[calc(94svh-11px)] max-h-[min(calc(100svh-11px),1089px)] overflow-hidden"
       >
         {/* Restaurant ambience background */}
         <div
@@ -207,21 +216,22 @@ export default function App() {
         {/* Black overlay */}
         <div className="absolute inset-0 bg-black/65" aria-hidden />
 
-        {/* Phone — pinned bottom-right, above hero copy so screen stays interactive */}
+        {/* Phone — pinned flush to bottom-right */}
         <motion.div
-          style={{ scale: phoneScale, rotate: 4 }}
-          className="absolute bottom-0 right-0 z-20 hidden origin-bottom-right lg:block"
+          style={{ scale: phoneScale, transformOrigin: 'bottom right' }}
+          className="absolute bottom-0 right-0 z-20 hidden h-[min(88vh,900px)] overflow-hidden leading-none lg:block lg:-mr-4 xl:-mr-8"
         >
           <HeroPhoneMockup
             variant="desktop"
+            className="h-full"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
           />
         </motion.div>
 
-        <div className="pointer-events-none relative z-10 mx-auto flex min-h-[94svh] max-h-[900px] max-w-7xl flex-col justify-start px-5 pb-10 pt-10 md:px-10 lg:px-16 md:pb-12 md:pt-14">
-          <div className="pointer-events-auto w-full max-w-2xl lg:max-w-[44rem]">
+        <div className="pointer-events-none relative z-30 mx-auto flex h-full max-w-7xl flex-col justify-start px-5 pb-8 pt-10 md:px-10 lg:px-16 md:pb-10 md:pt-14">
+          <div className="pointer-events-auto relative z-30 w-full max-w-2xl lg:max-w-[44rem]">
             <motion.span
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -235,16 +245,16 @@ export default function App() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="mb-6 font-serif text-[2.5rem] leading-[1.1] text-white md:mb-8 md:text-5xl lg:text-[4.25rem] xl:text-7xl"
+              className="mb-6 max-w-[32rem] font-serif text-[2.35rem] leading-[1.12] text-white md:mb-8 md:max-w-[36rem] md:text-[2.75rem] lg:max-w-[40rem] lg:text-[3.875rem] xl:text-[4rem]"
             >
-              Your restaurant is losing revenue between the scan and the menu.
+              Where AI understands your guests and refines every experience around them.
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="mb-10 font-sans text-base leading-relaxed text-white/75 md:mb-12 md:text-lg lg:text-xl"
+              className="mb-10 max-w-[34rem] font-sans text-[0.9375rem] leading-snug text-white/85 md:mb-12 md:max-w-[38rem] md:text-base lg:max-w-[42rem] lg:text-[1.0625rem]"
             >
               Track guest preferences, scale table flow, and implement data-driven decisions with the singular intelligence hub designed for the modern hospitality era.
             </motion.p>
@@ -259,7 +269,7 @@ export default function App() {
                 onClick={() => setIsDemoModalOpen(true)}
                 whileTap={{ scale: 0.96 }}
                 whileHover={{ scale: 1.02 }}
-                className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-secondary-sage px-10 py-4 text-base font-bold text-white shadow-lg transition-colors duration-200 hover:bg-secondary-container-lime hover:text-primary-dark sm:w-auto md:px-12 md:py-4.5 md:text-lg"
+                className="btn-gradient-purple flex w-full cursor-pointer items-center justify-center gap-2 rounded-full px-10 py-4 text-base font-bold sm:w-auto md:px-12 md:py-4.5 md:text-lg"
               >
                 <span>Book a Demo</span>
                 <ArrowUpRight className="h-5 w-5" />
@@ -275,7 +285,8 @@ export default function App() {
             </motion.div>
           </div>
 
-          {/* Mobile phone */}
+          {/* Mobile phone — hidden for now, may restore later */}
+          {false && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -284,84 +295,9 @@ export default function App() {
           >
             <HeroPhoneMockup variant="mobile" />
           </motion.div>
+          )}
         </div>
       </header>
-
-      {/* Onboarding Guide / simple setup */}
-      <section
-        className="py-20 md:py-28"
-        id="how-it-works"
-        style={{ background: 'linear-gradient(150deg, #F9F8FD 0%, #EDE7F6 40%, #F0EBF9 70%, #F9F8FD 100%)' }}
-      >
-        <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-16 text-left md:mb-20"
-          >
-            <span className="text-secondary-sage font-mono text-[11px] md:text-xs uppercase tracking-widest font-bold">
-              Simple Setup
-            </span>
-            <h2 className="mt-3 max-w-2xl font-serif text-3xl italic leading-tight text-primary-dark md:text-5xl">
-              From setup to first AI-powered service in three steps
-            </h2>
-          </motion.div>
-
-          {/* Few-column step grid */}
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 md:gap-8">
-            {STEP_GUIDES.map((step, idx) => (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: idx * 0.1 }}
-                className="group flex flex-col"
-              >
-                {/* Image */}
-                <div
-                  className="relative mb-5 aspect-[16/10] overflow-hidden rounded-xl border border-outline-soft cursor-zoom-in"
-                  onClick={() => setExpandedStep({ src: step.imageUrl, alt: step.imageAlt })}
-                >
-                  <img
-                    src={step.imageUrl}
-                    alt={step.imageAlt}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                  {/* Step badge */}
-                  <div className="absolute left-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-primary-dark/80 backdrop-blur-sm font-serif text-xs font-bold text-white shadow">
-                    {`0${step.number}`}
-                  </div>
-                  {/* Expand hint */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center">
-                    <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 backdrop-blur-sm text-primary-dark text-[10px] font-mono uppercase tracking-widest px-3 py-1.5 rounded-full font-bold shadow">
-                      Click to expand
-                    </span>
-                  </div>
-                </div>
-
-                {/* Tagline */}
-                <span className="mb-2 inline-flex w-fit items-center rounded-full border border-outline-soft bg-white px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-widest text-secondary-sage">
-                  {step.tagline}
-                </span>
-
-                {/* Title */}
-                <h3 className="mb-2 font-serif text-lg leading-snug text-primary-dark md:text-xl">
-                  {step.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-xs leading-relaxed text-on-surface-secondary md:text-sm">
-                  {step.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <FeaturesBento />
 
@@ -478,6 +414,82 @@ export default function App() {
         </div>
       </section>
 
+      {/* Onboarding Guide / simple setup */}
+      <section
+        className="py-20 md:py-28"
+        id="how-it-works"
+        style={{ background: 'linear-gradient(150deg, #F9F8FD 0%, #EDE7F6 40%, #F0EBF9 70%, #F9F8FD 100%)' }}
+      >
+        <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-16 text-left md:mb-20"
+          >
+            <span className="text-secondary-sage font-mono text-[11px] md:text-xs uppercase tracking-widest font-bold">
+              Simple Setup
+            </span>
+            <h2 className="mt-3 max-w-2xl font-serif text-3xl italic leading-tight text-primary-dark md:text-5xl">
+              From setup to first AI-powered service in three steps
+            </h2>
+          </motion.div>
+
+          {/* Few-column step grid */}
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 md:gap-8">
+            {STEP_GUIDES.map((step, idx) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: idx * 0.1 }}
+                className="group flex flex-col"
+              >
+                {/* Image */}
+                <div
+                  className="relative mb-5 aspect-[16/10] overflow-hidden rounded-xl border border-outline-soft cursor-zoom-in"
+                  onClick={() => setExpandedStep({ src: step.imageUrl, alt: step.imageAlt })}
+                >
+                  <img
+                    src={step.imageUrl}
+                    alt={step.imageAlt}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  />
+                  {/* Step badge */}
+                  <div className="absolute left-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-primary-dark/80 backdrop-blur-sm font-serif text-xs font-bold text-white shadow">
+                    {`0${step.number}`}
+                  </div>
+                  {/* Expand hint */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center">
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 backdrop-blur-sm text-primary-dark text-[10px] font-mono uppercase tracking-widest px-3 py-1.5 rounded-full font-bold shadow">
+                      Click to expand
+                    </span>
+                  </div>
+                </div>
+
+                {/* Tagline */}
+                <span className="mb-2 inline-flex w-fit items-center rounded-full border border-outline-soft bg-white px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-widest text-secondary-sage">
+                  {step.tagline}
+                </span>
+
+                {/* Title */}
+                <h3 className="mb-2 font-serif text-lg leading-snug text-primary-dark md:text-xl">
+                  {step.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-xs leading-relaxed text-on-surface-secondary md:text-sm">
+                  {step.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Pricing Plans Tiers Section */}
       <section
         className="py-20 md:py-28"
@@ -497,7 +509,7 @@ export default function App() {
               Simple, transparent pricing
             </h2>
             <p className="max-w-xl font-sans text-sm text-on-surface-secondary">
-              Plans scale with your tables — no hidden fees, no hardware costs. Cancel any time, or switch to annual and get 3 months completely free.
+              Plans scale with your tables — no hidden fees, no hardware costs. Cancel any time, or switch to annual billing.
             </p>
 
             {/* Custom pricing Switch toggle */}
@@ -514,8 +526,8 @@ export default function App() {
               >
                 <div className={`h-5 w-5 rounded-full bg-white shadow-sm transition-transform duration-300 ${isAnnualPricing ? 'translate-x-5' : 'translate-x-0'}`} />
               </button>
-              <span className={`text-xs font-semibold flex items-center gap-1.5 ${isAnnualPricing ? 'text-primary-forest' : 'text-on-surface-secondary'}`}>
-                Annual Billing <span className="bg-secondary-container-lime text-primary-forest px-2 py-0.5 rounded-full text-[10px] font-mono tracking-wider font-bold">3 MONTHS FREE</span>
+              <span className={`text-xs font-semibold ${isAnnualPricing ? 'text-primary-forest' : 'text-on-surface-secondary'}`}>
+                Annual Billing
               </span>
             </div>
           </motion.div>
@@ -524,7 +536,7 @@ export default function App() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {PRICING_PLANS.map((plan, idx) => {
               const rawPrice = isAnnualPricing ? plan.priceAnnualDiscounted : plan.priceMonthly;
-              const currentPrice = Number.isInteger(rawPrice) ? rawPrice : rawPrice.toFixed(2);
+              const currentPrice = Math.ceil(rawPrice);
 
               return (
                 <motion.div
@@ -582,7 +594,7 @@ export default function App() {
                         </span>
                         <div className="text-[10px] font-mono tracking-wider opacity-65 mt-1 select-none">
                           {isAnnualPricing
-                            ? `£${(plan.priceAnnualDiscounted * 12).toFixed(0)}/yr · 3 months free`
+                            ? `£${Math.ceil(plan.priceAnnualDiscounted * 12)}/yr · billed annually`
                             : 'cancel any time'}
                         </div>
                       </>
@@ -591,7 +603,7 @@ export default function App() {
 
                   {/* Primary card Action CTA button */}
                   <button
-                    onClick={() => setIsDemoModalOpen(true)}
+                    onClick={() => openPlanOnboarding(plan)}
                     className={`w-full py-3.5 rounded-full font-bold text-xs md:text-sm tracking-wider mb-8 transition-colors cursor-pointer ${
                       plan.isPopular
                         ? 'bg-white text-primary-forest hover:bg-secondary-container-lime hover:text-primary-forest'
@@ -755,40 +767,46 @@ export default function App() {
               </div>
             </div>
 
-            {/* Right Links blocks config */}
-            <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
-              <div>
-                <h4 className="font-bold text-sm text-primary-forest mb-5 tracking-tight font-sans">Product</h4>
-                <ul className="space-y-3.5 text-xs text-on-surface-secondary font-medium">
-                  <li><a href="#features" className="hover:text-primary-forest transition-colors duration-150">Features</a></li>
-                  <li><a href="#pricing" className="hover:text-primary-forest transition-colors duration-150">Pricing</a></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors duration-150 text-left font-medium cursor-pointer">Integrations</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors duration-150 text-left font-medium cursor-pointer">Security</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest transition-colors duration-150 text-left font-medium cursor-pointer">Updates</button></li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-bold text-sm text-primary-forest mb-5 tracking-tight font-sans">Resources</h4>
-                <ul className="space-y-3.5 text-xs text-on-surface-secondary font-medium">
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Help Centre</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Hospitality Blog</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Case Studies</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Restaurant Guide</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">API Docs</button></li>
-                </ul>
-              </div>
-
-              <div className="col-span-2 sm:col-span-1">
-                <h4 className="font-bold text-sm text-primary-forest mb-5 tracking-tight font-sans">Company</h4>
-                <ul className="space-y-3.5 text-xs text-on-surface-secondary font-medium">
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">About Us</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Careers</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Press</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Partners</button></li>
-                  <li><button type="button" onClick={() => setIsDemoModalOpen(true)} className="hover:text-primary-forest text-left font-medium transition-colors duration-150 cursor-pointer">Contact</button></li>
-                </ul>
-              </div>
+            {/* Site navigation links */}
+            <div className="md:col-span-7">
+              <h4 className="mb-5 font-sans text-sm font-bold tracking-tight text-primary-forest">
+                On this site
+              </h4>
+              <ul className="grid grid-cols-2 gap-x-8 gap-y-3.5 text-xs font-medium text-on-surface-secondary sm:grid-cols-3">
+                <li>
+                  <a href="#how-it-works" className="transition-colors duration-150 hover:text-primary-forest">
+                    How It Works
+                  </a>
+                </li>
+                <li>
+                  <a href="#features" className="transition-colors duration-150 hover:text-primary-forest">
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a href="#results" className="transition-colors duration-150 hover:text-primary-forest">
+                    Results
+                  </a>
+                </li>
+                <li>
+                  <a href="#pricing" className="transition-colors duration-150 hover:text-primary-forest">
+                    Pricing
+                  </a>
+                </li>
+                <li>
+                  <a href="#contact" className="transition-colors duration-150 hover:text-primary-forest">
+                    Contact
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://client-five-iota-12.vercel.app/login"
+                    className="transition-colors duration-150 hover:text-primary-forest"
+                  >
+                    Restaurant Login
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
 
@@ -800,15 +818,18 @@ export default function App() {
             </div>
             <div>© {new Date().getFullYear()} Flavio AI. All rights reserved.</div>
           </div>
-
-          <div className="mt-16 flex justify-center select-none pointer-events-none opacity-[0.06]">
-            <Logo size="watermark" />
-          </div>
         </div>
       </footer>
 
       {/* Book Private Demo Modal element */}
       <BookDemoModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
+
+      <PlanOnboardingModal
+        isOpen={isPlanModalOpen}
+        onClose={() => setIsPlanModalOpen(false)}
+        plan={selectedPlan}
+        isAnnualBilling={isAnnualPricing}
+      />
 
       {/* Step image lightbox */}
       <AnimatePresence>

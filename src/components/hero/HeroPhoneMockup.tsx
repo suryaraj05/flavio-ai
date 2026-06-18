@@ -6,6 +6,9 @@ import {
 } from '@/data/insightsDemo';
 import InsightsPhoneDemo from './insights/InsightsPhoneDemo';
 
+/** Set true when re-enabling the in-phone interactive demo */
+const SHOW_INTERACTIVE_DEMO = false;
+
 type HeroPhoneMockupProps = {
   variant?: 'desktop' | 'mobile';
   style?: MotionStyle;
@@ -27,7 +30,7 @@ export default function HeroPhoneMockup({
   const insets = isDesktop ? PHONE_SCREEN_INSETS : PHONE_SCREEN_INSETS_MOBILE;
 
   const sizeClass = isDesktop
-    ? 'h-[min(94vh,920px)] max-h-[920px] w-auto'
+    ? 'h-[min(96vh,980px)] w-auto max-w-none translate-y-[7%]'
     : 'h-auto w-full max-w-[280px]';
 
   return (
@@ -36,18 +39,19 @@ export default function HeroPhoneMockup({
       initial={initial}
       animate={animate}
       transition={transition}
-      className={`relative inline-block ${className}`}
+      className={`relative flex h-full items-end justify-end ${className}`}
     >
       {/* Hand + phone body — behind the demo */}
       <img
         src={phoneBlank}
         alt=""
         aria-hidden
-        className={`relative z-0 block ${sizeClass} pointer-events-none select-none object-contain object-bottom drop-shadow-2xl ${isDesktop ? 'origin-bottom-right' : ''}`}
+        className={`relative z-0 block ${sizeClass} pointer-events-none select-none object-bottom drop-shadow-2xl`}
         draggable={false}
       />
 
-      {/* Interactive demo — in front, held by the hand */}
+      {/* Interactive demo — hidden for now; phone-blank.png is shown alone */}
+      {SHOW_INTERACTIVE_DEMO && (
       <div
         className="absolute z-10 overflow-hidden"
         style={{
@@ -83,6 +87,7 @@ export default function HeroPhoneMockup({
           </div>
         </div>
       </div>
+      )}
     </motion.div>
   );
 }

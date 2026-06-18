@@ -81,3 +81,16 @@ html {
   box-shadow: 0px 8px 30px rgba(109, 40, 217, 0.12);
 }
 
+/* Purple + black CTA gradient */
+.btn-gradient-purple {
+  background: linear-gradient(115deg, #0F0A1E 0%, #3D1580 55%, #6D28D9 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(109, 40, 217, 0.28);
+  transition: filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-gradient-purple:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 6px 24px rgba(109, 40, 217, 0.38);
+}
+

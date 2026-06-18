@@ -16,12 +16,12 @@ export const PRICING_PLANS: PricingPlan[] = [
     id: 'ai-basic',
     name: 'AI Basic',
     description: 'Small independent venues',
-    priceMonthly: 15,
-    priceAnnualDiscounted: 12,
+    priceMonthly: 25,
+    priceAnnualDiscounted: 22,
     ctaText: 'Claim 3 Months Free',
     features: [
       'Up to 10 tables',
-      '1 restaurant location',
+      'Smart Order System',
       'Email support'
     ]
   },
@@ -29,13 +29,13 @@ export const PRICING_PLANS: PricingPlan[] = [
     id: 'ai-medium',
     name: 'AI Medium',
     description: 'Growing single-site restaurants',
-    priceMonthly: 25,
-    priceAnnualDiscounted: 20,
+    priceMonthly: 40,
+    priceAnnualDiscounted: 34,
     isPopular: true,
     ctaText: 'Claim 3 Months Free',
     features: [
       'Up to 20 tables',
-      'Up to 3 restaurant locations',
+      'Smart Order System',
       'Priority email & chat support'
     ]
   },
@@ -43,12 +43,12 @@ export const PRICING_PLANS: PricingPlan[] = [
     id: 'ai-advanced',
     name: 'AI Advanced',
     description: 'Established large-format venues',
-    priceMonthly: 35,
-    priceAnnualDiscounted: 28,
+    priceMonthly: 60,
+    priceAnnualDiscounted: 51,
     ctaText: 'Claim 3 Months Free',
     features: [
       'Up to 30 tables',
-      'Up to 5 restaurant locations',
+      'Smart Order System',
       'Dedicated account manager'
     ]
   },
@@ -62,7 +62,8 @@ export const PRICING_PLANS: PricingPlan[] = [
     ctaText: 'Talk to Our Team',
     features: [
       'Unlimited tables',
-      'Unlimited franchise locations',
+      'Smart Order System',
+      'Multiple restaurant locations — talk to our team',
       'SLA-backed priority support'
     ]
   }

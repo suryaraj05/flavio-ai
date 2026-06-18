@@ -1,7 +1,8 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, CheckCircle2, ArrowRight, Sparkles, Check } from 'lucide-react';
+import { X, CheckCircle2, ArrowRight, Sparkles, Check, Loader2 } from 'lucide-react';
 import type { PricingPlan } from '../types';
+import { submitPlanOnboarding } from '../lib/api';
 
 type PlanOnboardingModalProps = {
   isOpen: boolean;
@@ -27,21 +28,17 @@ export default function PlanOnboardingModal({
 }: PlanOnboardingModalProps) {
   const [formData, setFormData] = useState(EMPTY_FORM);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     if (!isOpen) {
       setFormData(EMPTY_FORM);
       setSubmitted(false);
+      setSubmitting(false);
+      setError('');
     }
   }, [isOpen]);
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.restaurant || !formData.city || !formData.pincode) {
-      return;
-    }
-    setSubmitted(true);
-  };
 
   const planPriceLabel = (() => {
     if (!plan) return '';
@@ -50,6 +47,35 @@ export default function PlanOnboardingModal({
     const formatted = Math.ceil(price);
     return `£${formatted}/month${isAnnualBilling ? ' · billed annually' : ''}`;
   })();
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!plan || !formData.name || !formData.email || !formData.restaurant || !formData.city || !formData.pincode) {
+      return;
+    }
+
+    setSubmitting(true);
+    setError('');
+    try {
+      await submitPlanOnboarding({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || undefined,
+        restaurantName: formData.restaurant,
+        city: formData.city,
+        pincode: formData.pincode,
+        planName: plan.name,
+        planPriceLabel,
+        isAnnualBilling,
+        planFeatures: plan.features,
+      });
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to submit request');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -196,12 +222,24 @@ export default function PlanOnboardingModal({
                       </div>
                     </div>
 
+                    {error && <p className="text-[11px] font-medium text-red-600">{error}</p>}
+
                     <button
                       type="submit"
-                      className="mt-2 flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-secondary-sage py-3 text-sm font-bold tracking-wider text-white transition-colors hover:bg-primary-forest"
+                      disabled={submitting}
+                      className="mt-2 flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-secondary-sage py-3 text-sm font-bold tracking-wider text-white transition-colors hover:bg-primary-forest disabled:cursor-not-allowed disabled:opacity-60"
                     >
-                      <span>{plan.ctaText}</span>
-                      <ArrowRight className="h-4 w-4" />
+                      {submitting ? (
+                        <>
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                          <span>Submitting...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>{plan.ctaText}</span>
+                          <ArrowRight className="h-4 w-4" />
+                        </>
+                      )}
                     </button>
                   </motion.form>
                 ) : (

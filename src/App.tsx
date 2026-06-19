@@ -131,17 +131,17 @@ export default function App() {
           </div>
 
           {/* Nav CTAs */}
-          <div className="flex items-center gap-2 sm:gap-4">
+          <div className="flex items-center gap-1.5 sm:gap-4">
             <button
               type="button"
               onClick={() => setIsDemoModalOpen(true)}
-              className="hidden cursor-pointer text-sm font-bold text-on-surface-secondary transition-all hover:text-primary-forest sm:block"
+              className="cursor-pointer whitespace-nowrap text-[10px] font-bold text-on-surface-secondary transition-all hover:text-primary-forest sm:text-sm"
             >
               Book Demo
             </button>
             <a
               href="https://client-five-iota-12.vercel.app/login"
-              className="btn-gradient-purple rounded-full px-4 py-2 text-[10px] font-bold sm:px-6 sm:py-2.5 sm:text-xs md:px-8 md:py-3 md:text-sm"
+              className="btn-gradient-purple rounded-full px-3 py-2 text-[10px] font-bold sm:px-6 sm:py-2.5 sm:text-xs md:px-8 md:py-3 md:text-sm"
             >
               Restaurant Login
             </a>
@@ -193,21 +193,11 @@ export default function App() {
                 {label}
               </a>
             ))}
-            <div className="pt-5 flex gap-3">
-              <button
-                type="button"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  setIsDemoModalOpen(true);
-                }}
-                className="w-1/2 cursor-pointer rounded-full border border-primary-forest py-2.5 text-center font-bold text-primary-forest"
-              >
-                Book Demo
-              </button>
+            <div className="pt-5">
               <a
                 href="https://client-five-iota-12.vercel.app/login"
                 onClick={() => setMobileMenuOpen(false)}
-                className="btn-gradient-purple w-1/2 rounded-full py-2.5 text-center font-bold"
+                className="btn-gradient-purple block w-full rounded-full py-2.5 text-center font-bold"
               >
                 Log In
               </a>

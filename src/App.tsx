@@ -66,6 +66,13 @@ export default function App() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   // Newsletter subscription
   const [newsEmail, setNewsEmail] = useState('');
   const [newsSubscribed, setNewsSubscribed] = useState(false);
@@ -85,7 +92,7 @@ export default function App() {
   return (
     <div className="bg-background-ivory text-on-surface-dark font-sans min-h-screen">
       {/* Dynamic Header / Navigation */}
-      <nav className={`sticky top-0 w-full z-40 bg-background-ivory/95 backdrop-blur-md border-b border-outline-soft transition-all duration-300 ${scrolled ? 'h-14 shadow-md' : 'h-14 md:h-20 shadow-none'}`}>
+      <nav className={`sticky top-0 w-full z-50 bg-background-ivory/95 backdrop-blur-md border-b border-outline-soft transition-all duration-300 ${scrolled ? 'h-14 shadow-md' : 'h-14 md:h-20 shadow-none'}`}>
         <div className="flex justify-between items-center px-5 md:px-10 lg:px-16 max-w-7xl mx-auto h-full">
           <Logo size="sm" />
 
@@ -124,7 +131,7 @@ export default function App() {
           </div>
 
           {/* Nav CTAs */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <button
               type="button"
               onClick={() => setIsDemoModalOpen(true)}
@@ -134,7 +141,7 @@ export default function App() {
             </button>
             <a
               href="https://client-five-iota-12.vercel.app/login"
-              className="btn-gradient-purple rounded-full px-6 py-2.5 text-xs font-bold md:px-8 md:py-3 md:text-sm"
+              className="btn-gradient-purple rounded-full px-4 py-2 text-[10px] font-bold sm:px-6 sm:py-2.5 sm:text-xs md:px-8 md:py-3 md:text-sm"
             >
               Restaurant Login
             </a>
@@ -142,7 +149,8 @@ export default function App() {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-primary-forest"
+              className="relative z-[60] shrink-0 md:hidden text-primary-forest"
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -153,12 +161,22 @@ export default function App() {
       {/* Mobile Drawer Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed top-14 left-0 w-full bg-background-ivory/98 backdrop-blur-md border-b border-outline-soft z-30 px-5 py-6 md:hidden shadow-lg space-y-1 font-sans text-sm"
-          >
+          <>
+            <motion.button
+              type="button"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileMenuOpen(false)}
+              className="fixed inset-0 z-40 bg-black/50 md:hidden"
+              aria-label="Close menu"
+            />
+            <motion.div
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              className="fixed top-14 left-0 z-50 w-full border-b border-outline-soft bg-background-ivory px-5 py-6 shadow-xl md:hidden"
+            >
             {[
               { href: '#how-it-works', label: 'How It Works' },
               { href: '#features', label: 'Features' },
@@ -194,7 +212,8 @@ export default function App() {
                 Log In
               </a>
             </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
 
@@ -205,16 +224,15 @@ export default function App() {
       >
         {/* Restaurant ambience background */}
         <div
-          className="absolute inset-0 bg-cover bg-no-repeat"
+          className="hero-dark-bg absolute inset-0 bg-cover bg-no-repeat"
           style={{
             backgroundImage: `url(${darkBackground})`,
-            backgroundPosition: 'right center',
           }}
           aria-hidden
         />
 
         {/* Black overlay */}
-        <div className="absolute inset-0 bg-black/65" aria-hidden />
+        <div className="absolute inset-0 bg-black/55 md:bg-black/65" aria-hidden />
 
         {/* Phone — pinned flush to bottom-right */}
         <motion.div
@@ -230,8 +248,8 @@ export default function App() {
           />
         </motion.div>
 
-        <div className="pointer-events-none relative z-30 mx-auto flex h-full max-w-7xl flex-col justify-start px-5 pb-8 pt-10 md:px-10 lg:px-16 md:pb-10 md:pt-14">
-          <div className="pointer-events-auto relative z-30 w-full max-w-2xl lg:max-w-[44rem]">
+        <div className="pointer-events-none relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-start px-5 pb-8 pt-10 md:px-10 lg:z-30 lg:px-16 md:pb-10 md:pt-14">
+          <div className="pointer-events-auto relative w-full max-w-2xl lg:max-w-[44rem]">
             <motion.span
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}

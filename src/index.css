@@ -94,3 +94,14 @@ html {
   box-shadow: 0 6px 24px rgba(109, 40, 217, 0.38);
 }
 
+/* Hero background — frame waiter on mobile, city scene on desktop */
+.hero-dark-bg {
+  background-position: 58% 62%;
+}
+
+@media (min-width: 768px) {
+  .hero-dark-bg {
+    background-position: right center;
+  }
+}
+
